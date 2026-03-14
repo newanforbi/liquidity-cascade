@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - claude/crypto-rotation-dashboard-QgySf
 
 permissions:
   contents: read
