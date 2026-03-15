@@ -1,5 +1,7 @@
 # The Liquidity Cascade
 
+**Live site: [newanforbi.github.io/liquidity-cascade](https://newanforbi.github.io/liquidity-cascade/)**
+
 A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
 
 ## Overview
