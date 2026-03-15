@@ -1364,8 +1364,9 @@ export default function LiquidityCascade() {
   const [activeNav, setActiveNav] = useState("overview");
 
   return (
+    <>
+    <GalaxyBackground />
     <div style={{ minHeight: "100vh", background: "transparent", color: "#fff", fontFamily: "'DM Sans', sans-serif", position: "relative", zIndex: 1 }}>
-      <GalaxyBackground />
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
       <div style={{ padding: "32px 28px 0", maxWidth: 960, margin: "0 auto" }}>
@@ -1478,5 +1479,6 @@ export default function LiquidityCascade() {
         </div>
       </div>
     </div>
+    </>
   );
 }
