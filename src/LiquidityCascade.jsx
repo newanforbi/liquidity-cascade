@@ -89,7 +89,7 @@ function ShootingStars() {
   const starsRef = useRef([]);
   const rafRef = useRef(null);
   const lastSpawnRef = useRef(0);
-  const nextSpawnDelayRef = useRef(1000);
+  const nextSpawnDelayRef = useRef(30000);
   const MAX_STARS = 3;
 
   function spawnStar(W, H) {
@@ -171,7 +171,7 @@ function ShootingStars() {
           starsRef.current.push(spawnStar(canvas.width, canvas.height));
         }
         lastSpawnRef.current = timestamp;
-        nextSpawnDelayRef.current = 3000 + Math.random() * 5000;
+        nextSpawnDelayRef.current = 30000;
       }
 
       starsRef.current = starsRef.current.filter((star) => {
