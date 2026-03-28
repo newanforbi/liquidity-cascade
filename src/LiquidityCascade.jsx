@@ -1404,6 +1404,12 @@ const CUSTODIANS = [
   { name: "Northern Trust", detail: "Institutional-grade crypto custody integrated with traditional wealth management." },
 ];
 
+const PRESERVATION_INSTRUMENTS = [
+  { instrument: "Short-Term U.S. Treasury Bills", annReturn: "4.0–5.5%", maxDrawdown: "Near-zero", liquidity: "T+0 to T+1", protection: "U.S. government backing", notes: "Lowest risk. Exempt from state/local tax. 4-week to 1-year maturities." },
+  { instrument: "Government Money Market Funds", annReturn: "4.0–5.2%", maxDrawdown: "Low", liquidity: "T+0 to T+1", protection: "SIPC up to $500K", notes: "Stable $1 NAV. Slightly higher yield than savings. Daily liquidity." },
+  { instrument: "FDIC-Insured Cash Sweeps (ICS)", annReturn: "3.5–4.5%", maxDrawdown: "Near-zero", liquidity: "T+0", protection: "FDIC up to $250K per bank", notes: "Auto-fragments across 1000s of banks. Single statement. Full FDIC on entire balance." },
+];
+
 function ConversionTab() {
   return (
     <div>
@@ -1659,6 +1665,55 @@ function ConversionTab() {
               </p>
             </div>
           ))}
+        </div>
+      </BlackpaperSection>
+
+      {/* PHASE IV: CAPITAL PRESERVATION */}
+      <BlackpaperSection color="#F4B728" label="PHASE IV — CAPITAL PRESERVATION & RISK MITIGATION">
+        <BlackpaperHeading>Neutralizing Counterparty Banking Risk</BlackpaperHeading>
+        <BlackpaperPara>
+          Once $232 million is secured in fiat, the risk profile shifts from crypto volatility to <span style={{ color: "#F4B728" }}>traditional counterparty banking risk</span>. The FDIC limits insurance to $250,000 per depositor, per institution. Depositing $200M into a single bank means $199.75M becomes an unsecured claim in insolvency — potentially tied up in receivership for years. The collapses of Silicon Valley Bank, Credit Suisse, and First Republic are stark reminders that "too big to fail" does not guarantee uninsured deposit protection.
+        </BlackpaperPara>
+
+        <BlackpaperHeading sub>The IntraFi Sweep Solution</BlackpaperHeading>
+        <BlackpaperPara indent>
+          The IntraFi Network's Insured Cash Sweep (ICS) and CDARS programs solve this without manually opening hundreds of bank accounts. When $200M is deposited into an ICS-participating bank, proprietary software automatically fragments the capital into sub-$250K increments, sweeping them across thousands of participating FDIC-insured banks nationwide. The result: absolute multi-million-dollar FDIC protection on the entire principal, with a single banking relationship, single consolidated statement, and daily liquidity.
+        </BlackpaperPara>
+
+        <BlackpaperHeading sub>Preservation Instruments Comparison</BlackpaperHeading>
+        <div style={{ overflowX: "auto", marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "150px 80px 80px 80px 1fr 1fr", gap: 0, minWidth: 750 }}>
+            {["Instrument", "Return", "Drawdown", "Liquidity", "Protection", "Notes"].map((h) => (
+              <div key={h} style={{ padding: "10px 12px", background: "rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.08)", fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: 1.2 }}>
+                {h.toUpperCase()}
+              </div>
+            ))}
+            {PRESERVATION_INSTRUMENTS.map((p) => (
+              [p.instrument, p.annReturn, p.maxDrawdown, p.liquidity, p.protection, p.notes].map((val, i) => (
+                <div key={`${p.instrument}-${i}`} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.04)", fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: i === 0 ? "#fff" : "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
+                  {i === 0 ? <span style={{ fontWeight: 600 }}>{val}</span> : val}
+                </div>
+              ))
+            ))}
+          </div>
+        </div>
+
+        <div style={{
+          padding: "14px 18px",
+          background: "rgba(244,183,40,0.04)",
+          border: "1px solid rgba(244,183,40,0.1)",
+          borderRadius: 8,
+          marginBottom: 20,
+        }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(244,183,40,0.6)", letterSpacing: 1.5, marginBottom: 6 }}>
+            BOND LADDER VS. MONEY MARKET — DECISION FRAMEWORK
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: "0 0 8px" }}>
+            <strong style={{ color: "rgba(255,255,255,0.7)" }}>Rate-cutting environment:</strong> MMF yields drop synchronously with benchmark rates. Construct a distributing Treasury bond ladder (1–3yr staggered maturities) to lock in the current yield curve, rendering returns immune to subsequent Fed rate cuts.
+          </p>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+            <strong style={{ color: "rgba(255,255,255,0.7)" }}>Rate-holding/rising environment:</strong> MMFs automatically capture rising rates daily. Favor short-duration MMFs for maximum flexibility and immediate liquidity, with each rung of the ladder returning principal available for re-entry deployment.
+          </p>
         </div>
       </BlackpaperSection>
     </div>
