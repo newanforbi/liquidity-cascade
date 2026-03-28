@@ -888,6 +888,7 @@ const NAV_ITEMS = [
   { key: "calculator", label: "CALCULATOR" },
   { key: "predict", label: "2028" },
   { key: "blackpaper", label: "BLACKPAPER" },
+  { key: "conversion", label: "CONVERSION" },
 ];
 
 function BlackpaperSection({ color, label, children }) {
@@ -1359,6 +1360,71 @@ function Blackpaper() {
   );
 }
 
+const CONVERSION_PHASES = [
+  { id: "I", label: "JURISDICTIONAL ENGINEERING", color: "#00FFA3", summary: "Sever domicile from high-tax states and establish residency in a zero-income-tax jurisdiction before the liquidation event." },
+  { id: "II", label: "FIDUCIARY ARCHITECTURE", color: "#6450FF", summary: "Structure capital within Domestic Asset Protection Trusts and establish a Single-Family Office with Private Trust Company governance." },
+  { id: "III", label: "INSTITUTIONAL LIQUIDATION", color: "#FF6B35", summary: "Execute nine-figure liquidation via institutional OTC desks with locked quotes, bypassing public order books entirely." },
+  { id: "IV", label: "CAPITAL PRESERVATION", color: "#F4B728", summary: "Neutralize counterparty banking risk via FDIC sweep networks and deploy into ultra-low-risk preservation instruments." },
+  { id: "V", label: "TREASURY & RE-ENTRY", color: "#00B4FF", summary: "Generate risk-free yield via Treasury ladders, maintain liquidity through SBLOCs, and execute rules-based re-entry into subsequent cycles." },
+];
+
+function ConversionTab() {
+  return (
+    <div>
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 8 }}>
+          POST-CYCLE CONVERSION — WEALTH PRESERVATION ARCHITECTURE
+        </div>
+        <h2 style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 26,
+          fontWeight: 700,
+          margin: "0 0 12px",
+          lineHeight: 1.2,
+          background: "linear-gradient(135deg, #00FFA3, #6450FF, #00B4FF)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}>
+          Strategic Wealth Preservation
+        </h2>
+        <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 15, lineHeight: 1.8, color: "rgba(255,255,255,0.55)", margin: 0, maxWidth: 720 }}>
+          The realization of a highly appreciated cryptocurrency portfolio at the apex of a projected market cycle presents a multifaceted financial, legal, and operational challenge. At this echelon of wealth, traditional retail banking frameworks are fundamentally inadequate. The transition of nine-figure digital asset wealth into preserved, liquid, and tax-optimized fiat currency requires an institutional-grade architecture — executed simultaneously across jurisdictional, fiduciary, and operational domains.
+        </p>
+      </div>
+
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+        gap: 12,
+        marginBottom: 40,
+      }}>
+        {CONVERSION_PHASES.map((phase) => (
+          <div key={phase.id} style={{
+            background: "rgba(255,255,255,0.02)",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderRadius: 10,
+            padding: "18px 20px",
+            borderLeft: `3px solid ${phase.color}`,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+              <GlowDot color={phase.color} size={6} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: phase.color, letterSpacing: 1.5 }}>
+                PHASE {phase.id}
+              </span>
+            </div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 600, color: "#fff", marginBottom: 8 }}>
+              {phase.label}
+            </div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.45)", margin: 0 }}>
+              {phase.summary}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function LiquidityCascade() {
   const [activePhase, setActivePhase] = useState(0);
   const [activeNav, setActiveNav] = useState("overview");
@@ -1458,6 +1524,7 @@ export default function LiquidityCascade() {
         {activeNav === "calculator" && <CalculatorSection />}
         {activeNav === "predict" && <Predictions2028 />}
         {activeNav === "blackpaper" && <Blackpaper />}
+        {activeNav === "conversion" && <ConversionTab />}
 
         <div
           style={{
