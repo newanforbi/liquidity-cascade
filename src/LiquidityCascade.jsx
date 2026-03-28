@@ -202,6 +202,227 @@ function ShootingStars() {
   );
 }
 
+function AlienSaucer() {
+  const canvasRef = useRef(null);
+  const saucerRef = useRef(null);
+  const rafRef = useRef(null);
+  const lastSpawnRef = useRef(0);
+  const nextSpawnDelayRef = useRef(60000);
+
+  function spawnSaucer(W, H) {
+    const edge = Math.floor(Math.random() * 4);
+    let startX, startY;
+    if      (edge === 0) { startX = Math.random() * W; startY = -80; }
+    else if (edge === 1) { startX = W + 80;             startY = Math.random() * H; }
+    else if (edge === 2) { startX = Math.random() * W; startY = H + 80; }
+    else                 { startX = -80;                startY = Math.random() * H; }
+
+    const targetX = W * 0.3 + Math.random() * W * 0.4;
+    const targetY = H * 0.25 + Math.random() * H * 0.35;
+
+    const dx = targetX - startX;
+    const dy = targetY - startY;
+    const baseDepart = Math.atan2(dy, dx) + Math.PI;
+    const departAngle = baseDepart + (Math.random() - 0.5) * (Math.PI * 0.8);
+
+    return {
+      x: startX, y: startY,
+      startX, startY,
+      targetX, targetY,
+      phase: "entering",
+      enterAge: 0,
+      enterDuration: 90,
+      hoverAge: 0,
+      hoverDuration: 480,
+      departAngle,
+      departSpeed: 0,
+    };
+  }
+
+  function drawSaucer(ctx, s) {
+    let drawX = s.x;
+    let drawY = s.y;
+    let alpha = 1;
+
+    if (s.phase === "entering") {
+      alpha = Math.min(1, s.enterAge / s.enterDuration);
+    } else if (s.phase === "hovering") {
+      drawY += Math.sin(s.hoverAge * 0.05) * 6;
+      alpha = 1;
+    } else {
+      alpha = Math.max(0, 1 - s.departSpeed / 60);
+    }
+
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Glow aura
+    const aura = ctx.createRadialGradient(drawX, drawY, 0, drawX, drawY, 70);
+    aura.addColorStop(0, "rgba(100,255,150,0.15)");
+    aura.addColorStop(1, "rgba(100,255,150,0)");
+    ctx.fillStyle = aura;
+    ctx.beginPath();
+    ctx.arc(drawX, drawY, 70, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Tractor beam (hover phase only)
+    if (s.phase === "hovering") {
+      const beamGrad = ctx.createLinearGradient(drawX, drawY + 8, drawX, drawY + 70);
+      beamGrad.addColorStop(0, "rgba(100,255,150,0.18)");
+      beamGrad.addColorStop(1, "rgba(100,255,150,0)");
+      ctx.fillStyle = beamGrad;
+      ctx.beginPath();
+      ctx.moveTo(drawX - 15, drawY + 8);
+      ctx.lineTo(drawX + 15, drawY + 8);
+      ctx.lineTo(drawX + 38, drawY + 70);
+      ctx.lineTo(drawX - 38, drawY + 70);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Body disc
+    const bodyGrad = ctx.createRadialGradient(drawX - 10, drawY - 4, 2, drawX, drawY, 50);
+    bodyGrad.addColorStop(0, "#d8ead8");
+    bodyGrad.addColorStop(0.6, "#9ab89a");
+    bodyGrad.addColorStop(1, "#5a7a5a");
+    ctx.fillStyle = bodyGrad;
+    ctx.beginPath();
+    ctx.ellipse(drawX, drawY, 48, 13, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Rim highlight
+    ctx.strokeStyle = "rgba(180,255,200,0.5)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.ellipse(drawX, drawY, 48, 13, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Dome
+    const domeGrad = ctx.createRadialGradient(drawX - 6, drawY - 16, 1, drawX, drawY - 10, 22);
+    domeGrad.addColorStop(0, "rgba(200,240,255,0.85)");
+    domeGrad.addColorStop(0.5, "rgba(120,200,255,0.55)");
+    domeGrad.addColorStop(1, "rgba(60,130,200,0.25)");
+    ctx.fillStyle = domeGrad;
+    ctx.beginPath();
+    ctx.ellipse(drawX, drawY - 10, 20, 14, 0, Math.PI, 0);
+    ctx.closePath();
+    ctx.fill();
+
+    // Rim lights
+    const lightColors = ["#00ff88", "#00ddff", "#4488ff", "#ffffff", "#00ff88", "#00ddff", "#88ffcc"];
+    for (let i = 0; i < 7; i++) {
+      const angle = (i / 7) * Math.PI * 2;
+      const lx = drawX + Math.cos(angle) * 38;
+      const ly = drawY + Math.sin(angle) * 10;
+      const blink = Math.sin(s.hoverAge * 0.15 + i * 0.9) > 0.2;
+      const lightAlpha = s.phase === "hovering" ? (blink ? 1 : 0.3) : 0.7;
+      const color = lightColors[i];
+      ctx.globalAlpha = alpha * lightAlpha;
+      const lg = ctx.createRadialGradient(lx, ly, 0, lx, ly, 5);
+      lg.addColorStop(0, color);
+      lg.addColorStop(1, "transparent");
+      ctx.fillStyle = lg;
+      ctx.beginPath();
+      ctx.arc(lx, ly, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = alpha * lightAlpha * 0.9;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(lx, ly, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Departure streak
+    if (s.phase === "departing" && s.departSpeed > 4) {
+      ctx.globalAlpha = alpha * 0.7;
+      const streakLen = s.departSpeed * 4;
+      const tx = drawX - Math.cos(s.departAngle) * streakLen;
+      const ty = drawY - Math.sin(s.departAngle) * streakLen;
+      const sg = ctx.createLinearGradient(drawX, drawY, tx, ty);
+      sg.addColorStop(0, `rgba(150,255,180,${alpha})`);
+      sg.addColorStop(0.4, `rgba(100,220,150,${alpha * 0.3})`);
+      sg.addColorStop(1, "rgba(100,220,150,0)");
+      ctx.strokeStyle = sg;
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(drawX, drawY);
+      ctx.lineTo(tx, ty);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resize = () => {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const tick = (timestamp) => {
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Spawn
+      if (!saucerRef.current && timestamp - lastSpawnRef.current >= nextSpawnDelayRef.current) {
+        saucerRef.current = spawnSaucer(canvas.width, canvas.height);
+        lastSpawnRef.current = timestamp;
+      }
+
+      const s = saucerRef.current;
+      if (s) {
+        if (s.phase === "entering") {
+          s.enterAge += 1;
+          const progress = s.enterAge / s.enterDuration;
+          const t = 1 - Math.pow(1 - Math.min(progress, 1), 3);
+          s.x = s.startX + (s.targetX - s.startX) * t;
+          s.y = s.startY + (s.targetY - s.startY) * t;
+          if (s.enterAge >= s.enterDuration) {
+            s.x = s.targetX;
+            s.y = s.targetY;
+            s.phase = "hovering";
+          }
+        } else if (s.phase === "hovering") {
+          s.hoverAge += 1;
+          if (s.hoverAge >= s.hoverDuration) s.phase = "departing";
+        } else {
+          s.departSpeed = s.departSpeed === 0 ? 3 : s.departSpeed * 1.12;
+          s.x += Math.cos(s.departAngle) * s.departSpeed;
+          s.y += Math.sin(s.departAngle) * s.departSpeed;
+          const W = canvas.width, H = canvas.height;
+          if (s.x < -200 || s.x > W + 200 || s.y < -200 || s.y > H + 200) {
+            saucerRef.current = null;
+            nextSpawnDelayRef.current = 45000 + Math.random() * 30000;
+          }
+        }
+        if (saucerRef.current) drawSaucer(ctx, s);
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }}
+    />
+  );
+}
+
 const PHASES = [
   {
     id: 1,
@@ -1928,6 +2149,7 @@ export default function LiquidityCascade() {
     <>
     <GalaxyBackground />
     <ShootingStars />
+    <AlienSaucer />
     <div style={{ minHeight: "100vh", background: "transparent", color: "#fff", fontFamily: "'DM Sans', sans-serif", position: "relative", zIndex: 2 }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
