@@ -1388,6 +1388,22 @@ const SFO_PTC_DOMAINS = [
   { domain: "Control Dynamics", sfo: "Directed by family principals and hired executives (CIO, CFO).", ptc: "Directed by a formal board of directors, which can legally include family members.", synergy: "Family retains active control over trust assets without piercing the legal liability veil." },
 ];
 
+const OTC_DESKS = [
+  { desk: "Coinbase Prime", minTrade: "$1M+", regulatory: "NY Trust Charter, SEC, FINRA", strength: "Regulated custody integration. Seamless fiat off-ramp. Institutional-grade compliance." },
+  { desk: "FalconX", minTrade: "$1M+", regulatory: "CFTC Swap Dealer, EU VFA (Malta)", strength: "Unified margin accounts (no pre-funding). Deep liquidity across 200+ pairs." },
+  { desk: "Galaxy Digital", minTrade: "$1M+", regulatory: "SEC, FINRA (publicly traded)", strength: "Principal desk using own balance sheet. OTC proceeds deployable into yield programs." },
+  { desk: "Wintermute", minTrade: "$500K+", regulatory: "Global compliance", strength: "Algorithmic principal dealer. 24/7 trading. Extremely tight spreads on majors." },
+  { desk: "Cumberland (DRW)", minTrade: "$1M+", regulatory: "SEC, FINRA", strength: "Backed by DRW's institutional trading infrastructure. Deep BTC/ETH liquidity." },
+];
+
+const CUSTODIANS = [
+  { name: "Kraken Bank (WY)", detail: "SPDI charter. Bridges digital asset liquidation to institutional fiat custody." },
+  { name: "BNY Mellon", detail: "World's largest custodian bank. Active digital assets division for institutional clients." },
+  { name: "Anchorage Digital", detail: "OCC-chartered national trust bank. SOC 2 Type II. Federal regulatory framework." },
+  { name: "Fidelity Digital Assets", detail: "Backed by Fidelity Investments. Cold-storage custody with institutional insurance." },
+  { name: "Northern Trust", detail: "Institutional-grade crypto custody integrated with traditional wealth management." },
+];
+
 function ConversionTab() {
   return (
     <div>
@@ -1580,6 +1596,69 @@ function ConversionTab() {
               ))
             ))}
           </div>
+        </div>
+      </BlackpaperSection>
+
+      {/* PHASE III: INSTITUTIONAL LIQUIDATION */}
+      <BlackpaperSection color="#FF6B35" label="PHASE III — INSTITUTIONAL LIQUIDATION MECHANICS">
+        <BlackpaperHeading>The OTC Desk Imperative</BlackpaperHeading>
+        <BlackpaperPara>
+          Executing a market order of $232 million on a public centralized exchange will trigger <span style={{ color: "#FF6B35" }}>catastrophic market slippage</span>. Public order books rarely possess the localized liquidity depth to absorb a nine-figure sell order without collapsing the asset's price. Institutional OTC desks bypass the public order book entirely — sourcing liquidity through proprietary matching engines, dark pools, and direct capital relationships with institutional buyers.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          The OTC desk provides a "locked quote" — a guaranteed, flat execution price for the entire block of assets, typically valid for 30 seconds to a few minutes. By accepting the quote, the seller offloads execution risk and price volatility entirely onto the provider. The market remains blind to the transaction until post-trade settlement, preventing predatory HFT algorithms from front-running the liquidation.
+        </BlackpaperPara>
+
+        <BlackpaperHeading sub>OTC Desk Comparison</BlackpaperHeading>
+        <div style={{ overflowX: "auto", marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "130px 80px 1fr 1fr", gap: 0, minWidth: 650 }}>
+            {["Desk", "Min Trade", "Regulatory Status", "Key Strength"].map((h) => (
+              <div key={h} style={{ padding: "10px 12px", background: "rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.08)", fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: 1.2 }}>
+                {h.toUpperCase()}
+              </div>
+            ))}
+            {OTC_DESKS.map((d) => (
+              [d.desk, d.minTrade, d.regulatory, d.strength].map((val, i) => (
+                <div key={`${d.desk}-${i}`} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.04)", fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: i === 0 ? "#fff" : "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
+                  {i === 0 ? <span style={{ fontWeight: 600 }}>{val}</span> : val}
+                </div>
+              ))
+            ))}
+          </div>
+        </div>
+
+        <div style={{
+          padding: "14px 18px",
+          background: "rgba(255,107,53,0.04)",
+          border: "1px solid rgba(255,107,53,0.1)",
+          borderRadius: 8,
+          marginBottom: 28,
+        }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,107,53,0.6)", letterSpacing: 1.5, marginBottom: 6 }}>
+            TEST TRANSACTION PROTOCOL
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+            Before executing the full transaction, run a <strong style={{ color: "#FF6B35" }}>$50K–$100K test</strong> through the entire OTC pipeline. Verify that digital assets move securely to the desk and that resulting fiat clears the banking system without triggering automated AML freezes — which are extremely common when sudden massive wire transfers hit standard retail bank accounts.
+          </p>
+        </div>
+
+        <BlackpaperHeading sub>Crypto-Native Institutional Custodians</BlackpaperHeading>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 10, marginBottom: 20 }}>
+          {CUSTODIANS.map((c) => (
+            <div key={c.name} style={{
+              background: "rgba(255,255,255,0.02)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              borderRadius: 8,
+              padding: "14px 16px",
+            }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 6 }}>
+                {c.name}
+              </div>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, lineHeight: 1.55, color: "rgba(255,255,255,0.45)", margin: 0 }}>
+                {c.detail}
+              </p>
+            </div>
+          ))}
         </div>
       </BlackpaperSection>
     </div>
