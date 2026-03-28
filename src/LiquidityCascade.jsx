@@ -1368,6 +1368,13 @@ const CONVERSION_PHASES = [
   { id: "V", label: "TREASURY & RE-ENTRY", color: "#00B4FF", summary: "Generate risk-free yield via Treasury ladders, maintain liquidity through SBLOCs, and execute rules-based re-entry into subsequent cycles." },
 ];
 
+const CONVERSION_STATES = [
+  { state: "Nevada", rate: "0%", test: "Domicile / 30-day presence", protections: "Homestead exemption, strongest asset protection trusts, no exception creditors", notes: "Fastest DAPT seasoning (2yr). Explicitly exempts crypto from property tax. Optimal for UHNW." },
+  { state: "Texas", rate: "0%", test: "Domicile / 183-day rule", protections: "Homestead exemption (unlimited acreage outside city)", notes: "Business-friendly, vehicle inspection required. Strong for operational SFO base." },
+  { state: "Wyoming", rate: "0%", test: "Domicile / minimal", protections: "Privacy protections, SPDI charter for crypto banking", notes: "1,000-year trust duration. Lowest LLC fees. Pro-crypto banking laws (SPDI charter)." },
+  { state: "Florida", rate: "0%", test: "Domicile / straightforward", protections: "Homestead exemption (unlimited value), asset protection", notes: "No annual vehicle inspection. Straightforward domicile process. Strong case law." },
+];
+
 function ConversionTab() {
   return (
     <div>
@@ -1421,6 +1428,68 @@ function ConversionTab() {
           </div>
         ))}
       </div>
+
+      {/* PHASE I: JURISDICTIONAL ENGINEERING */}
+      <BlackpaperSection color="#00FFA3" label="PHASE I — JURISDICTIONAL ENGINEERING & DOMICILE SEVERANCE">
+        <BlackpaperHeading>Tax-Optimal Domicile Selection</BlackpaperHeading>
+        <BlackpaperPara>
+          The geographic location of an individual at the exact moment a highly appreciated asset is liquidated dictates the baseline erosion of that capital. Under both federal IRS guidelines and state-level tax codes, cryptocurrency is treated as <span style={{ color: "#00FFA3" }}>intangible personal property</span>. The gain realized from its sale is sourced to the taxpayer's state of residence at the time of the sale. For a $232 million liquidation in a state like California (13.3% top rate), the state tax liability alone would exceed $30 million.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          The foundational step in wealth preservation is the legal and absolute severance of domicile from a high-tax state and the establishment of residency in a zero-income-tax jurisdiction. This must be completed well before the 2029 cycle peak — not during it. A mere change of driver's license or voter registration is catastrophically insufficient. Courts have repeatedly upheld tax agency determinations against taxpayers who failed to genuinely sever economic, social, and physical ties.
+        </BlackpaperPara>
+
+        <BlackpaperHeading sub>Zero-Tax State Comparison</BlackpaperHeading>
+        <div style={{ overflowX: "auto", marginBottom: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "100px 50px 1fr 1fr 1fr", gap: 0, minWidth: 700 }}>
+            {["State", "Rate", "Residency Test", "Key Protections", "Notes"].map((h) => (
+              <div key={h} style={{ padding: "10px 12px", background: "rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.08)", fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: 1.2 }}>
+                {h.toUpperCase()}
+              </div>
+            ))}
+            {CONVERSION_STATES.map((s) => (
+              [s.state, s.rate, s.test, s.protections, s.notes].map((val, i) => (
+                <div key={`${s.state}-${i}`} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.04)", fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: i === 0 ? "#fff" : "rgba(255,255,255,0.5)", lineHeight: 1.5, background: i === 1 ? "rgba(0,255,163,0.04)" : "transparent" }}>
+                  {i === 0 ? <span style={{ fontWeight: 600 }}>{val}</span> : val}
+                  {i === 1 && <span style={{ color: "#00FFA3" }}> {val}</span> ? null : null}
+                </div>
+              ))
+            ))}
+          </div>
+        </div>
+
+        <div style={{
+          padding: "16px 18px",
+          background: "rgba(255,60,60,0.05)",
+          border: "1px solid rgba(255,60,60,0.1)",
+          borderRadius: 8,
+          marginBottom: 20,
+        }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,60,60,0.6)", letterSpacing: 1.5, marginBottom: 8 }}>
+            AUDIT RISK — CALIFORNIA FTB & NEW YORK DTF
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: "0 0 8px" }}>
+            <strong style={{ color: "rgba(255,255,255,0.7)" }}>California</strong> utilizes a subjective "facts-and-circumstances" test — not a strict 183-day rule. The FTB will subpoena cell phone tower pings, ATM withdrawals, credit card locations, and EZ-Pass data. The burden of proof rests entirely on the taxpayer.
+          </p>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.65, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+            <strong style={{ color: "rgba(255,255,255,0.7)" }}>New York</strong> enforces strict statutory residency: maintaining a "permanent place of abode" for &gt;10 months combined with 184+ days triggers full residency taxation — even if domicile was legally changed.
+          </p>
+        </div>
+
+        <div style={{
+          padding: "14px 18px",
+          background: "rgba(0,255,163,0.03)",
+          border: "1px solid rgba(0,255,163,0.08)",
+          borderRadius: 8,
+        }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(0,255,163,0.5)", letterSpacing: 1.5, marginBottom: 6 }}>
+            CRITICAL TIMELINE
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+            Domicile severance must be surgically complete <strong style={{ color: "#00FFA3" }}>12–24 months before</strong> the liquidation event. Physical relocation, property sale in the former state, purchase of primary residence in the new state, migration of banking/professional services, and meticulous presence tracking are all required to survive an audit.
+          </p>
+        </div>
+      </BlackpaperSection>
     </div>
   );
 }
