@@ -531,6 +531,144 @@ const PREDICTIONS_2028 = [
   { phase: 3, asset: "ZEC", action: "Exit to Fiat", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — exit crypto entirely' },
 ];
 
+// ── SIGNALS data ──────────────────────────────────────────────────────────────
+
+const SIGNAL_GRID = [
+  {
+    phase: 1,
+    asset: "SOL",
+    color: "#00FFA3",
+    signals: [
+      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "TRIGGERED" },
+      { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "TRIGGERED" },
+      { id: "S1-3", threshold: "Pre-halving narrative peak", action: "EXIT REMAINING SOL", status: "TRIGGERED" },
+    ],
+  },
+  {
+    phase: 2,
+    asset: "MSTR",
+    color: "#FF6B35",
+    signals: [
+      { id: "S2-1", threshold: "mNAV premium > 2.5x", action: "BEGIN MSTR EXIT", status: "ARMED" },
+      { id: "S2-2", threshold: "BTC 30-day momentum stalls", action: "ACCELERATE EXIT", status: "ARMED" },
+      { id: "S2-3", threshold: "ZEC/BTC ratio breaks up", action: "CONFIRM ZEC ENTRY", status: "ARMED" },
+    ],
+  },
+  {
+    phase: 3,
+    asset: "ZEC",
+    color: "#F4B728",
+    signals: [
+      { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
+      { id: "S3-2", threshold: "Mainstream media coverage", action: "EXIT REMAINING ZEC", status: "ARMED" },
+      { id: "S3-3", threshold: "Any position remaining", action: "NO FURTHER ROTATIONS", status: "EXPIRED" },
+    ],
+  },
+];
+
+const KEY_THRESHOLDS = [
+  { signal: "BTC Dominance Break", asset: "SOL → MSTR", threshold: "BTC.D < 57.5%", action: "Rotate to MSTR", window: "Month −2 to +3" },
+  { signal: "Pre-Halving Saturation", asset: "SOL", threshold: "RSI > 78 weekly + retail euphoria", action: "Exit SOL entirely", window: "Month −1 to 0" },
+  { signal: "mNAV Premium Extreme", asset: "MSTR", threshold: "mNAV > 2.5–3.0x", action: "Begin MSTR exit", window: "Month +6 to +9" },
+  { signal: "BTC Momentum Stall", asset: "MSTR", threshold: "30-day price momentum < 0", action: "Accelerate MSTR exit", window: "Month +7 to +10" },
+  { signal: "ZEC Blow-Off Top", asset: "ZEC → Fiat", threshold: "7-day gain > 150%", action: "Exit 50% immediately", window: "Month +17 to +19" },
+  { signal: "Terminal Media Spike", asset: "ZEC", threshold: "Mainstream coverage + euphoria", action: "Exit remaining ZEC", window: "Month +19 to +21" },
+];
+
+const PSY_RISKS = [
+  {
+    title: "FOMO Risk",
+    description: "Watching ZEC reach 50x while still holding SOL induces premature rotation. The signal grid exists precisely to counter this. Each phase has an irreversible exit trigger — honor it regardless of apparent upside remaining.",
+  },
+  {
+    title: "Premature Rotation Risk",
+    description: "Rotating from SOL to MSTR before BTC.D crosses 57.5% means abandoning a live expansion for an unconfirmed one. Confirmation criteria are not suggestions — they are the mechanism separating disciplined execution from speculative guessing.",
+  },
+];
+
+// ── CYCLES data ───────────────────────────────────────────────────────────────
+
+const CYCLE_DATA = [
+  { year: "2012", halvingPrice: "$12", peakPrice: "$1,160", multiple: "96x", multipleNum: 96, monthsToPeak: 12, leadAltcoin: "LTC", altcoinMultiple: "54x", m2Event: "Post-QE3 liquidity expansion" },
+  { year: "2016", halvingPrice: "$650", peakPrice: "$19,800", multiple: "30x", multipleNum: 30, monthsToPeak: 17, leadAltcoin: "ETH", altcoinMultiple: "84x", m2Event: "Global M2 +5.4% YoY" },
+  { year: "2020", halvingPrice: "$8,600", peakPrice: "$67,500", multiple: "7.85x", multipleNum: 7.85, monthsToPeak: 18, leadAltcoin: "SOL", altcoinMultiple: "140x", m2Event: "COVID fiscal stimulus, M2 +26%" },
+  { year: "2024", halvingPrice: "$63,800", peakPrice: "~$120,000", multiple: "~5x", multipleNum: 5, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~33x", m2Event: "Post-rate-cut M2 expansion" },
+];
+
+const ALTCOIN_WINDOWS = [
+  { year: "2012", start: 8,  end: 12, label: "LTC +54x",       color: "#00FFA3" },
+  { year: "2016", start: 10, end: 17, label: "ETH +84x",       color: "#FF6B35" },
+  { year: "2020", start: 12, end: 18, label: "SOL +140x",      color: "#F4B728" },
+  { year: "2024", start: 17, end: 19, label: "ZEC ~33x (proj.)", color: "#6450FF" },
+];
+
+// ── EXECUTION data ────────────────────────────────────────────────────────────
+
+const PRE_ENTRY_CHECKLIST = [
+  { item: "Exchange Tier 3 Verification", detail: "Complete KYC/AML for institutional-level withdrawal limits ($500K+/day). Use Coinbase Advanced, Kraken Pro, or Binance Institutional. Required for ZEC OTC desk access." },
+  { item: "Hardware Wallet Setup", detail: "Ledger or Trezor configured with a fresh seed phrase. Test a small withdrawal before transferring phase capital. Never store the seed digitally." },
+  { item: "Position Size Decision", detail: "Determine Conservative / Moderate / Aggressive tier allocation before touching the market. Pre-commit in writing. Do not adjust mid-phase." },
+  { item: "Exit Pre-Commitment", detail: "Write down exact exit thresholds for each phase on paper. Sign and date. This physical record prevents in-the-moment deviation when prices are euphoric." },
+  { item: "Tax Basis Tracking Active", detail: "Configure CoinTracker or Koinly with exchange API keys before the first trade. Every entry must be logged immediately — retroactive reconstruction is costly and inaccurate." },
+];
+
+const PHASE_PROTOCOLS = [
+  {
+    asset: "SOL",
+    color: "#00FFA3",
+    colorDim: "rgba(0,255,163,0.12)",
+    venue: "Coinbase Advanced / Kraken Pro",
+    entryMethod: "DCA over 4–8 weeks",
+    positionType: "Spot only",
+    custody: "Self-custody (Phantom wallet)",
+    slippageRisk: "LOW",
+    exitTrigger: "Pre-halving RSI > 78 or BTC.D < 57.5%",
+  },
+  {
+    asset: "MSTR",
+    color: "#FF6B35",
+    colorDim: "rgba(255,107,53,0.12)",
+    venue: "Interactive Brokers / Fidelity",
+    entryMethod: "Single entry at confirmed breakout",
+    positionType: "Equity — common shares",
+    custody: "Brokerage account",
+    slippageRisk: "LOW",
+    exitTrigger: "mNAV > 2.5x or BTC momentum stall",
+  },
+  {
+    asset: "ZEC",
+    color: "#F4B728",
+    colorDim: "rgba(244,183,40,0.12)",
+    venue: "Kraken / OTC desk (large orders)",
+    entryMethod: "Limit orders only, 3–5 tranches",
+    positionType: "Spot only",
+    custody: "Zcash native wallet (shielded)",
+    slippageRisk: "HIGH",
+    exitTrigger: "7-day gain > 150% or media saturation",
+  },
+];
+
+const POSITION_SIZING = [
+  { tier: "Conservative", solPct: "20%", mstrPct: "60%", zecPct: "20%", note: "Preserves most capital; reduced ZEC exposure", isDefault: false },
+  { tier: "Moderate",     solPct: "33%", mstrPct: "33%", zecPct: "34%", note: "Balanced phase rotation — recommended default", isDefault: true },
+  { tier: "Aggressive",   solPct: "40%", mstrPct: "25%", zecPct: "35%", note: "Maximum ZEC exposure; highest theoretical return", isDefault: false },
+];
+
+const EXECUTION_STEPS = [
+  { step: 1, title: "Check Spread", detail: "Before any order, verify bid/ask spread is < 0.5% for SOL/MSTR, < 2% for ZEC. Wide spreads signal thin liquidity — delay entry or use OTC." },
+  { step: 2, title: "Tranche Entry", detail: "Never deploy full position in one order. Split into 3–5 equal tranches deployed over 24–72 hours. Reduces timing risk and average entry price." },
+  { step: 3, title: "Limit Orders Only", detail: "Market orders on illiquid assets (especially ZEC) result in catastrophic slippage. Always place limit orders at or slightly above the current ask for entries." },
+  { step: 4, title: "OTC Desk for Large ZEC", detail: "Orders above $500K in ZEC must go through an OTC desk (Cumberland, Genesis Trading, or Kraken OTC). Direct market impact would move the price against you." },
+  { step: 5, title: "Transfer to Self-Custody", detail: "Within 24 hours of any acquisition, transfer to a hardware wallet. Exchange insolvency risk is real. ZEC transfers to shielded addresses only." },
+  { step: 6, title: "Log Basis Immediately", detail: "Record exact entry price, quantity, timestamp, and exchange within 1 hour of each trade. Cost basis disputes are impossible to resolve retroactively from memory." },
+];
+
+const EXECUTION_FAILURES = [
+  { title: '"I\'ll buy more when it dips"', description: "DCA entry exists precisely because the dip often never comes. In parabolic phases, waiting for a 10% retracement means missing 300% gains. Tranching is the discipline — execute the plan." },
+  { title: "Market Orders on ZEC", description: "A $1M market order on ZEC in a thin order book will consume every ask from $20 to $45 before filling. The slippage alone can exceed 30%. This is not hypothetical — it is arithmetic." },
+  { title: "Holding MSTR into Phase 3", description: "MSTR's 1.77x beta amplifies downside as violently as upside. When ZEC begins its terminal spike, MSTR is simultaneously beginning a drawdown. Every day of delay costs compounded capital." },
+];
+
 function formatCurrency(n) {
   if (n >= 1e9) return "$" + (n / 1e9).toFixed(2) + "B";
   if (n >= 1e6) return "$" + (n / 1e6).toFixed(2) + "M";
@@ -1220,12 +1358,683 @@ function BtcDominanceNote() {
   );
 }
 
+// ── SIGNALS component ─────────────────────────────────────────────────────────
+
+function SignalsTab() {
+  const statusColor = (s) =>
+    s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
+
+  return (
+    <div>
+      <style>{`@keyframes pulse-glow { 0%,100%{opacity:1} 50%{opacity:0.35} }`}</style>
+
+      {/* Cycle Status Banner */}
+      <div style={{
+        background: "rgba(255,107,53,0.08)",
+        border: "1px solid rgba(255,107,53,0.2)",
+        borderRadius: 10,
+        padding: "20px 24px",
+        marginBottom: 28,
+        display: "flex",
+        alignItems: "center",
+        gap: 20,
+        flexWrap: "wrap",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{
+            display: "inline-block", width: 10, height: 10, borderRadius: "50%",
+            background: "#FF6B35",
+            boxShadow: "0 0 10px #FF6B35, 0 0 20px #FF6B3540",
+            animation: "pulse-glow 2s ease-in-out infinite",
+          }} />
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 2 }}>
+            ACTIVE PHASE
+          </span>
+        </div>
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: "#FF6B35" }}>
+          Phase 2 — MSTR
+        </div>
+        <div style={{ marginLeft: "auto", textAlign: "right" }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: 1.5 }}>
+            HALVING-RELATIVE
+          </div>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700, color: "#fff" }}>
+            Month +7
+          </div>
+        </div>
+      </div>
+
+      {/* Signal Grid */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        SIGNAL GRID — ALL PHASES
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, marginBottom: 36 }}>
+        {SIGNAL_GRID.map((phase) => (
+          <div key={phase.phase} style={{
+            background: "rgba(255,255,255,0.02)",
+            border: `1px solid ${phase.color}30`,
+            borderRadius: 10,
+            padding: "18px 20px",
+            borderTop: `2px solid ${phase.color}`,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+              <GlowDot color={phase.color} size={6} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: phase.color, letterSpacing: 1.5 }}>
+                PHASE {phase.phase} — {phase.asset}
+              </span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {phase.signals.map((sig) => (
+                <div key={sig.id} style={{
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderRadius: 8,
+                  padding: "10px 12px",
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 5 }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>
+                      {sig.threshold}
+                    </span>
+                    <span style={{
+                      flexShrink: 0,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 8,
+                      color: statusColor(sig.status),
+                      letterSpacing: 0.8,
+                      border: `1px solid ${statusColor(sig.status)}40`,
+                      borderRadius: 4,
+                      padding: "2px 6px",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {sig.status}
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>
+                    → {sig.action}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Rotation Decision Tree */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        ROTATION DECISION TREE
+      </div>
+      <div style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 10,
+        padding: "22px 24px",
+        marginBottom: 36,
+        overflowX: "auto",
+      }}>
+        <div style={{ display: "flex", alignItems: "stretch", minWidth: 560 }}>
+          {[
+            { label: "SOL: EXIT WHEN", detail: "RSI > 78 or BTC.D < 57.5%", color: "#00FFA3" },
+            { label: "MSTR: EXIT WHEN", detail: "mNAV > 2.5x or momentum stalls", color: "#FF6B35" },
+            { label: "ZEC: EXIT WHEN", detail: "7-day gain > 150% or media peaks", color: "#F4B728" },
+            { label: "FIAT", detail: "No further crypto rotations", color: "rgba(255,255,255,0.3)" },
+          ].map((node, i, arr) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+              <div style={{
+                flex: 1,
+                background: `${node.color}12`,
+                border: `1px solid ${node.color}40`,
+                borderRadius: 8,
+                padding: "14px 16px",
+              }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: node.color, letterSpacing: 1.2, marginBottom: 6 }}>
+                  {node.label}
+                </div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.5)", lineHeight: 1.45 }}>
+                  {node.detail}
+                </div>
+              </div>
+              {i < arr.length - 1 && (
+                <div style={{ padding: "0 10px", color: "rgba(255,255,255,0.2)", fontSize: 20, flexShrink: 0 }}>→</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Key Threshold Table */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        KEY THRESHOLD TABLE
+      </div>
+      <div style={{ overflowX: "auto", marginBottom: 36 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 0.8fr 1.3fr 1.2fr 0.85fr", gap: 0, minWidth: 680 }}>
+          {["Signal", "Asset", "Threshold", "Action", "Month Window"].map((h) => (
+            <div key={h} style={{
+              padding: "10px 12px",
+              background: "rgba(255,255,255,0.04)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: 1.2,
+            }}>
+              {h.toUpperCase()}
+            </div>
+          ))}
+          {KEY_THRESHOLDS.map((row, i) => {
+            const ac = row.asset.includes("SOL") ? "#00FFA3" : row.asset.includes("MSTR") ? "#FF6B35" : "#F4B728";
+            return [row.signal, row.asset, row.threshold, row.action, row.window].map((cell, j) => (
+              <div key={`${i}-${j}`} style={{
+                padding: "10px 12px",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                fontFamily: j === 1 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
+                fontSize: j === 1 ? 10 : 12,
+                color: j === 1 ? ac : j === 4 ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.6)",
+              }}>
+                {cell}
+              </div>
+            ));
+          })}
+        </div>
+      </div>
+
+      {/* Psychological Risk Cards */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        PSYCHOLOGICAL RISK VECTORS
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
+        {PSY_RISKS.map((risk, i) => (
+          <div key={i} style={{
+            background: "rgba(255,60,60,0.06)",
+            border: "1px solid rgba(255,60,60,0.18)",
+            borderRadius: 10,
+            padding: "18px 20px",
+          }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,80,80,0.8)", letterSpacing: 1.5, marginBottom: 10 }}>
+              ⚠ {risk.title.toUpperCase()}
+            </div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, lineHeight: 1.65, color: "rgba(255,255,255,0.58)", margin: 0 }}>
+              {risk.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── CYCLES component ──────────────────────────────────────────────────────────
+
+function CyclesTab() {
+  const maxMultiple = 96;
+  const cycleColors = ["#00FFA3", "#FF6B35", "#F4B728", "#6450FF"];
+  const maxMonths = 24;
+
+  return (
+    <div>
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 8 }}>
+          EMPIRICAL FOUNDATION — FOUR-CYCLE ANALYSIS
+        </div>
+        <h2 style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 26,
+          fontWeight: 700,
+          margin: "0 0 12px",
+          lineHeight: 1.2,
+          background: "linear-gradient(135deg, #00FFA3, #FF6B35, #F4B728)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}>
+          Historical Halving Cycles
+        </h2>
+        <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 15, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0, maxWidth: 700 }}>
+          The cascade thesis is not speculation — it is pattern recognition across four complete cycles. Each halving has produced a measurable sequence: BTC expansion, dominance break, altcoin overflow. The asset names rotate; the structure does not.
+        </p>
+      </div>
+
+      {/* 4-Cycle Comparison Grid */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        4-CYCLE COMPARISON
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 36 }}>
+        {CYCLE_DATA.map((c, i) => (
+          <div key={c.year} style={{
+            background: "rgba(255,255,255,0.02)",
+            border: `1px solid ${cycleColors[i]}30`,
+            borderRadius: 10,
+            padding: "18px 20px",
+            borderTop: `2px solid ${cycleColors[i]}`,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+              <GlowDot color={cycleColors[i]} size={6} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: cycleColors[i], letterSpacing: 1.5 }}>
+                {c.year} HALVING
+              </span>
+            </div>
+            {[
+              ["Halving Price", c.halvingPrice],
+              ["Peak Price", c.peakPrice],
+              ["BTC Multiple", c.multiple],
+              ["Months to Peak", `${c.monthsToPeak} mo`],
+              ["Lead Altcoin", c.leadAltcoin],
+              ["Altcoin Multiple", c.altcoinMultiple],
+            ].map(([label, value]) => (
+              <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)" }}>{label}</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>{value}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Diminishing Returns Bar Chart */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        BTC CYCLE MULTIPLES — DIMINISHING RETURNS
+      </div>
+      <div style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 10,
+        padding: "22px 24px",
+        marginBottom: 14,
+      }}>
+        {CYCLE_DATA.map((c, i) => (
+          <div key={c.year} style={{ marginBottom: i < CYCLE_DATA.length - 1 ? 16 : 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: cycleColors[i], width: 36 }}>{c.year}</span>
+              <div style={{ flex: 1, height: 20, background: "rgba(255,255,255,0.04)", borderRadius: 4, overflow: "hidden" }}>
+                <div style={{
+                  width: `${(c.multipleNum / maxMultiple) * 100}%`,
+                  height: "100%",
+                  background: `linear-gradient(90deg, ${cycleColors[i]}cc, ${cycleColors[i]}55)`,
+                  borderRadius: 4,
+                  transition: "width 0.6s ease",
+                }} />
+              </div>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.7)", width: 44, textAlign: "right" }}>
+                {c.multiple}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 8,
+        padding: "12px 16px",
+        marginBottom: 36,
+      }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.45)", margin: 0 }}>
+          BTC cycle multiples are compressing — 96x → 30x → 7.85x → ~5x. Yet altcoin rotation remains viable precisely because the <span style={{ color: "#F4B728" }}>liquidity overflow dynamic</span> amplifies diminishing BTC gains through sequenced leverage. A 5x BTC move routed through MSTR (1.77x beta) and then into a thin-order-book privacy coin produces outsized terminal returns despite a lower headline BTC multiple.
+        </p>
+      </div>
+
+      {/* Multi-Cycle Timeline Overlay */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        ALTCOIN ROTATION WINDOW — MULTI-CYCLE OVERLAY
+      </div>
+      <div style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 10,
+        padding: "22px 24px",
+        marginBottom: 36,
+        overflowX: "auto",
+      }}>
+        <div style={{ minWidth: 500 }}>
+          {/* Month axis labels */}
+          <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 10, paddingLeft: 48 }}>
+            {Array.from({ length: maxMonths + 1 }, (_, i) => i).filter(m => m % 4 === 0).map((m) => (
+              <div key={m} style={{
+                position: "relative",
+                flex: `0 0 ${(4 / maxMonths) * 100}%`,
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 8,
+                color: "rgba(255,255,255,0.2)",
+                textAlign: "left",
+              }}>
+                +{m}m
+              </div>
+            ))}
+          </div>
+          {ALTCOIN_WINDOWS.map((w) => (
+            <div key={w.year} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: w.color, width: 36, flexShrink: 0 }}>{w.year}</span>
+              <div style={{ flex: 1, position: "relative", height: 28, background: "rgba(255,255,255,0.03)", borderRadius: 4 }}>
+                <div style={{
+                  position: "absolute",
+                  left: `${(w.start / maxMonths) * 100}%`,
+                  width: `${((w.end - w.start) / maxMonths) * 100}%`,
+                  top: 0,
+                  height: "100%",
+                  background: `${w.color}30`,
+                  border: `1px solid ${w.color}60`,
+                  borderRadius: 4,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: w.color, whiteSpace: "nowrap" }}>
+                    {w.label}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div style={{ paddingLeft: 48, marginTop: 6 }}>
+            <div style={{ height: 1, background: "rgba(255,255,255,0.06)" }} />
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.25)", marginTop: 6 }}>
+              Months after halving. Bars indicate peak altcoin rotation window.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* M2 Correlation Table */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        M2 CORRELATION — CYCLE MAPPING
+      </div>
+      <div style={{ overflowX: "auto", marginBottom: 36 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "60px 80px 100px 1fr", gap: 0, minWidth: 500 }}>
+          {["Cycle", "BTC Multiple", "Lead Alt", "Concurrent M2 Event"].map((h) => (
+            <div key={h} style={{
+              padding: "10px 12px",
+              background: "rgba(255,255,255,0.04)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: 1.2,
+            }}>
+              {h.toUpperCase()}
+            </div>
+          ))}
+          {CYCLE_DATA.map((c, i) => (
+            [c.year, c.multiple, c.leadAltcoin, c.m2Event].map((cell, j) => (
+              <div key={`${i}-${j}`} style={{
+                padding: "10px 12px",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                fontFamily: j === 0 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
+                fontSize: 12,
+                color: j === 0 ? cycleColors[i] : j === 2 ? cycleColors[i] : "rgba(255,255,255,0.55)",
+              }}>
+                {cell}
+              </div>
+            ))
+          ))}
+        </div>
+      </div>
+
+      {/* Pattern Validation */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        PATTERN VALIDATION
+      </div>
+      <div style={{
+        background: "rgba(255,255,255,0.02)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 10,
+        padding: "24px 26px",
+      }}>
+        <BlackpaperPara>
+          Across every completed halving cycle, a structurally identical sequence has repeated: Bitcoin consolidates supply shock gains, dominance peaks, capital rotates into the cycle's vanguard altcoin, and finally overflows into legacy assets with thin liquidity and outsized volatility. The instruments differ per cycle — LTC in 2013, ETH in 2017, SOL in 2021 — but the mechanism is invariant.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          Diminishing BTC multiples do not invalidate the cascade. They are a feature of increasing market capitalization, not a failure of the pattern. A market that is ten times larger requires ten times more capital to move — but the <span style={{ color: "#F4B728" }}>rotation sequence itself</span> concentrates that capital into increasingly narrow windows, producing terminal volatility that exceeds earlier cycles in absolute dollar terms even as percentage multiples compress.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          The ZEC Month +17–19 window does not appear in isolation. It appears at the same relative position across every cycle in which a terminal privacy or legacy asset participated. The 2018 and 2021 precedents are not anecdotes. They are data points in a statistically consistent distribution.
+        </BlackpaperPara>
+        <BlackpaperQuote color="#F4B728">
+          "The asset names change. The timing tightens. The sequence does not."
+        </BlackpaperQuote>
+      </div>
+    </div>
+  );
+}
+
+// ── EXECUTION component ───────────────────────────────────────────────────────
+
+function ExecutionTab() {
+  return (
+    <div>
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 8 }}>
+          OPERATIONAL MANUAL — TRADE EXECUTION
+        </div>
+        <h2 style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 26,
+          fontWeight: 700,
+          margin: "0 0 12px",
+          lineHeight: 1.2,
+          background: "linear-gradient(135deg, #00FFA3, #FF6B35, #F4B728)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}>
+          How to Execute the Cascade
+        </h2>
+        <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 15, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0, maxWidth: 700 }}>
+          Knowing what to do and when is insufficient. The edge is destroyed at the execution layer — wrong venue, wrong order type, unlogged basis, missed custody transfer. This section closes that gap.
+        </p>
+      </div>
+
+      {/* Pre-Entry Checklist */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        PRE-ENTRY CHECKLIST
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 36 }}>
+        {PRE_ENTRY_CHECKLIST.map((row, i) => (
+          <div key={i} style={{
+            display: "flex",
+            gap: 16,
+            background: "rgba(255,255,255,0.02)",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderRadius: 8,
+            padding: "14px 16px",
+            alignItems: "flex-start",
+          }}>
+            <div style={{
+              flexShrink: 0,
+              width: 22,
+              height: 22,
+              borderRadius: "50%",
+              border: "1px solid rgba(0,255,163,0.4)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              color: "#00FFA3",
+            }}>
+              {i + 1}
+            </div>
+            <div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4 }}>
+                {row.item}
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.45)" }}>
+                {row.detail}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Phase Entry Protocols */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        PHASE ENTRY PROTOCOLS
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 36 }}>
+        {PHASE_PROTOCOLS.map((p) => (
+          <div key={p.asset} style={{
+            background: p.colorDim,
+            border: `1px solid ${p.color}30`,
+            borderRadius: 10,
+            padding: "18px 20px",
+            borderTop: `2px solid ${p.color}`,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+              <GlowDot color={p.color} size={6} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: p.color, letterSpacing: 1, fontWeight: 600 }}>
+                {p.asset}
+              </span>
+            </div>
+            {[
+              ["Venue", p.venue],
+              ["Entry Method", p.entryMethod],
+              ["Position Type", p.positionType],
+              ["Custody", p.custody],
+              ["Slippage Risk", p.slippageRisk],
+              ["Exit Trigger", p.exitTrigger],
+            ].map(([label, value]) => (
+              <div key={label} style={{ marginBottom: 9 }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.3)", letterSpacing: 1.2, marginBottom: 2 }}>
+                  {label.toUpperCase()}
+                </div>
+                <div style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 12,
+                  color: label === "Slippage Risk"
+                    ? (value === "HIGH" ? "#FF6B35" : "#00FFA3")
+                    : "rgba(255,255,255,0.65)",
+                  lineHeight: 1.4,
+                }}>
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Position Sizing Table */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        POSITION SIZING — ALLOCATION TIERS
+      </div>
+      <div style={{ overflowX: "auto", marginBottom: 36 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "100px 60px 60px 60px 1fr", gap: 0, minWidth: 500 }}>
+          {["Tier", "SOL %", "MSTR %", "ZEC %", "Notes"].map((h) => (
+            <div key={h} style={{
+              padding: "10px 12px",
+              background: "rgba(255,255,255,0.04)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: 1.2,
+            }}>
+              {h.toUpperCase()}
+            </div>
+          ))}
+          {POSITION_SIZING.map((row) => (
+            [row.tier, row.solPct, row.mstrPct, row.zecPct, row.note].map((cell, j) => (
+              <div key={`${row.tier}-${j}`} style={{
+                padding: "12px 12px",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                background: row.isDefault ? "rgba(255,107,53,0.06)" : "transparent",
+                fontFamily: j === 0 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
+                fontSize: j === 0 ? 11 : 12,
+                color: j === 0
+                  ? (row.isDefault ? "#FF6B35" : "rgba(255,255,255,0.7)")
+                  : j === 1 ? "#00FFA3" : j === 2 ? "#FF6B35" : j === 3 ? "#F4B728" : "rgba(255,255,255,0.5)",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+              }}>
+                {cell}
+                {j === 0 && row.isDefault && (
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 7, color: "#FF6B35", border: "1px solid #FF6B3540", borderRadius: 3, padding: "1px 4px" }}>
+                    DEFAULT
+                  </span>
+                )}
+              </div>
+            ))
+          ))}
+        </div>
+      </div>
+
+      {/* Order Execution Steps */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        ORDER EXECUTION — 6-STEP PROTOCOL
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 0, marginBottom: 36 }}>
+        {EXECUTION_STEPS.map((s, i) => (
+          <div key={s.step} style={{
+            display: "flex",
+            gap: 0,
+            position: "relative",
+          }}>
+            {/* Connector line */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginRight: 16 }}>
+              <div style={{
+                width: 28,
+                height: 28,
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10,
+                color: "rgba(255,255,255,0.5)",
+                flexShrink: 0,
+                zIndex: 1,
+              }}>
+                {s.step}
+              </div>
+              {i < EXECUTION_STEPS.length - 1 && (
+                <div style={{ width: 1, flex: 1, background: "rgba(255,255,255,0.06)", minHeight: 20, margin: "4px 0" }} />
+              )}
+            </div>
+            <div style={{ flex: 1, paddingBottom: i < EXECUTION_STEPS.length - 1 ? 16 : 0 }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4, paddingTop: 4 }}>
+                {s.title}
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.5)" }}>
+                {s.detail}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Common Execution Failures */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        COMMON EXECUTION FAILURES
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {EXECUTION_FAILURES.map((f, i) => (
+          <div key={i} style={{
+            background: "rgba(255,60,60,0.06)",
+            border: "1px solid rgba(255,60,60,0.18)",
+            borderRadius: 10,
+            padding: "18px 20px",
+          }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,80,80,0.8)", letterSpacing: 1.2, marginBottom: 8 }}>
+              ✗ {f.title}
+            </div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, lineHeight: 1.65, color: "rgba(255,255,255,0.58)", margin: 0 }}>
+              {f.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const NAV_ITEMS = [
-  { key: "overview", label: "OVERVIEW" },
-  { key: "macro", label: "MACRO" },
-  { key: "phases", label: "PHASES" },
+  { key: "overview",   label: "OVERVIEW"   },
+  { key: "macro",      label: "MACRO"      },
+  { key: "phases",     label: "PHASES"     },
+  { key: "signals",    label: "SIGNALS"    },
+  { key: "cycles",     label: "CYCLES"     },
+  { key: "execution",  label: "EXECUTION"  },
   { key: "calculator", label: "CALCULATOR" },
-  { key: "predict", label: "2028" },
+  { key: "predict",    label: "2028"       },
   { key: "blackpaper", label: "BLACKPAPER" },
   { key: "conversion", label: "CONVERSION" },
 ];
@@ -2239,6 +3048,9 @@ export default function LiquidityCascade() {
         )}
 
         {activeNav === "phases" && PHASES.map((p, i) => <PhaseDetail key={i} phase={p} />)}
+        {activeNav === "signals" && <SignalsTab />}
+        {activeNav === "cycles" && <CyclesTab />}
+        {activeNav === "execution" && <ExecutionTab />}
         {activeNav === "calculator" && <CalculatorSection />}
         {activeNav === "predict" && <Predictions2028 />}
         {activeNav === "blackpaper" && <Blackpaper />}
