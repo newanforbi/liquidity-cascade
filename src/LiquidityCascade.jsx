@@ -538,6 +538,7 @@ const SIGNAL_GRID = [
     phase: 1,
     asset: "SOL",
     color: "#00FFA3",
+    historicalPrecedent: "Triggered Mar 2024 — SOL peaked at $191.90 exactly one month pre-halving, confirming the front-run pattern.",
     signals: [
       { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "TRIGGERED" },
       { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "TRIGGERED" },
@@ -548,6 +549,7 @@ const SIGNAL_GRID = [
     phase: 2,
     asset: "MSTR",
     color: "#FF6B35",
+    historicalPrecedent: "In 2021 MSTR's mNAV exceeded 3x concurrent with BTC's November ATH — position held too long lost 77% in 90 days.",
     signals: [
       { id: "S2-1", threshold: "mNAV premium > 2.5x", action: "BEGIN MSTR EXIT", status: "ARMED" },
       { id: "S2-2", threshold: "BTC 30-day momentum stalls", action: "ACCELERATE EXIT", status: "ARMED" },
@@ -558,6 +560,7 @@ const SIGNAL_GRID = [
     phase: 3,
     asset: "ZEC",
     color: "#F4B728",
+    historicalPrecedent: "Jan 2018 and May 2021: ZEC's vertical blow-off topped within days of cycle peak. No second chance — exit is final.",
     signals: [
       { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
       { id: "S3-2", threshold: "Mainstream media coverage", action: "EXIT REMAINING ZEC", status: "ARMED" },
@@ -622,6 +625,7 @@ const PHASE_PROTOCOLS = [
     positionType: "Spot only",
     custody: "Self-custody (Phantom wallet)",
     slippageRisk: "LOW",
+    slippageBps: "< 50 bps",
     exitTrigger: "Pre-halving RSI > 78 or BTC.D < 57.5%",
   },
   {
@@ -633,6 +637,7 @@ const PHASE_PROTOCOLS = [
     positionType: "Equity — common shares",
     custody: "Brokerage account",
     slippageRisk: "LOW",
+    slippageBps: "< 30 bps (NYSE listed)",
     exitTrigger: "mNAV > 2.5x or BTC momentum stall",
   },
   {
@@ -644,6 +649,7 @@ const PHASE_PROTOCOLS = [
     positionType: "Spot only",
     custody: "Zcash native wallet (shielded)",
     slippageRisk: "HIGH",
+    slippageBps: "150–400 bps on orders > $100K",
     exitTrigger: "7-day gain > 150% or media saturation",
   },
 ];
@@ -1364,14 +1370,21 @@ function SignalsTab() {
   const statusColor = (s) =>
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
 
+  // Derive active phase from SIGNAL_GRID — first phase with any ARMED signal
+  const activeIdx   = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
+  const activePhase = PHASES[activeIdx];
+  const monthLabel  = activePhase.monthsFromHalving >= 0
+    ? `Month +${activePhase.monthsFromHalving}`
+    : `Month ${activePhase.monthsFromHalving}`;
+
   return (
     <div>
       <style>{`@keyframes pulse-glow { 0%,100%{opacity:1} 50%{opacity:0.35} }`}</style>
 
-      {/* Cycle Status Banner */}
+      {/* Cycle Status Banner — data-driven from PHASES + SIGNAL_GRID */}
       <div style={{
-        background: "rgba(255,107,53,0.08)",
-        border: "1px solid rgba(255,107,53,0.2)",
+        background: `${activePhase.color}08`,
+        border: `1px solid ${activePhase.color}25`,
         borderRadius: 10,
         padding: "20px 24px",
         marginBottom: 28,
@@ -1383,25 +1396,48 @@ function SignalsTab() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{
             display: "inline-block", width: 10, height: 10, borderRadius: "50%",
-            background: "#FF6B35",
-            boxShadow: "0 0 10px #FF6B35, 0 0 20px #FF6B3540",
+            background: activePhase.color,
+            boxShadow: `0 0 10px ${activePhase.color}, 0 0 20px ${activePhase.color}40`,
             animation: "pulse-glow 2s ease-in-out infinite",
           }} />
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 2 }}>
             ACTIVE PHASE
           </span>
         </div>
-        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: "#FF6B35" }}>
-          Phase 2 — MSTR
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: activePhase.color }}>
+          Phase {activeIdx + 1} — {activePhase.asset}
         </div>
         <div style={{ marginLeft: "auto", textAlign: "right" }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: 1.5 }}>
             HALVING-RELATIVE
           </div>
           <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700, color: "#fff" }}>
-            Month +7
+            {monthLabel}
           </div>
         </div>
+      </div>
+
+      {/* Current market metric boxes — MacroContext tile pattern */}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
+        CURRENT WATCH METRICS
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 8 }}>
+        {[
+          { label: "BTC DOMINANCE", value: "58.2%", desc: "Rotation trigger at < 57.5%", color: "#00FFA3" },
+          { label: "SOL RSI (WEEKLY)", value: "71", desc: "Exit signal at > 78", color: "#FF6B35" },
+          { label: "MSTR mNAV", value: "1.8x", desc: "Exit signal at > 2.5x", color: "#F4B728" },
+        ].map((m) => (
+          <div key={m.label} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 6, padding: "14px 16px" }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5, marginBottom: 6 }}>
+              {m.label}
+            </div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 26, color: m.color, fontWeight: 700 }}>{m.value}</div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{m.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.2)", letterSpacing: 1, marginBottom: 28 }}>
+        STATIC — UPDATE MANUALLY BEFORE EACH SESSION
       </div>
 
       {/* Signal Grid */}
@@ -1455,6 +1491,27 @@ function SignalsTab() {
                 </div>
               ))}
             </div>
+            {/* Exit condition box — PhaseDetail exit-signal box pattern */}
+            <div style={{
+              marginTop: 12,
+              background: `${PHASES[phase.phase - 1].color}08`,
+              border: `1px solid ${PHASES[phase.phase - 1].color}20`,
+              borderRadius: 6,
+              padding: "10px 12px",
+            }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: PHASES[phase.phase - 1].color, letterSpacing: 1.5, marginBottom: 4 }}>
+                EXIT CONDITION
+              </div>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, lineHeight: 1.55, color: "rgba(255,255,255,0.55)", margin: 0 }}>
+                {PHASES[phase.phase - 1].exitSignal}
+              </p>
+            </div>
+            {/* Historical precedent — PhaseDetail keyInsight style */}
+            <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px solid ${phase.color}15` }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.38)", fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
+                {phase.historicalPrecedent}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -1473,16 +1530,22 @@ function SignalsTab() {
       }}>
         <div style={{ display: "flex", alignItems: "stretch", minWidth: 560 }}>
           {[
-            { label: "SOL: EXIT WHEN", detail: "RSI > 78 or BTC.D < 57.5%", color: "#00FFA3" },
-            { label: "MSTR: EXIT WHEN", detail: "mNAV > 2.5x or momentum stalls", color: "#FF6B35" },
-            { label: "ZEC: EXIT WHEN", detail: "7-day gain > 150% or media peaks", color: "#F4B728" },
-            { label: "FIAT", detail: "No further crypto rotations", color: "rgba(255,255,255,0.3)" },
+            { label: "SOL: EXIT WHEN", detail: "RSI > 78 or BTC.D < 57.5%",       color: "#00FFA3", flexWeight: 1,   state: "done"   },
+            { label: "MSTR: EXIT WHEN", detail: "mNAV > 2.5x or momentum stalls",  color: "#FF6B35", flexWeight: 1.5, state: "active" },
+            { label: "ZEC: EXIT WHEN",  detail: "7-day gain > 150% or media peaks", color: "#F4B728", flexWeight: 2,   state: "future" },
+            { label: "FIAT",            detail: "No further crypto rotations",       color: "rgba(255,255,255,0.3)", flexWeight: 0.8, state: "future" },
           ].map((node, i, arr) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
+            <div key={i} style={{ display: "flex", alignItems: "center", flex: node.flexWeight }}>
               <div style={{
                 flex: 1,
-                background: `${node.color}12`,
-                border: `1px solid ${node.color}40`,
+                background: node.state === "active"
+                  ? `${node.color}18`
+                  : node.state === "done"
+                  ? "rgba(255,255,255,0.04)"
+                  : `${node.color}0a`,
+                border: node.state === "active"
+                  ? `1px solid ${node.color}60`
+                  : `1px solid ${node.color}30`,
                 borderRadius: 8,
                 padding: "14px 16px",
               }}>
@@ -1565,6 +1628,7 @@ function SignalsTab() {
 // ── CYCLES component ──────────────────────────────────────────────────────────
 
 function CyclesTab() {
+  const [activeCycle, setActiveCycle] = useState(null);
   const maxMultiple = 96;
   const cycleColors = ["#00FFA3", "#FF6B35", "#F4B728", "#6450FF"];
   const maxMonths = 24;
@@ -1598,26 +1662,37 @@ function CyclesTab() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 36 }}>
         {CYCLE_DATA.map((c, i) => (
-          <div key={c.year} style={{
-            background: "rgba(255,255,255,0.02)",
-            border: `1px solid ${cycleColors[i]}30`,
-            borderRadius: 10,
-            padding: "18px 20px",
-            borderTop: `2px solid ${cycleColors[i]}`,
-          }}>
+          <div key={c.year}
+            onClick={() => setActiveCycle(activeCycle === i ? null : i)}
+            style={{
+              background: activeCycle === i ? `${cycleColors[i]}10` : "rgba(255,255,255,0.02)",
+              border: activeCycle === i ? `1.5px solid ${cycleColors[i]}55` : `1px solid ${cycleColors[i]}30`,
+              borderRadius: 10,
+              padding: "18px 20px",
+              borderTop: `2px solid ${cycleColors[i]}`,
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <GlowDot color={cycleColors[i]} size={6} />
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: cycleColors[i], letterSpacing: 1.5 }}>
                 {c.year} HALVING
               </span>
             </div>
+            {/* Altcoin hero stat — PhaseCard large-ticker pattern */}
+            <div style={{ marginBottom: 14, paddingBottom: 14, borderBottom: `1px solid ${cycleColors[i]}20` }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: cycleColors[i], letterSpacing: 1.2, marginBottom: 4, opacity: 0.7 }}>
+                {c.leadAltcoin} — LEAD ALTCOIN
+              </div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: cycleColors[i], lineHeight: 1 }}>
+                {c.altcoinMultiple}
+              </div>
+            </div>
             {[
               ["Halving Price", c.halvingPrice],
               ["Peak Price", c.peakPrice],
               ["BTC Multiple", c.multiple],
               ["Months to Peak", `${c.monthsToPeak} mo`],
-              ["Lead Altcoin", c.leadAltcoin],
-              ["Altcoin Multiple", c.altcoinMultiple],
             ].map(([label, value]) => (
               <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
                 <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)" }}>{label}</span>
@@ -1626,7 +1701,103 @@ function CyclesTab() {
             ))}
           </div>
         ))}
+
+        {/* 2028 Projection card — uses PREDICTIONS_2028 data, dashed PROJECTION badge */}
+        {(() => {
+          const proj2028Color = "#6450FF";
+          return (
+            <div style={{
+              background: "rgba(100,80,255,0.03)",
+              border: `1px solid ${proj2028Color}25`,
+              borderRadius: 10,
+              padding: "18px 20px",
+              borderTop: `2px dashed ${proj2028Color}`,
+              opacity: 0.85,
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <GlowDot color={proj2028Color} size={6} />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: proj2028Color, letterSpacing: 1.5 }}>
+                  ~2028 HALVING
+                </span>
+                <span style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 7, color: proj2028Color,
+                  border: `1px dashed ${proj2028Color}50`, borderRadius: 3, padding: "1px 5px", marginLeft: 2,
+                }}>
+                  PROJECTION
+                </span>
+              </div>
+              <div style={{ marginBottom: 14, paddingBottom: 14, borderBottom: `1px solid ${proj2028Color}15` }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: proj2028Color, letterSpacing: 1.2, marginBottom: 4, opacity: 0.7 }}>
+                  ZEC — LEAD ALTCOIN
+                </div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: proj2028Color, lineHeight: 1 }}>
+                  ~33x (est.)
+                </div>
+              </div>
+              {[
+                ["Halving Price", "~$90,000"],
+                ["Peak Price", "~$450,000"],
+                ["BTC Multiple", "~4–5x (est.)"],
+                ["Months to Peak", "~19 mo"],
+              ].map(([label, value]) => (
+                <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.3)" }}>{label}</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{value}</span>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
       </div>
+
+      {/* Expanded cycle detail panel — PhaseDetail structure */}
+      {activeCycle !== null && (() => {
+        const c = CYCLE_DATA[activeCycle];
+        const color = cycleColors[activeCycle];
+        // Map cycle index to PHASES: 2020=SOL(0), 2024=ZEC(2); others use generic narrative
+        const phaseMap = { 2: PHASES[0], 3: PHASES[2] };
+        const ph = phaseMap[activeCycle];
+        return (
+          <div style={{
+            background: `${color}08`,
+            border: `1px solid ${color}30`,
+            borderRadius: 10,
+            padding: "22px 24px",
+            marginBottom: 28,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <GlowDot color={color} size={7} />
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 18, fontWeight: 700, color }}>
+                {c.year} — {c.leadAltcoin} Cycle
+              </span>
+            </div>
+            {ph && (
+              <>
+                <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 14, lineHeight: 1.8, color: "rgba(255,255,255,0.6)", margin: "0 0 16px" }}>
+                  {ph.description}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 16 }}>
+                  {ph.mechanics.map((m, mi) => (
+                    <div key={mi} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <span style={{ color, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, flexShrink: 0 }}>→</span>
+                      <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>{m}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 6, padding: "10px 14px" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color, letterSpacing: 1.5, marginBottom: 4 }}>CYCLE EXIT SIGNAL</div>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", margin: 0 }}>{ph.exitSignal}</p>
+                </div>
+              </>
+            )}
+            {!ph && (
+              <p style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: 14, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", margin: 0 }}>
+                The {c.year} cycle preceded the current cascade instrument set. {c.leadAltcoin} served as the terminal liquidity vehicle, peaking approximately {c.monthsToPeak} months after the halving with a {c.altcoinMultiple} multiple — establishing the structural precedent this cascade replicates.
+              </p>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Diminishing Returns Bar Chart */}
       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
@@ -1684,20 +1855,24 @@ function CyclesTab() {
         overflowX: "auto",
       }}>
         <div style={{ minWidth: 500 }}>
-          {/* Month axis labels */}
-          <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 10, paddingLeft: 48 }}>
-            {Array.from({ length: maxMonths + 1 }, (_, i) => i).filter(m => m % 4 === 0).map((m) => (
-              <div key={m} style={{
-                position: "relative",
-                flex: `0 0 ${(4 / maxMonths) * 100}%`,
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 8,
-                color: "rgba(255,255,255,0.2)",
-                textAlign: "left",
-              }}>
-                +{m}m
-              </div>
-            ))}
+          {/* Month axis labels — absolute-positioned within bar area (matches Timeline technique) */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+            <div style={{ width: 36, flexShrink: 0 }} />
+            <div style={{ flex: 1, position: "relative", height: 14 }}>
+              {[0, 4, 8, 12, 16, 20, 24].map((m) => (
+                <div key={m} style={{
+                  position: "absolute",
+                  left: `${(m / maxMonths) * 100}%`,
+                  transform: "translateX(-50%)",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 8,
+                  color: "rgba(255,255,255,0.2)",
+                  whiteSpace: "nowrap",
+                }}>
+                  +{m}m
+                </div>
+              ))}
+            </div>
           </div>
           {ALTCOIN_WINDOWS.map((w) => (
             <div key={w.year} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
@@ -1759,7 +1934,11 @@ function CyclesTab() {
                 fontFamily: j === 0 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
                 fontSize: 12,
                 color: j === 0 ? cycleColors[i] : j === 2 ? cycleColors[i] : "rgba(255,255,255,0.55)",
+                display: j === 0 ? "flex" : undefined,
+                alignItems: j === 0 ? "center" : undefined,
+                gap: j === 0 ? 6 : undefined,
               }}>
+                {j === 0 && <GlowDot color={cycleColors[i]} size={5} />}
                 {cell}
               </div>
             ))
@@ -1797,6 +1976,10 @@ function CyclesTab() {
 // ── EXECUTION component ───────────────────────────────────────────────────────
 
 function ExecutionTab() {
+  const [checked, setChecked] = useState([false, false, false, false, false]);
+  const [activeStep, setActiveStep] = useState(1);
+  const doneCount = checked.filter(Boolean).length;
+
   return (
     <div>
       <div style={{ marginBottom: 32 }}>
@@ -1821,37 +2004,52 @@ function ExecutionTab() {
       </div>
 
       {/* Pre-Entry Checklist */}
-      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
-        PRE-ENTRY CHECKLIST
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2 }}>
+          PRE-ENTRY CHECKLIST
+        </div>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: doneCount === 5 ? "#00FFA3" : "rgba(255,255,255,0.3)", letterSpacing: 1 }}>
+          SETUP PROGRESS — {doneCount} / 5 COMPLETE
+        </div>
+      </div>
+      {/* Progress bar */}
+      <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, marginBottom: 14, overflow: "hidden" }}>
+        <div style={{ width: `${(doneCount / 5) * 100}%`, height: "100%", background: "linear-gradient(90deg, #00FFA3, #00FFA360)", borderRadius: 2, transition: "width 0.3s ease" }} />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 36 }}>
         {PRE_ENTRY_CHECKLIST.map((row, i) => (
-          <div key={i} style={{
-            display: "flex",
-            gap: 16,
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: 8,
-            padding: "14px 16px",
-            alignItems: "flex-start",
-          }}>
+          <div key={i}
+            onClick={() => setChecked(prev => { const n = [...prev]; n[i] = !n[i]; return n; })}
+            style={{
+              display: "flex",
+              gap: 16,
+              background: checked[i] ? "rgba(0,255,163,0.04)" : "rgba(255,255,255,0.02)",
+              border: checked[i] ? "1px solid rgba(0,255,163,0.2)" : "1px solid rgba(255,255,255,0.06)",
+              borderRadius: 8,
+              padding: "14px 16px",
+              alignItems: "flex-start",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}>
             <div style={{
               flexShrink: 0,
               width: 22,
               height: 22,
               borderRadius: "50%",
-              border: "1px solid rgba(0,255,163,0.4)",
+              background: checked[i] ? "#00FFA3" : "transparent",
+              border: checked[i] ? "1px solid #00FFA3" : "1px solid rgba(0,255,163,0.4)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 9,
-              color: "#00FFA3",
+              color: checked[i] ? "#000" : "#00FFA3",
+              transition: "all 0.2s ease",
             }}>
-              {i + 1}
+              {checked[i] ? "✓" : i + 1}
             </div>
             <div>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4 }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: checked[i] ? "rgba(255,255,255,0.5)" : "#fff", marginBottom: 4, transition: "color 0.2s" }}>
                 {row.item}
               </div>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.45)" }}>
@@ -1867,7 +2065,7 @@ function ExecutionTab() {
         PHASE ENTRY PROTOCOLS
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14, marginBottom: 36 }}>
-        {PHASE_PROTOCOLS.map((p) => (
+        {PHASE_PROTOCOLS.map((p, i) => (
           <div key={p.asset} style={{
             background: p.colorDim,
             border: `1px solid ${p.color}30`,
@@ -1875,11 +2073,27 @@ function ExecutionTab() {
             padding: "18px 20px",
             borderTop: `2px solid ${p.color}`,
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
               <GlowDot color={p.color} size={6} />
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: p.color, letterSpacing: 1, fontWeight: 600 }}>
                 {p.asset}
               </span>
+            </div>
+            {/* Phase link mini-metrics — PhaseDetail metrics-grid style */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
+              {[
+                ["HISTORICAL MULTIPLE", PHASES[i].multiple, p.color],
+                ["CAPITAL OUT", formatCurrency(PHASES[i].capitalOut), p.color],
+              ].map(([label, value, color]) => (
+                <div key={label} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 6, padding: "8px 10px" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.3)", letterSpacing: 1.2, marginBottom: 4 }}>
+                    {label}
+                  </div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 16, color, fontWeight: 700 }}>
+                    {value}
+                  </div>
+                </div>
+              ))}
             </div>
             {[
               ["Venue", p.venue],
@@ -1888,23 +2102,41 @@ function ExecutionTab() {
               ["Custody", p.custody],
               ["Slippage Risk", p.slippageRisk],
               ["Exit Trigger", p.exitTrigger],
-            ].map(([label, value]) => (
-              <div key={label} style={{ marginBottom: 9 }}>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.3)", letterSpacing: 1.2, marginBottom: 2 }}>
-                  {label.toUpperCase()}
+            ].map(([label, value]) => {
+              const isSlippage = label === "Slippage Risk";
+              const slippageColor = isSlippage ? (value === "HIGH" ? "#FF6B35" : "#00FFA3") : null;
+              return (
+                <div key={label} style={{ marginBottom: 9 }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: "rgba(255,255,255,0.3)", letterSpacing: 1.2, marginBottom: 2 }}>
+                    {label.toUpperCase()}
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <span style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 12,
+                      color: slippageColor || "rgba(255,255,255,0.65)",
+                      lineHeight: 1.4,
+                    }}>
+                      {value}
+                    </span>
+                    {isSlippage && (
+                      <span style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 9,
+                        color: slippageColor,
+                        background: `${slippageColor}12`,
+                        border: `1px solid ${slippageColor}25`,
+                        borderRadius: 4,
+                        padding: "2px 7px",
+                        whiteSpace: "nowrap",
+                      }}>
+                        {p.slippageBps}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 12,
-                  color: label === "Slippage Risk"
-                    ? (value === "HIGH" ? "#FF6B35" : "#00FFA3")
-                    : "rgba(255,255,255,0.65)",
-                  lineHeight: 1.4,
-                }}>
-                  {value}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ))}
       </div>
@@ -1913,9 +2145,9 @@ function ExecutionTab() {
       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 14 }}>
         POSITION SIZING — ALLOCATION TIERS
       </div>
-      <div style={{ overflowX: "auto", marginBottom: 36 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "100px 60px 60px 60px 1fr", gap: 0, minWidth: 500 }}>
-          {["Tier", "SOL %", "MSTR %", "ZEC %", "Notes"].map((h) => (
+      <div style={{ overflowX: "auto", marginBottom: 8 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "100px 60px 60px 60px 110px 1fr", gap: 0, minWidth: 580 }}>
+          {["Tier", "SOL %", "MSTR %", "ZEC %", "Proj. Terminal", "Notes"].map((h) => (
             <div key={h} style={{
               padding: "10px 12px",
               background: "rgba(255,255,255,0.04)",
@@ -1928,17 +2160,27 @@ function ExecutionTab() {
               {h.toUpperCase()}
             </div>
           ))}
-          {POSITION_SIZING.map((row) => (
-            [row.tier, row.solPct, row.mstrPct, row.zecPct, row.note].map((cell, j) => (
+          {POSITION_SIZING.map((row) => {
+            const BASE = 100000;
+            const sol  = parseFloat(row.solPct)  / 100;
+            const mstr = parseFloat(row.mstrPct) / 100;
+            const zec  = parseFloat(row.zecPct)  / 100;
+            const terminal = BASE * sol * 19.66 * mstr * 3.51 * zec * 33.7;
+            return [row.tier, row.solPct, row.mstrPct, row.zecPct, formatCurrency(terminal), row.note].map((cell, j) => (
               <div key={`${row.tier}-${j}`} style={{
                 padding: "12px 12px",
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
                 background: row.isDefault ? "rgba(255,107,53,0.06)" : "transparent",
-                fontFamily: j === 0 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
-                fontSize: j === 0 ? 11 : 12,
+                fontFamily: j === 0 || j === 4 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
+                fontSize: j === 0 ? 11 : j === 4 ? 12 : 12,
+                fontWeight: j === 4 ? 600 : undefined,
                 color: j === 0
                   ? (row.isDefault ? "#FF6B35" : "rgba(255,255,255,0.7)")
-                  : j === 1 ? "#00FFA3" : j === 2 ? "#FF6B35" : j === 3 ? "#F4B728" : "rgba(255,255,255,0.5)",
+                  : j === 1 ? "#00FFA3"
+                  : j === 2 ? "#FF6B35"
+                  : j === 3 ? "#F4B728"
+                  : j === 4 ? "#F4B728"
+                  : "rgba(255,255,255,0.5)",
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
@@ -1950,9 +2192,12 @@ function ExecutionTab() {
                   </span>
                 )}
               </div>
-            ))
-          ))}
+            ));
+          })}
         </div>
+      </div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.2)", letterSpacing: 1, marginBottom: 36 }}>
+        ASSUMES $100K ENTRY — FULL 3-PHASE ROTATION AT HISTORICAL MULTIPLES (19.66x · 3.51x · 33.7x)
       </div>
 
       {/* Order Execution Steps */}
@@ -1960,45 +2205,48 @@ function ExecutionTab() {
         ORDER EXECUTION — 6-STEP PROTOCOL
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 0, marginBottom: 36 }}>
-        {EXECUTION_STEPS.map((s, i) => (
-          <div key={s.step} style={{
-            display: "flex",
-            gap: 0,
-            position: "relative",
-          }}>
-            {/* Connector line */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginRight: 16 }}>
-              <div style={{
-                width: 28,
-                height: 28,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 10,
-                color: "rgba(255,255,255,0.5)",
-                flexShrink: 0,
-                zIndex: 1,
-              }}>
-                {s.step}
+        {EXECUTION_STEPS.map((s, i) => {
+          const isActive = activeStep === s.step;
+          const isDone   = s.step < activeStep;
+          return (
+            <div key={s.step}
+              onClick={() => setActiveStep(s.step)}
+              style={{ display: "flex", gap: 0, position: "relative", cursor: "pointer" }}>
+              {/* Connector line */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginRight: 16 }}>
+                <div style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: "50%",
+                  background: isActive ? "rgba(0,255,163,0.12)" : isDone ? "rgba(0,255,163,0.06)" : "rgba(255,255,255,0.04)",
+                  border: isActive ? "1px solid rgba(0,255,163,0.5)" : isDone ? "1px solid rgba(0,255,163,0.25)" : "1px solid rgba(255,255,255,0.12)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 10,
+                  color: isActive ? "#00FFA3" : isDone ? "rgba(0,255,163,0.5)" : "rgba(255,255,255,0.5)",
+                  flexShrink: 0,
+                  zIndex: 1,
+                  transition: "all 0.2s ease",
+                }}>
+                  {s.step}
+                </div>
+                {i < EXECUTION_STEPS.length - 1 && (
+                  <div style={{ width: 1, flex: 1, background: isDone ? "rgba(0,255,163,0.2)" : "rgba(255,255,255,0.06)", minHeight: 20, margin: "4px 0", transition: "background 0.2s" }} />
+                )}
               </div>
-              {i < EXECUTION_STEPS.length - 1 && (
-                <div style={{ width: 1, flex: 1, background: "rgba(255,255,255,0.06)", minHeight: 20, margin: "4px 0" }} />
-              )}
+              <div style={{ flex: 1, paddingBottom: i < EXECUTION_STEPS.length - 1 ? 16 : 0 }}>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: isActive ? "#fff" : "rgba(255,255,255,0.6)", marginBottom: 4, paddingTop: 4, transition: "color 0.2s" }}>
+                  {s.title}
+                </div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: isActive ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.4)", transition: "color 0.2s" }}>
+                  {s.detail}
+                </div>
+              </div>
             </div>
-            <div style={{ flex: 1, paddingBottom: i < EXECUTION_STEPS.length - 1 ? 16 : 0 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4, paddingTop: 4 }}>
-                {s.title}
-              </div>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.5)" }}>
-                {s.detail}
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Common Execution Failures */}
