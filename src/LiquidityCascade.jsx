@@ -451,6 +451,8 @@ const PHASES = [
     ],
     exitSignal:
       "Pre-halving narrative reaches maximum saturation. Network congestion spikes and retail euphoria dominates social sentiment — risk/reward deteriorates rapidly.",
+    entrySignal:
+      "Accumulate during bear market trough when SOL RSI falls below 40 on the weekly chart. Scale in via DCA over 4–8 weeks between Sep 2026 and Aug 2027. Confirmed by elevated BTC dominance (> 58%) and absence of altcoin euphoria.",
     keyInsight:
       "SOL achieved a near 20x multiple exactly one month before the April 2024 Bitcoin halving, decisively invalidating the assumption that all altcoins lag Bitcoin.",
   },
@@ -481,6 +483,8 @@ const PHASES = [
     ],
     exitSignal:
       "mNAV premium reaches historical extremes (2.0–3.0x). Bitcoin's parabolic advance stalls — magnified downside via 1.77 beta becomes existential portfolio risk.",
+    entrySignal:
+      "Rotate capital from SOL into MSTR when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry coincides with the ~Mar 2028 halving as institutional BTC leverage begins to multiply against rising spot price.",
     keyInsight:
       "Rotating into MSTR at $120 is not 'buying the top' — it is purchasing the confirmed breakout of an asset entering its most violent acceleration phase.",
   },
@@ -511,6 +515,8 @@ const PHASES = [
     ],
     exitSignal:
       'ZEC blow-off top historically signals immediate onset of multi-year bear market — the "doomsday vehicle" pattern. No further rotations permitted.',
+    entrySignal:
+      "Rotate from MSTR into ZEC when mNAV premium exceeds 2.5x or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative assets.",
     keyInsight:
       "Explosive vertical rallies in legacy privacy coins are almost always the final act of a macro bull market. Jan 2018, May 2021, Nov 2025 — the pattern repeats.",
   },
@@ -1514,6 +1520,21 @@ function SignalsTab() {
                   </div>
                 </div>
               ))}
+            </div>
+            {/* Entry condition box */}
+            <div style={{
+              marginTop: 12,
+              background: `${PHASES[phase.phase - 1].color}05`,
+              border: `1px solid ${PHASES[phase.phase - 1].color}18`,
+              borderRadius: 6,
+              padding: "10px 12px",
+            }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, color: PHASES[phase.phase - 1].color, letterSpacing: 1.5, marginBottom: 4, opacity: 0.7 }}>
+                ENTRY CONDITION
+              </div>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, lineHeight: 1.55, color: "rgba(255,255,255,0.45)", margin: 0 }}>
+                {PHASES[phase.phase - 1].entrySignal}
+              </p>
             </div>
             {/* Exit condition box — PhaseDetail exit-signal box pattern */}
             <div style={{
