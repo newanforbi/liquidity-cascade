@@ -538,6 +538,7 @@ const SIGNAL_GRID = [
     phase: 1,
     asset: "SOL",
     color: "#00FFA3",
+    entryWindow: "Sep 2026 – Aug 2027",
     historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Entry window: Sep 2026 – Aug 2027.",
     signals: [
       { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "ARMED" },
@@ -549,6 +550,7 @@ const SIGNAL_GRID = [
     phase: 2,
     asset: "MSTR",
     color: "#FF6B35",
+    entryWindow: "Mar 2028",
     historicalPrecedent: "In 2021 MSTR's mNAV exceeded 3x concurrent with BTC's November ATH — position held too long lost 77% in 90 days.",
     signals: [
       { id: "S2-1", threshold: "mNAV premium > 2.5x", action: "BEGIN MSTR EXIT", status: "ARMED" },
@@ -560,6 +562,7 @@ const SIGNAL_GRID = [
     phase: 3,
     asset: "ZEC",
     color: "#F4B728",
+    entryWindow: "Nov 2028 – Nov 2029",
     historicalPrecedent: "Jan 2018 and May 2021: ZEC's vertical blow-off topped within days of cycle peak. No second chance — exit is final.",
     signals: [
       { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
@@ -1371,8 +1374,9 @@ function SignalsTab() {
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
 
   // Derive active phase from SIGNAL_GRID — first phase with any ARMED signal
-  const activeIdx   = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
-  const activePhase = PHASES[activeIdx];
+  const activeIdx        = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
+  const activePhase      = PHASES[activeIdx];
+  const activeSignalPhase = SIGNAL_GRID[activeIdx];
 
   // Month counter relative to next halving (~Mar 2028), not the 2024 cycle PHASES data
   const NEXT_HALVING    = new Date('2028-03-01');
@@ -1427,15 +1431,21 @@ function SignalsTab() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 8 }}>
         {[
-          { label: "BTC DOMINANCE", value: "58.2%", desc: "Watch for < 57.5% to confirm SOL entry", color: "#00FFA3" },
-          { label: "SOL RSI (WEEKLY)", value: "71", desc: "Entry window below 40 — accumulation phase", color: "#FF6B35" },
-          { label: "MSTR mNAV", value: "1.8x", desc: "Below 2.5x exit threshold — no action yet", color: "#F4B728" },
+          { label: "BTC DOMINANCE",    value: "58.2%", desc: "Watch for < 57.5% to confirm SOL entry",     color: "#00FFA3" },
+          { label: "SOL RSI (WEEKLY)", value: "71",    desc: "Entry window below 40 — accumulation phase", color: "#FF6B35" },
+          { label: "MSTR mNAV",        value: "1.8x",  desc: "Below 2.5x exit threshold — no action yet",  color: "#F4B728" },
+          { label: "ENTRY WINDOW",     value: activeSignalPhase.entryWindow, desc: `Active accumulation window — Phase ${activeSignalPhase.phase} ${activeSignalPhase.asset}`, color: activePhase.color, highlight: true },
         ].map((m) => (
-          <div key={m.label} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 6, padding: "14px 16px" }}>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5, marginBottom: 6 }}>
+          <div key={m.label} style={{
+            background: m.highlight ? `${m.color}08` : "rgba(255,255,255,0.03)",
+            border: m.highlight ? `1px solid ${m.color}25` : "1px solid transparent",
+            borderRadius: 6,
+            padding: "14px 16px",
+          }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: m.highlight ? m.color : "rgba(255,255,255,0.35)", letterSpacing: 1.5, marginBottom: 6 }}>
               {m.label}
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 26, color: m.color, fontWeight: 700 }}>{m.value}</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: m.highlight ? 16 : 26, color: m.color, fontWeight: 700, lineHeight: 1.3 }}>{m.value}</div>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{m.desc}</div>
           </div>
         ))}
@@ -1457,10 +1467,20 @@ function SignalsTab() {
             padding: "18px 20px",
             borderTop: `2px solid ${phase.color}`,
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-              <GlowDot color={phase.color} size={6} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: phase.color, letterSpacing: 1.5 }}>
-                PHASE {phase.phase} — {phase.asset}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <GlowDot color={phase.color} size={6} />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: phase.color, letterSpacing: 1.5 }}>
+                  PHASE {phase.phase} — {phase.asset}
+                </span>
+              </div>
+              <span style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: phase.color, background: `${phase.color}12`,
+                border: `1px solid ${phase.color}35`, borderRadius: 4,
+                padding: "3px 7px", letterSpacing: 0.8, whiteSpace: "nowrap",
+              }}>
+                {phase.entryWindow}
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
