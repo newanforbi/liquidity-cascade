@@ -1367,141 +1367,15 @@ function BtcDominanceNote() {
   );
 }
 
-// ── Live market data hook ─────────────────────────────────────────────────────
-// MSTR constants — update from Strategy.com IR when new purchases are announced
-const MSTR_BTC_HOLDINGS       = 499_226;     // BTC held per latest 8-K filing
-const MSTR_SHARES_OUTSTANDING = 336_000_000; // diluted share count
-
-function useLiveMarketData() {
-  const [state, setState] = useState({
-    btcDominance: null, btcPrice: null, btcChange7d: null, btcChange30d: null,
-    solPrice: null, solChange7d: null, solRsi14w: null,
-    zecPrice: null, zecChange7d: null,
-    mstrPrice: null, mstrMnav: null,
-    loading: true, error: null, lastUpdated: null,
-  });
-
-  // Wilder's smoothed RSI-14 on weekly closes
-  const computeRSI14 = (klines) => {
-    const closes = klines.map(c => parseFloat(c[4]));
-    if (closes.length < 15) return null;
-    const diffs  = closes.slice(1).map((c, i) => c - closes[i]);
-    const gains  = diffs.map(d => Math.max(0, d));
-    const losses = diffs.map(d => Math.max(0, -d));
-    let ag = gains.slice(0, 14).reduce((a, b) => a + b, 0) / 14;
-    let al = losses.slice(0, 14).reduce((a, b) => a + b, 0) / 14;
-    for (let i = 14; i < gains.length; i++) {
-      ag = (ag * 13 + gains[i]) / 14;
-      al = (al * 13 + losses[i]) / 14;
-    }
-    if (al === 0) return 100;
-    return Math.round(100 - 100 / (1 + ag / al));
-  };
-
-  const fetchAll = useCallback(async () => {
-    setState(prev => ({ ...prev, loading: true, error: null }));
-    try {
-      const [globalRes, pricesRes, solKlinesRes] = await Promise.all([
-        fetch("https://api.coingecko.com/api/v3/global"),
-        fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,solana,zcash&vs_currencies=usd&include_7d_change=true&include_30d_change=true"),
-        fetch("https://api.binance.com/api/v3/klines?symbol=SOLUSDT&interval=1w&limit=20"),
-      ]);
-      const globalData = await globalRes.json();
-      const pricesData = await pricesRes.json();
-      const solKlines  = await solKlinesRes.json();
-
-      const btcDominance = parseFloat(globalData.data.market_cap_percentage.btc.toFixed(2));
-      const btcPrice     = pricesData.bitcoin.usd;
-      const btcChange7d  = pricesData.bitcoin.usd_7d_change  ?? null;
-      const btcChange30d = pricesData.bitcoin.usd_30d_change ?? null;
-      const solPrice     = pricesData.solana.usd;
-      const solChange7d  = pricesData.solana.usd_7d_change   ?? null;
-      const zecPrice     = pricesData.zcash.usd;
-      const zecChange7d  = pricesData.zcash.usd_7d_change    ?? null;
-      const solRsi14w    = computeRSI14(solKlines);
-
-      // MSTR mNAV via Yahoo Finance — may be blocked by CORS in some environments
-      let mstrPrice = null, mstrMnav = null;
-      try {
-        const mstrRes  = await fetch("https://query2.finance.yahoo.com/v8/finance/chart/MSTR?interval=1d&range=1d");
-        const mstrData = await mstrRes.json();
-        mstrPrice = mstrData?.chart?.result?.[0]?.meta?.regularMarketPrice ?? null;
-        if (mstrPrice && btcPrice) {
-          mstrMnav = parseFloat(((mstrPrice * MSTR_SHARES_OUTSTANDING) / (MSTR_BTC_HOLDINGS * btcPrice)).toFixed(2));
-        }
-      } catch (_) { /* CORS or network failure — mNAV shows N/A */ }
-
-      setState({
-        btcDominance, btcPrice, btcChange7d, btcChange30d,
-        solPrice, solChange7d, solRsi14w,
-        zecPrice, zecChange7d,
-        mstrPrice, mstrMnav,
-        loading: false, error: null, lastUpdated: new Date(),
-      });
-    } catch (err) {
-      setState(prev => ({ ...prev, loading: false, error: err.message }));
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchAll();
-    const id = setInterval(fetchAll, 5 * 60 * 1000); // auto-refresh every 5 min
-    return () => clearInterval(id);
-  }, [fetchAll]);
-
-  return { ...state, refetch: fetchAll };
-}
-
-// Auto-evaluates signal threshold against live data.
-// Returns TRIGGERED/ARMED/EXPIRED, or null for qualitative signals that require manual assessment.
-function computeLiveSignalStatus(sigId, live) {
-  switch (sigId) {
-    case "S1-1": return live.btcDominance !== null ? (live.btcDominance  < 57.5 ? "TRIGGERED" : "ARMED") : null;
-    case "S1-2": return live.solRsi14w    !== null ? (live.solRsi14w     > 78   ? "TRIGGERED" : "ARMED") : null;
-    case "S1-3": return null; // qualitative: pre-halving narrative peak
-    case "S2-1": return live.mstrMnav     !== null ? (live.mstrMnav      > 2.5  ? "TRIGGERED" : "ARMED") : null;
-    case "S2-2": return live.btcChange30d !== null ? (live.btcChange30d  < 0    ? "TRIGGERED" : "ARMED") : null;
-    case "S2-3": // proxy: ZEC outperforming BTC on 7-day basis signals ratio breakup
-      return (live.zecChange7d !== null && live.btcChange7d !== null)
-        ? (live.zecChange7d > live.btcChange7d ? "TRIGGERED" : "ARMED") : null;
-    case "S3-1": return live.zecChange7d  !== null ? (live.zecChange7d   > 150  ? "TRIGGERED" : "ARMED") : null;
-    case "S3-2": return null; // qualitative: mainstream media coverage
-    case "S3-3": return "EXPIRED";
-    default:     return null;
-  }
-}
-
 // ── SIGNALS component ─────────────────────────────────────────────────────────
 
 function SignalsTab() {
-  const live = useLiveMarketData();
-
   const statusColor = (s) =>
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
 
-  // Format helpers
-  const fmtPct = (v, dec = 1) => v !== null && v !== undefined ? `${v.toFixed(dec)}%` : "—";
-  const fmtX   = (v)          => v !== null && v !== undefined ? `${v}x`              : "—";
-  const fmtUsd = (v)          => v !== null && v !== undefined ? `$${Math.round(v).toLocaleString()}` : "—";
-  const fmtChg = (v)          => v !== null && v !== undefined ? `${v >= 0 ? "+" : ""}${v.toFixed(1)}%` : "—";
-
-  // Returns the live reading for a signal as a short annotation string, or null
-  const liveAnnotation = (sigId) => {
-    switch (sigId) {
-      case "S1-1": return live.btcDominance !== null ? `NOW: ${fmtPct(live.btcDominance)}` : null;
-      case "S1-2": return live.solRsi14w    !== null ? `NOW: ${live.solRsi14w}` : null;
-      case "S2-1": return live.mstrMnav     !== null ? `NOW: ${fmtX(live.mstrMnav)}` : live.mstrPrice === null ? "MSTR: N/A (equity CORS)" : null;
-      case "S2-2": return live.btcChange30d !== null ? `BTC 30d: ${fmtChg(live.btcChange30d)}` : null;
-      case "S2-3": return (live.zecChange7d !== null && live.btcChange7d !== null)
-        ? `ZEC 7d: ${fmtChg(live.zecChange7d)}  ·  BTC 7d: ${fmtChg(live.btcChange7d)}` : null;
-      case "S3-1": return live.zecChange7d !== null ? `ZEC 7d: ${fmtChg(live.zecChange7d)}` : null;
-      default: return null;
-    }
-  };
-
   // Derive active phase from SIGNAL_GRID — first phase with any ARMED signal
-  const activeIdx         = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
-  const activePhase       = PHASES[activeIdx];
+  const activeIdx        = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
+  const activePhase      = PHASES[activeIdx];
   const activeSignalPhase = SIGNAL_GRID[activeIdx];
 
   // Month counter relative to next halving (~Mar 2028), not the 2024 cycle PHASES data
@@ -1548,16 +1422,6 @@ function SignalsTab() {
           <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700, color: "#fff" }}>
             {monthLabel}
           </div>
-          {live.btcPrice && (
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
-              BTC {fmtUsd(live.btcPrice)}
-              {live.btcChange7d !== null && (
-                <span style={{ marginLeft: 6, color: live.btcChange7d >= 0 ? "#00FFA3" : "#FF6B35" }}>
-                  {fmtChg(live.btcChange7d)} 7d
-                </span>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
@@ -1566,53 +1430,15 @@ function SignalsTab() {
         CURRENT WATCH METRICS
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 8 }}>
-        {(() => {
-          const btcDAlert  = live.btcDominance !== null && live.btcDominance < 57.5;
-          const solRsiHigh = live.solRsi14w    !== null && live.solRsi14w    > 78;
-          const solRsiLow  = live.solRsi14w    !== null && live.solRsi14w    < 40;
-          const mnavAlert  = live.mstrMnav     !== null && live.mstrMnav     > 2.5;
-          return [
-            {
-              label: "BTC DOMINANCE",
-              value: live.loading ? "…" : fmtPct(live.btcDominance),
-              desc:  btcDAlert
-                ? "THRESHOLD BREACHED — rotate to MSTR"
-                : `Watch for < 57.5% to confirm SOL entry${live.btcDominance !== null ? ` · ${(live.btcDominance - 57.5).toFixed(1)}pp above trigger` : ""}`,
-              color:   btcDAlert ? "#FF4444" : "#00FFA3",
-              alert:   btcDAlert,
-            },
-            {
-              label: "SOL RSI (14W)",
-              value: live.loading ? "…" : (live.solRsi14w !== null ? String(live.solRsi14w) : "—"),
-              desc:  solRsiHigh ? "OVERBOUGHT — EXIT SIGNAL ACTIVE"
-                   : solRsiLow  ? "OVERSOLD — ACCUMULATION ZONE"
-                   : `Wilder RSI-14 weekly · exit > 78, entry < 40`,
-              color:   solRsiHigh ? "#FF4444" : solRsiLow ? "#00FFA3" : "#FF6B35",
-              alert:   solRsiHigh,
-            },
-            {
-              label: "MSTR mNAV",
-              value: live.loading ? "…" : fmtX(live.mstrMnav),
-              desc:  mnavAlert
-                ? "PREMIUM EXTREME — BEGIN EXIT"
-                : live.mstrMnav !== null
-                  ? `Exit signal > 2.5x · ${(2.5 - live.mstrMnav).toFixed(2)}x below trigger`
-                  : "Equity data — CORS may block Yahoo Finance",
-              color:   mnavAlert ? "#FF4444" : "#F4B728",
-              alert:   mnavAlert,
-            },
-            {
-              label: "ENTRY WINDOW",
-              value: activeSignalPhase.entryWindow,
-              desc:  `Active accumulation window — Phase ${activeSignalPhase.phase} ${activeSignalPhase.asset}`,
-              color: activePhase.color,
-              highlight: true,
-            },
-          ];
-        })().map((m) => (
+        {[
+          { label: "BTC DOMINANCE",    value: "58.2%", desc: "Watch for < 57.5% to confirm SOL entry",     color: "#00FFA3" },
+          { label: "SOL RSI (WEEKLY)", value: "71",    desc: "Entry window below 40 — accumulation phase", color: "#FF6B35" },
+          { label: "MSTR mNAV",        value: "1.8x",  desc: "Below 2.5x exit threshold — no action yet",  color: "#F4B728" },
+          { label: "ENTRY WINDOW",     value: activeSignalPhase.entryWindow, desc: `Active accumulation window — Phase ${activeSignalPhase.phase} ${activeSignalPhase.asset}`, color: activePhase.color, highlight: true },
+        ].map((m) => (
           <div key={m.label} style={{
-            background: m.alert ? "#FF444408" : m.highlight ? `${m.color}08` : "rgba(255,255,255,0.03)",
-            border: m.alert ? "1px solid #FF444430" : m.highlight ? `1px solid ${m.color}25` : "1px solid transparent",
+            background: m.highlight ? `${m.color}08` : "rgba(255,255,255,0.03)",
+            border: m.highlight ? `1px solid ${m.color}25` : "1px solid transparent",
             borderRadius: 6,
             padding: "14px 16px",
           }}>
@@ -1620,36 +1446,12 @@ function SignalsTab() {
               {m.label}
             </div>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: m.highlight ? 16 : 26, color: m.color, fontWeight: 700, lineHeight: 1.3 }}>{m.value}</div>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: m.alert ? "#FF444490" : "rgba(255,255,255,0.4)", marginTop: 2 }}>{m.desc}</div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{m.desc}</div>
           </div>
         ))}
       </div>
-      {/* Live status bar */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
-        <span style={{
-          display: "inline-block", width: 6, height: 6, borderRadius: "50%",
-          background: live.error ? "#FF4444" : live.loading ? "#F4B728" : "#00FFA3",
-          boxShadow: live.loading ? "none" : `0 0 5px ${live.error ? "#FF4444" : "#00FFA3"}`,
-          flexShrink: 0,
-        }} />
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.25)", letterSpacing: 1 }}>
-          {live.loading
-            ? "FETCHING LIVE DATA…"
-            : live.error
-              ? `FETCH ERROR — ${live.error}`
-              : live.lastUpdated
-                ? `LIVE · UPDATED ${live.lastUpdated.toLocaleTimeString()} · AUTO-REFRESH EVERY 5 MIN`
-                : "—"}
-        </span>
-        {!live.loading && (
-          <button onClick={live.refetch} style={{
-            background: "none", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 3,
-            color: "rgba(255,255,255,0.3)", fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 8, padding: "2px 8px", cursor: "pointer", letterSpacing: 1,
-          }}>
-            REFRESH
-          </button>
-        )}
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.2)", letterSpacing: 1, marginBottom: 28 }}>
+        STATIC — UPDATE MANUALLY BEFORE EACH SESSION
       </div>
 
       {/* Signal Grid */}
@@ -1682,54 +1484,36 @@ function SignalsTab() {
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {phase.signals.map((sig) => {
-                const liveStatus = computeLiveSignalStatus(sig.id, live);
-                const displayStatus = liveStatus ?? sig.status;
-                const annotation   = liveAnnotation(sig.id);
-                const isTriggered  = displayStatus === "TRIGGERED";
-                const isQual       = liveStatus === null && sig.status !== "EXPIRED";
-                return (
-                  <div key={sig.id} style={{
-                    background: isTriggered ? "#00FFA308" : "rgba(255,255,255,0.02)",
-                    border: isTriggered ? "1px solid #00FFA330" : "1px solid rgba(255,255,255,0.06)",
-                    borderRadius: 8,
-                    padding: "10px 12px",
-                  }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: annotation ? 4 : 5 }}>
-                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>
-                        {sig.threshold}
-                      </span>
-                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3, flexShrink: 0 }}>
-                        <span style={{
-                          fontFamily: "'JetBrains Mono', monospace",
-                          fontSize: 8,
-                          color: statusColor(displayStatus),
-                          letterSpacing: 0.8,
-                          border: `1px solid ${statusColor(displayStatus)}40`,
-                          borderRadius: 4,
-                          padding: "2px 6px",
-                          whiteSpace: "nowrap",
-                        }}>
-                          {displayStatus}
-                        </span>
-                        {isQual && (
-                          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 7, color: "rgba(255,255,255,0.2)", letterSpacing: 0.5 }}>
-                            MANUAL
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    {annotation && (
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: isTriggered ? "#00FFA3" : "rgba(255,255,255,0.35)", marginBottom: 5, letterSpacing: 0.5 }}>
-                        {annotation}
-                      </div>
-                    )}
-                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>
-                      → {sig.action}
-                    </div>
+              {phase.signals.map((sig) => (
+                <div key={sig.id} style={{
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderRadius: 8,
+                  padding: "10px 12px",
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 5 }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>
+                      {sig.threshold}
+                    </span>
+                    <span style={{
+                      flexShrink: 0,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 8,
+                      color: statusColor(sig.status),
+                      letterSpacing: 0.8,
+                      border: `1px solid ${statusColor(sig.status)}40`,
+                      borderRadius: 4,
+                      padding: "2px 6px",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {sig.status}
+                    </span>
                   </div>
-                );
-              })}
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>
+                    → {sig.action}
+                  </div>
+                </div>
+              ))}
             </div>
             {/* Exit condition box — PhaseDetail exit-signal box pattern */}
             <div style={{
@@ -1770,36 +1554,10 @@ function SignalsTab() {
       }}>
         <div style={{ display: "flex", alignItems: "stretch", minWidth: 560 }}>
           {[
-            {
-              label: "SOL: EXIT WHEN",
-              detail: "RSI > 78 or BTC.D < 57.5%",
-              liveReading: (live.solRsi14w !== null && live.btcDominance !== null)
-                ? `RSI ${live.solRsi14w} · BTC.D ${live.btcDominance.toFixed(1)}%`
-                : null,
-              color: "#00FFA3", flexWeight: 1, state: "done",
-            },
-            {
-              label: "MSTR: EXIT WHEN",
-              detail: "mNAV > 2.5x or momentum stalls",
-              liveReading: live.mstrMnav !== null
-                ? `mNAV ${fmtX(live.mstrMnav)} · BTC 30d ${fmtChg(live.btcChange30d)}`
-                : live.btcChange30d !== null ? `BTC 30d ${fmtChg(live.btcChange30d)}` : null,
-              color: "#FF6B35", flexWeight: 1.5, state: "active",
-            },
-            {
-              label: "ZEC: EXIT WHEN",
-              detail: "7-day gain > 150% or media peaks",
-              liveReading: live.zecChange7d !== null
-                ? `ZEC 7d ${fmtChg(live.zecChange7d)} · ${live.zecPrice ? fmtUsd(live.zecPrice) : ""}`
-                : null,
-              color: "#F4B728", flexWeight: 2, state: "future",
-            },
-            {
-              label: "FIAT",
-              detail: "No further crypto rotations",
-              liveReading: null,
-              color: "rgba(255,255,255,0.3)", flexWeight: 0.8, state: "future",
-            },
+            { label: "SOL: EXIT WHEN", detail: "RSI > 78 or BTC.D < 57.5%",       color: "#00FFA3", flexWeight: 1,   state: "done"   },
+            { label: "MSTR: EXIT WHEN", detail: "mNAV > 2.5x or momentum stalls",  color: "#FF6B35", flexWeight: 1.5, state: "active" },
+            { label: "ZEC: EXIT WHEN",  detail: "7-day gain > 150% or media peaks", color: "#F4B728", flexWeight: 2,   state: "future" },
+            { label: "FIAT",            detail: "No further crypto rotations",       color: "rgba(255,255,255,0.3)", flexWeight: 0.8, state: "future" },
           ].map((node, i, arr) => (
             <div key={i} style={{ display: "flex", alignItems: "center", flex: node.flexWeight }}>
               <div style={{
@@ -1821,11 +1579,6 @@ function SignalsTab() {
                 <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.5)", lineHeight: 1.45 }}>
                   {node.detail}
                 </div>
-                {node.liveReading && (
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: node.color, marginTop: 8, opacity: 0.75, letterSpacing: 0.5 }}>
-                    {node.liveReading}
-                  </div>
-                )}
               </div>
               {i < arr.length - 1 && (
                 <div style={{ padding: "0 10px", color: "rgba(255,255,255,0.2)", fontSize: 20, flexShrink: 0 }}>→</div>
@@ -1840,15 +1593,15 @@ function SignalsTab() {
         KEY THRESHOLD TABLE
       </div>
       <div style={{ overflowX: "auto", marginBottom: 36 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 0.8fr 1.3fr 1.2fr 0.85fr 0.9fr", gap: 0, minWidth: 780 }}>
-          {["Signal", "Asset", "Threshold", "Action", "Month Window", "Live Now"].map((h) => (
+        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 0.8fr 1.3fr 1.2fr 0.85fr", gap: 0, minWidth: 680 }}>
+          {["Signal", "Asset", "Threshold", "Action", "Month Window"].map((h) => (
             <div key={h} style={{
               padding: "10px 12px",
               background: "rgba(255,255,255,0.04)",
               borderBottom: "1px solid rgba(255,255,255,0.08)",
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: 9,
-              color: h === "Live Now" ? "#00FFA3" : "rgba(255,255,255,0.4)",
+              color: "rgba(255,255,255,0.4)",
               letterSpacing: 1.2,
             }}>
               {h.toUpperCase()}
@@ -1856,37 +1609,17 @@ function SignalsTab() {
           ))}
           {KEY_THRESHOLDS.map((row, i) => {
             const ac = row.asset.includes("SOL") ? "#00FFA3" : row.asset.includes("MSTR") ? "#FF6B35" : "#F4B728";
-            const liveCell = (() => {
-              if (row.signal === "BTC Dominance Break")    return live.btcDominance !== null ? fmtPct(live.btcDominance) : "—";
-              if (row.signal === "Pre-Halving Saturation") return live.solRsi14w    !== null ? `RSI ${live.solRsi14w}` : "—";
-              if (row.signal === "mNAV Premium Extreme")   return live.mstrMnav     !== null ? fmtX(live.mstrMnav) : "—";
-              if (row.signal === "BTC Momentum Stall")     return live.btcChange30d !== null ? `${fmtChg(live.btcChange30d)} 30d` : "—";
-              if (row.signal === "ZEC Blow-Off Top")       return live.zecChange7d  !== null ? `${fmtChg(live.zecChange7d)} 7d` : "—";
-              if (row.signal === "Terminal Media Spike")   return live.zecChange7d  !== null ? fmtUsd(live.zecPrice) : "—";
-              return "—";
-            })();
-            return [
-              ...[row.signal, row.asset, row.threshold, row.action, row.window].map((cell, j) => (
-                <div key={`${i}-${j}`} style={{
-                  padding: "10px 12px",
-                  borderBottom: "1px solid rgba(255,255,255,0.04)",
-                  fontFamily: j === 1 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
-                  fontSize: j === 1 ? 10 : 12,
-                  color: j === 1 ? ac : j === 4 ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.6)",
-                }}>
-                  {cell}
-                </div>
-              )),
-              <div key={`${i}-5`} style={{
+            return [row.signal, row.asset, row.threshold, row.action, row.window].map((cell, j) => (
+              <div key={`${i}-${j}`} style={{
                 padding: "10px 12px",
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 10,
-                color: live.loading ? "rgba(255,255,255,0.2)" : ac,
+                fontFamily: j === 1 ? "'JetBrains Mono', monospace" : "'DM Sans', sans-serif",
+                fontSize: j === 1 ? 10 : 12,
+                color: j === 1 ? ac : j === 4 ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.6)",
               }}>
-                {live.loading ? "…" : liveCell}
-              </div>,
-            ];
+                {cell}
+              </div>
+            ));
           })}
         </div>
       </div>
