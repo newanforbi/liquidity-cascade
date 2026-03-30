@@ -525,7 +525,7 @@ const HALVINGS = [
 ];
 
 const PREDICTIONS_2028 = [
-  { phase: 1, asset: "SOL", action: "Entry", timing: "Mid-to-Late 2026", note: "Bear market trough accumulation" },
+  { phase: 1, asset: "SOL", action: "Entry", timing: "Sep 2026 – Aug 2027", note: "Bear market trough accumulation" },
   { phase: 1, asset: "SOL", action: "Exit → MSTR Entry", timing: "Mar 2028", note: "Front-run halving, rotate to institutional proxy" },
   { phase: 2, asset: "MSTR", action: "Exit → ZEC Entry", timing: "Nov 2028", note: "Month +7, institutional premium exhaustion" },
   { phase: 3, asset: "ZEC", action: "Exit to Fiat", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — exit crypto entirely' },
@@ -538,7 +538,7 @@ const SIGNAL_GRID = [
     phase: 1,
     asset: "SOL",
     color: "#00FFA3",
-    historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Next window: Mid-to-Late 2026.",
+    historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Entry window: Sep 2026 – Aug 2027.",
     signals: [
       { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "ARMED" },
       { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
@@ -2707,7 +2707,7 @@ function Blackpaper() {
         </div>
         <BlackpaperPara indent>
           Projected onto the 2028 halving — anticipated for April of that year — the matrix yields four dates:
-          SOL accumulation in mid-to-late 2026, SOL exit and MSTR entry in March 2028, MSTR exit and ZEC accumulation in November 2028,
+          SOL accumulation between September 2026 and August 2027, SOL exit and MSTR entry in March 2028, MSTR exit and ZEC accumulation in November 2028,
           and the terminal ZEC liquidation to fiat in November 2029. The assets occupying each archetype may shift.
           The temporal structure, if history holds, will not.
         </BlackpaperPara>
