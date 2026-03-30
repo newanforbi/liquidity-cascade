@@ -538,11 +538,11 @@ const SIGNAL_GRID = [
     phase: 1,
     asset: "SOL",
     color: "#00FFA3",
-    historicalPrecedent: "Triggered Mar 2024 — SOL peaked at $191.90 exactly one month pre-halving, confirming the front-run pattern.",
+    historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Next window: Mid-to-Late 2026.",
     signals: [
-      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "TRIGGERED" },
-      { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "TRIGGERED" },
-      { id: "S1-3", threshold: "Pre-halving narrative peak", action: "EXIT REMAINING SOL", status: "TRIGGERED" },
+      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "ARMED" },
+      { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
+      { id: "S1-3", threshold: "Pre-halving narrative peak", action: "EXIT REMAINING SOL", status: "ARMED" },
     ],
   },
   {
@@ -1373,9 +1373,13 @@ function SignalsTab() {
   // Derive active phase from SIGNAL_GRID — first phase with any ARMED signal
   const activeIdx   = SIGNAL_GRID.findIndex(g => g.signals.some(s => s.status === "ARMED"));
   const activePhase = PHASES[activeIdx];
-  const monthLabel  = activePhase.monthsFromHalving >= 0
-    ? `Month +${activePhase.monthsFromHalving}`
-    : `Month ${activePhase.monthsFromHalving}`;
+
+  // Month counter relative to next halving (~Mar 2028), not the 2024 cycle PHASES data
+  const NEXT_HALVING    = new Date('2028-03-01');
+  const monthsToHalving = Math.round((NEXT_HALVING - new Date()) / (1000 * 60 * 60 * 24 * 30.44));
+  const monthLabel      = monthsToHalving > 0
+    ? `Month -${monthsToHalving}`
+    : `Month +${Math.abs(monthsToHalving)}`;
 
   return (
     <div>
@@ -1401,7 +1405,7 @@ function SignalsTab() {
             animation: "pulse-glow 2s ease-in-out infinite",
           }} />
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 2 }}>
-            ACTIVE PHASE
+            NEXT PHASE — 2028 CYCLE
           </span>
         </div>
         <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: activePhase.color }}>
@@ -1409,7 +1413,7 @@ function SignalsTab() {
         </div>
         <div style={{ marginLeft: "auto", textAlign: "right" }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: 1.5 }}>
-            HALVING-RELATIVE
+            TO ~MAR 2028 HALVING
           </div>
           <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700, color: "#fff" }}>
             {monthLabel}
@@ -1423,9 +1427,9 @@ function SignalsTab() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 8 }}>
         {[
-          { label: "BTC DOMINANCE", value: "58.2%", desc: "Rotation trigger at < 57.5%", color: "#00FFA3" },
-          { label: "SOL RSI (WEEKLY)", value: "71", desc: "Exit signal at > 78", color: "#FF6B35" },
-          { label: "MSTR mNAV", value: "1.8x", desc: "Exit signal at > 2.5x", color: "#F4B728" },
+          { label: "BTC DOMINANCE", value: "58.2%", desc: "Watch for < 57.5% to confirm SOL entry", color: "#00FFA3" },
+          { label: "SOL RSI (WEEKLY)", value: "71", desc: "Entry window below 40 — accumulation phase", color: "#FF6B35" },
+          { label: "MSTR mNAV", value: "1.8x", desc: "Below 2.5x exit threshold — no action yet", color: "#F4B728" },
         ].map((m) => (
           <div key={m.label} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 6, padding: "14px 16px" }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5, marginBottom: 6 }}>
