@@ -67,8 +67,15 @@ function GalaxyBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = document.documentElement.scrollHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = document.documentElement.scrollHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       draw();
     };
     resize();
@@ -86,6 +93,7 @@ function GalaxyBackground() {
 
 function ShootingStars() {
   const canvasRef = useRef(null);
+  const ctxRef = useRef(null);
   const starsRef = useRef([]);
   const rafRef = useRef(null);
   const lastSpawnRef = useRef(0);
@@ -154,21 +162,29 @@ function ShootingStars() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    ctxRef.current = canvas.getContext("2d");
 
+    const sizeRef = { w: 0, h: 0 };
     const resize = () => {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      sizeRef.w = w;
+      sizeRef.h = h;
+      ctxRef.current.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
     window.addEventListener("resize", resize);
 
     const tick = (timestamp) => {
-      const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const ctx = ctxRef.current;
+      ctx.clearRect(0, 0, sizeRef.w, sizeRef.h);
 
       if (timestamp - lastSpawnRef.current >= nextSpawnDelayRef.current) {
         if (starsRef.current.length < MAX_STARS) {
-          starsRef.current.push(spawnStar(canvas.width, canvas.height));
+          starsRef.current.push(spawnStar(sizeRef.w, sizeRef.h));
         }
         lastSpawnRef.current = timestamp;
         nextSpawnDelayRef.current = 30000;
@@ -204,6 +220,7 @@ function ShootingStars() {
 
 function AlienSaucer() {
   const canvasRef = useRef(null);
+  const ctxRef = useRef(null);
   const saucerRef = useRef(null);
   const rafRef = useRef(null);
   const lastSpawnRef = useRef(0);
@@ -357,21 +374,29 @@ function AlienSaucer() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    ctxRef.current = canvas.getContext("2d");
 
+    const sizeRef = { w: 0, h: 0 };
     const resize = () => {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      sizeRef.w = w;
+      sizeRef.h = h;
+      ctxRef.current.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
     window.addEventListener("resize", resize);
 
     const tick = (timestamp) => {
-      const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const ctx = ctxRef.current;
+      ctx.clearRect(0, 0, sizeRef.w, sizeRef.h);
 
       // Spawn
       if (!saucerRef.current && timestamp - lastSpawnRef.current >= nextSpawnDelayRef.current) {
-        saucerRef.current = spawnSaucer(canvas.width, canvas.height);
+        saucerRef.current = spawnSaucer(sizeRef.w, sizeRef.h);
         lastSpawnRef.current = timestamp;
       }
 
@@ -395,7 +420,7 @@ function AlienSaucer() {
           s.departSpeed = s.departSpeed === 0 ? 3 : s.departSpeed * 1.12;
           s.x += Math.cos(s.departAngle) * s.departSpeed;
           s.y += Math.sin(s.departAngle) * s.departSpeed;
-          const W = canvas.width, H = canvas.height;
+          const W = sizeRef.w, H = sizeRef.h;
           if (s.x < -200 || s.x > W + 200 || s.y < -200 || s.y > H + 200) {
             saucerRef.current = null;
             nextSpawnDelayRef.current = 45000 + Math.random() * 30000;
@@ -709,7 +734,11 @@ function GlowDot({ color, size = 8 }) {
 function PhaseCard({ phase, isActive, onClick }) {
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
       onClick={onClick}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } }}
       style={{
         flex: 1,
         minWidth: 220,
@@ -928,7 +957,11 @@ function Timeline({ activePhase, setActivePhase }) {
           return (
             <div
               key={i}
+              role="button"
+              tabIndex={0}
+              aria-label={`Phase ${r.phase + 1} — ${PHASES[r.phase].asset}`}
               onClick={() => setActivePhase(r.phase)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActivePhase(r.phase); } }}
               style={{
                 position: "absolute",
                 top: 24,
@@ -1307,11 +1340,11 @@ function MacroContext() {
         </div>
         <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 6, padding: "14px" }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: 1.5, marginBottom: 6 }}>
-            GLOBAL M2 (Oct 2025)
+            GLOBAL M2 (Q1 2026)
           </div>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 26, color: "#F4B728", fontWeight: 700 }}>$137T+</div>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 26, color: "#F4B728", fontWeight: 700 }}>$140T+</div>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
-            6.2% YTD expansion providing structural tailwind
+            Continued expansion providing structural tailwind
           </div>
         </div>
       </div>
@@ -1708,7 +1741,11 @@ function CyclesTab() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 36 }}>
         {CYCLE_DATA.map((c, i) => (
           <div key={c.year}
+            role="button"
+            tabIndex={0}
+            aria-expanded={activeCycle === i}
             onClick={() => setActiveCycle(activeCycle === i ? null : i)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveCycle(activeCycle === i ? null : i); } }}
             style={{
               background: activeCycle === i ? `${cycleColors[i]}10` : "rgba(255,255,255,0.02)",
               border: activeCycle === i ? `1.5px solid ${cycleColors[i]}55` : `1px solid ${cycleColors[i]}30`,
@@ -2064,7 +2101,11 @@ function ExecutionTab() {
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 36 }}>
         {PRE_ENTRY_CHECKLIST.map((row, i) => (
           <div key={i}
+            role="checkbox"
+            aria-checked={checked[i]}
+            tabIndex={0}
             onClick={() => setChecked(prev => { const n = [...prev]; n[i] = !n[i]; return n; })}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setChecked(prev => { const n = [...prev]; n[i] = !n[i]; return n; }); } }}
             style={{
               display: "flex",
               gap: 16,
@@ -2255,7 +2296,10 @@ function ExecutionTab() {
           const isDone   = s.step < activeStep;
           return (
             <div key={s.step}
+              role="button"
+              tabIndex={0}
               onClick={() => setActiveStep(s.step)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveStep(s.step); } }}
               style={{ display: "flex", gap: 0, position: "relative", cursor: "pointer" }}>
               {/* Connector line */}
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginRight: 16 }}>
@@ -2940,9 +2984,8 @@ function ConversionTab() {
             ))}
             {CONVERSION_STATES.map((s) => (
               [s.state, s.rate, s.test, s.protections, s.notes].map((val, i) => (
-                <div key={`${s.state}-${i}`} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.04)", fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: i === 0 ? "#fff" : "rgba(255,255,255,0.5)", lineHeight: 1.5, background: i === 1 ? "rgba(0,255,163,0.04)" : "transparent" }}>
+                <div key={`${s.state}-${i}`} style={{ padding: "10px 12px", borderBottom: "1px solid rgba(255,255,255,0.04)", fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: i === 0 ? "#fff" : i === 1 ? "#00FFA3" : "rgba(255,255,255,0.5)", lineHeight: 1.5, background: i === 1 ? "rgba(0,255,163,0.04)" : "transparent" }}>
                   {i === 0 ? <span style={{ fontWeight: 600 }}>{val}</span> : val}
-                  {i === 1 && <span style={{ color: "#00FFA3" }}> {val}</span> ? null : null}
                 </div>
               ))
             ))}
@@ -3253,8 +3296,6 @@ export default function LiquidityCascade() {
     <ShootingStars />
     <AlienSaucer />
     <div style={{ minHeight: "100vh", background: "transparent", color: "#fff", fontFamily: "'DM Sans', sans-serif", position: "relative", zIndex: 2 }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
-
       <div style={{ padding: "32px 28px 0", maxWidth: 960, margin: "0 auto" }}>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: 2, marginBottom: 8 }}>
           CAPITAL ROTATION MATRIX — 2024 HALVING CYCLE
@@ -3277,10 +3318,15 @@ export default function LiquidityCascade() {
           A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
         </p>
 
-        <div style={{ display: "flex", gap: 4, borderBottom: "1px solid rgba(255,255,255,0.06)", marginBottom: 4, overflowX: "auto", scrollbarWidth: "none" }}>
+        <nav aria-label="Dashboard sections">
+        <div role="tablist" style={{ display: "flex", gap: 4, borderBottom: "1px solid rgba(255,255,255,0.06)", marginBottom: 4, overflowX: "auto", scrollbarWidth: "none" }}>
           {NAV_ITEMS.map((n) => (
             <button
               key={n.key}
+              role="tab"
+              aria-selected={activeNav === n.key}
+              aria-controls={`panel-${n.key}`}
+              id={`tab-${n.key}`}
               onClick={() => setActiveNav(n.key)}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
@@ -3299,9 +3345,10 @@ export default function LiquidityCascade() {
             </button>
           ))}
         </div>
+        </nav>
       </div>
 
-      <div style={{ padding: "20px 28px 60px", maxWidth: 960, margin: "0 auto" }}>
+      <main role="tabpanel" id={`panel-${activeNav}`} aria-labelledby={`tab-${activeNav}`} style={{ padding: "20px 28px 60px", maxWidth: 960, margin: "0 auto" }}>
         {activeNav === "overview" && (
           <>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -3367,7 +3414,7 @@ export default function LiquidityCascade() {
             Privacy coins face ongoing regulatory scrutiny and potential delistings. This is not financial advice.
           </p>
         </div>
-      </div>
+      </main>
     </div>
     </>
   );
