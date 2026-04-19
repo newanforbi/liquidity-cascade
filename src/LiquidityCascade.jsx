@@ -509,7 +509,7 @@ const PHASES = [
     exitSignal:
       "mNAV premium reaches historical extremes (2.0–3.0x). Bitcoin's parabolic advance stalls — magnified downside via 1.77 beta becomes existential portfolio risk.",
     entrySignal:
-      "Rotate capital from SOL into MSTR when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry coincides with the ~Mar 2028 halving as institutional BTC leverage begins to multiply against rising spot price.",
+      "Rotate capital from SOL into MSTR when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry front-runs the ~Apr 2028 halving by roughly one month, as institutional BTC leverage begins to multiply against rising spot price.",
     keyInsight:
       "Rotating into MSTR at $120 is not 'buying the top' — it is purchasing the confirmed breakout of an asset entering its most violent acceleration phase.",
   },
@@ -1417,8 +1417,8 @@ function SignalsTab() {
   const activePhase      = PHASES[activeIdx];
   const activeSignalPhase = SIGNAL_GRID[activeIdx];
 
-  // Month counter relative to next halving (~Mar 2028), not the 2024 cycle PHASES data
-  const NEXT_HALVING    = new Date('2028-03-01');
+  // Month counter relative to next halving (~Apr 2028), not the 2024 cycle PHASES data
+  const NEXT_HALVING    = new Date('2028-04-19');
   const monthsToHalving = Math.round((NEXT_HALVING - new Date()) / (1000 * 60 * 60 * 24 * 30.44));
   const monthLabel      = monthsToHalving > 0
     ? `Month -${monthsToHalving}`
@@ -2746,7 +2746,7 @@ function Blackpaper() {
           {[
             { date: "January 2018", detail: "ZEC surged 14x to $700+", after: "Preceded the 2018 crypto winter. Bitcoin collapsed 85%." },
             { date: "May 2021", detail: "ZEC spiked 7x to $386", after: "Preceded a catastrophic market-wide liquidation cascade." },
-            { date: "November 2025", detail: "ZEC exploded 33.7x to $674", after: "The verdict of the next winter is still being written." },
+            { date: "November 2025", detail: "ZEC exploded 33.7x to $674", after: "The post-cycle contraction is now underway — consistent with the 2018 and 2021 precedents." },
           ].map((item, i) => (
             <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,60,60,0.5)", minWidth: 110, flexShrink: 0 }}>
