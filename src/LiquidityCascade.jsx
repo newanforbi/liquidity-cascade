@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useMarketData } from "./hooks/useMarketData.js";
 
 function GalaxyBackground() {
   const canvasRef = useRef(null);
@@ -731,7 +732,7 @@ function GlowDot({ color, size = 8 }) {
   );
 }
 
-function PhaseCard({ phase, isActive, onClick }) {
+function PhaseCard({ phase, isActive, onClick, currentPrice }) {
   return (
     <div
       role="button"
@@ -807,6 +808,16 @@ function PhaseCard({ phase, isActive, onClick }) {
           {phase.entryDate} → {phase.exitDate}
         </span>
       </div>
+      {currentPrice != null && (
+        <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: 1.2 }}>
+            NOW
+          </span>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: phase.color, fontWeight: 600 }}>
+            ${currentPrice.toLocaleString("en-US", { maximumFractionDigits: 2 })}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -1409,6 +1420,8 @@ function BtcDominanceNote() {
 // ── SIGNALS component ─────────────────────────────────────────────────────────
 
 function SignalsTab() {
+  const { btcDominance, solRsiWeekly, loading, error, lastUpdated } = useMarketData();
+
   const statusColor = (s) =>
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
 
@@ -1470,10 +1483,31 @@ function SignalsTab() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 8 }}>
         {[
-          { label: "BTC DOMINANCE",    value: "58.2%", desc: "Watch for < 57.5% to confirm SOL entry",     color: "#00FFA3" },
-          { label: "SOL RSI (WEEKLY)", value: "71",    desc: "Entry window below 40 — accumulation phase", color: "#FF6B35" },
-          { label: "MSTR mNAV",        value: "1.8x",  desc: "Below 2.5x exit threshold — no action yet",  color: "#F4B728" },
-          { label: "ENTRY WINDOW",     value: activeSignalPhase.entryWindow, desc: `Active accumulation window — Phase ${activeSignalPhase.phase} ${activeSignalPhase.asset}`, color: activePhase.color, highlight: true },
+          {
+            label: "BTC DOMINANCE",
+            value: loading && btcDominance == null ? "…" : btcDominance != null ? `${btcDominance.toFixed(1)}%` : "—",
+            desc: "Watch for < 57.5% to confirm SOL entry",
+            color: "#00FFA3",
+          },
+          {
+            label: "SOL RSI (WEEKLY)",
+            value: loading && solRsiWeekly == null ? "…" : solRsiWeekly != null ? String(solRsiWeekly) : "—",
+            desc: "Entry window below 40 — accumulation phase",
+            color: "#FF6B35",
+          },
+          {
+            label: "MSTR mNAV",
+            value: "—",
+            desc: "Live data unavailable — verify manually",
+            color: "#F4B728",
+          },
+          {
+            label: "ENTRY WINDOW",
+            value: activeSignalPhase.entryWindow,
+            desc: `Active accumulation window — Phase ${activeSignalPhase.phase} ${activeSignalPhase.asset}`,
+            color: activePhase.color,
+            highlight: true,
+          },
         ].map((m) => (
           <div key={m.label} style={{
             background: m.highlight ? `${m.color}08` : "rgba(255,255,255,0.03)",
@@ -1490,7 +1524,10 @@ function SignalsTab() {
         ))}
       </div>
       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.2)", letterSpacing: 1, marginBottom: 28 }}>
-        STATIC — UPDATE MANUALLY BEFORE EACH SESSION
+        {lastUpdated
+          ? `LIVE — LAST UPDATED ${lastUpdated.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
+          : "FETCHING LIVE DATA…"}
+        {error && ` — ${error.toUpperCase()}`}
       </div>
 
       {/* Signal Grid */}
@@ -3289,6 +3326,7 @@ function ConversionTab() {
 export default function LiquidityCascade() {
   const [activePhase, setActivePhase] = useState(0);
   const [activeNav, setActiveNav] = useState("overview");
+  const { solPrice, zecPrice } = useMarketData();
 
   return (
     <>
@@ -3353,7 +3391,17 @@ export default function LiquidityCascade() {
           <>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               {PHASES.map((p, i) => (
-                <PhaseCard key={i} phase={p} isActive={activePhase === i} onClick={() => setActivePhase(i)} />
+                <PhaseCard
+                  key={i}
+                  phase={p}
+                  isActive={activePhase === i}
+                  onClick={() => setActivePhase(i)}
+                  currentPrice={
+                    p.asset === "SOL" ? solPrice :
+                    p.asset === "ZEC" ? zecPrice :
+                    undefined
+                  }
+                />
               ))}
             </div>
             <Timeline activePhase={activePhase} setActivePhase={setActivePhase} />
