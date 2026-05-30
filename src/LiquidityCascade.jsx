@@ -561,7 +561,7 @@ const HALVINGS = [
   { date: "~Apr 2028", reward: "3.125 → 1.5625 BTC" },
 ];
 
-const SUPERCYCLE_HISTORICAL = [
+const PREDICTIONS_2028 = [
   { phase: 1, asset: "TAO", action: "Entry", timing: "Oct 19, 2023", price: "$46.44", note: "AI compute vanguard begins" },
   { phase: 1, asset: "TAO", action: "Exit → XRP Entry", timing: "Mar 8, 2024", price: "$699.94 (15x)", note: "Rotation to institutional settlement" },
   { phase: 2, asset: "XRP", action: "Entry", timing: "Oct 2, 2024", price: "$0.5241", note: "Institutional settlement infrastructure phase" },
@@ -1230,8 +1230,8 @@ function CalculatorSection() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10 }}>
         {[
-          { label: "AFTER SOL (Phase 1)", value: phase1Out, color: "#00FFA3" },
-          { label: "AFTER MSTR (Phase 2)", value: phase2Out + phase2Reserve, color: "#FF6B35" },
+          { label: "AFTER TAO (Phase 1)", value: phase1Out, color: "#9D4EDD" },
+          { label: "AFTER XRP (Phase 2)", value: phase2Out + phase2Reserve, color: "#23F0C6" },
           { label: "RESERVED IN FIAT", value: phase3Reserve, color: "rgba(255,255,255,0.5)" },
           { label: "FINAL PORTFOLIO", value: totalFinal, color: "#F4B728" },
         ].map((r, i) => (
@@ -1273,10 +1273,10 @@ function Predictions2028() {
       }}
     >
       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: 1.5, marginBottom: 6 }}>
-        2028 CYCLE PROJECTION
+        SUPERCYCLE EXECUTION (HISTORICAL 2023–2026)
       </div>
       <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", marginBottom: 18 }}>
-        Projected rotation dates using the ~April 2028 halving as Month 0
+        Realized capital rotation across TAO, XRP, and ZEC phases: October 2023 → May 2026
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
         {PREDICTIONS_2028.map((p, i) => (
@@ -2537,7 +2537,7 @@ function Blackpaper() {
           maxWidth: 480,
           lineHeight: 1.6,
         }}>
-          A Chronological Matrix for Capital Rotation Across Solana, MicroStrategy, and Zcash
+          A Chronological Matrix for Capital Rotation Across Bittensor (TAO), Ripple (XRP), and Zcash
         </p>
         <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)", margin: "24px auto 0" }} />
       </div>
@@ -2628,63 +2628,61 @@ function Blackpaper() {
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 1" color={g}>
-        <BlackpaperHeading>The Speculative Vanguard</BlackpaperHeading>
+        <BlackpaperHeading>The AI Compute Vanguard</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: g, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Solana (SOL)
+          Bittensor (TAO)
         </div>
         <BlackpaperPara>
-          Here is the first heresy of this framework: Solana does not wait for Bitcoin. It moves first.
+          Here is the first heresy of this framework: Bittensor does not wait for Bitcoin. It moves first.
         </BlackpaperPara>
         <BlackpaperPara indent>
           Traditional cycle theory insists that all altcoins lag the benchmark — that they sit patiently until Bitcoin has completed
-          its post-halving ascent and only then begin their secondary expansion. The data from 2022–2024 annihilates this assumption.
-          Solana's primary parabolic move completed{" "}
+          its post-halving ascent and only then begin their secondary expansion. The data from 2023–2024 annihilates this assumption.
+          Bittensor's primary parabolic move completed{" "}
           <em style={{ color: g }}>one month before the halving even occurred</em>.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Why? Because Solana's price engine runs on fundamentally different fuel than Bitcoin's. Its hybrid Proof-of-History consensus
-          model enables sub-second finality and negligible transaction fees, making it the undisputed venue for retail-driven speculation —
-          the memecoin launchpad, the DeFi playground, the NFT bazaar. Retail traders, operating with smaller capital bases and higher risk
-          tolerance, don't wait for the halving. They{" "}
-          <em style={{ color: "rgba(255,255,255,0.8)" }}>anticipate</em> the post-halving altcoin season and deploy capital months early,
-          effectively front-running the macro narrative. By the time Bitcoin's supply shock arrives, Solana's move is already over.
+          Why? Because TAO's price engine runs on fundamentally different fuel than Bitcoin's. Its decentralized AI compute infrastructure
+          and validator incentive model make it the venue for retail-driven AI narrative speculation. As AGI fears mount and GitHub Copilot
+          dominance spreads, retail traders operating with smaller capital bases don't wait for the halving. They{" "}
+          <em style={{ color: "rgba(255,255,255,0.8)" }}>anticipate</em> the post-halving expansion and deploy capital months early,
+          effectively front-running the macro narrative. By the time Bitcoin's supply shock arrives, TAO's move is already over.
         </BlackpaperPara>
         <BlackpaperQuote color={g}>
-          From the ashes of a 97% drawdown — from $260 to $9 in the wreckage of the FTX collapse —
-          Solana executed one of the most ferocious recoveries in crypto history.
+          From the depths of a crypto bear market — from the rubble of the 2022 collapse —
+          Bittensor executed one of the most ferocious AI infrastructure rallies in crypto history.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The entry was December 21, 2022. The price:{" "}
-          <BlackpaperDatum value="$9.76" color={g} />. Over the next fifteen months, SOL steadily reclaimed $30,
-          then $100, then went vertical as memecoin liquidity exploded and active developer counts surged.
-          The terminal momentum peak arrived on March 13, 2024 — one month before the halving — at{" "}
-          <BlackpaperDatum value="$191.90" color={g} />. A{" "}
-          <span style={{ color: g, fontWeight: 700 }}>19.66x</span> multiple.
+          The entry was October 19, 2023. The price:{" "}
+          <BlackpaperDatum value="$46.44" color={g} />. Over the next five months, TAO steadily climbed as AI excitement crescendoed.
+          The terminal momentum peak arrived on March 8, 2024 — one month before the halving — at{" "}
+          <BlackpaperDatum value="$699.94" color={g} />. A{" "}
+          <span style={{ color: g, fontWeight: 700 }}>15x</span> multiple.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Yes, SOL touched $294.85 in early 2025. But the{" "}
+          The{" "}
           <em style={{ color: "rgba(255,255,255,0.8)" }}>velocity</em> and <em style={{ color: "rgba(255,255,255,0.8)" }}>efficiency</em>{" "}
-          of the $9 → $191 move is what matters. Capital efficiency, not nominal highs, is the metric that compounds.
-          An initial $100,000 deployed into SOL at the cycle bottom exits as{" "}
-          <BlackpaperDatum value="$1,966,000" color={g} />. The retail vanguard phase is complete.
-          The signal to exit: maximum narrative saturation, network congestion spikes, social euphoria reaching fever pitch.
+          of the $46.44 → $699.94 move is what matters. Capital efficiency, not nominal highs, is the metric that compounds.
+          An initial $100,000 deployed into TAO at the cycle bottom exits as{" "}
+          <BlackpaperDatum value="$1,500,000" color={g} />. The AI compute vanguard phase is complete.
+          The signal to exit: maximum AI narrative saturation, retail euphoria reaching fever pitch, BTC Dominance falling below 57.5%.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="INTERLUDE" color="rgba(255,255,255,0.25)">
-        <BlackpaperHeading sub>The Mid-Cycle Dilemma</BlackpaperHeading>
+        <BlackpaperHeading sub>The Mid-Cycle Rotation</BlackpaperHeading>
         <BlackpaperPara>
-          It is mid-2024. The SOL position has been liquidated at $191.90, and the portfolio sits at nearly $2 million.
-          The next target — MicroStrategy — is already at $120, up from its own December 2022 bottom of $14.50.
-          The amateur investor sees this and feels the sting of a "missed" move.
+          It is mid-2024. The TAO position has been liquidated at $699.94, and the portfolio sits at $1.5 million.
+          The next target — Ripple — is already at $0.50, having recovered from its 2022 collapse during the SEC lawsuit.
+          By October 2024, XRP begins its institutional ascent as SEC regulatory clarity emerges.
         </BlackpaperPara>
         <BlackpaperPara indent>
           This is the moment the strategy either survives or dies. The objective of macro capital rotation is not
           to catch the absolute bottom of every single asset simultaneously. That would require a time machine.
           The true edge lies in <span style={{ color: o, fontWeight: 600 }}>chaining expansion phases</span>.
-          MSTR's crawl from $14 to $120 took eighteen grueling months of sideways grinding. During those same eighteen months,
-          that capital was in SOL, earning 19.6x. Rotating into MSTR at $120 is not buying the top — it is boarding
-          a rocket that has just cleared the launch tower.
+          XRP spent 2.5 years in the doldrums as regulatory uncertainty persisted. During that time,
+          capital was in TAO, earning 15x. Rotating into XRP at $0.5241 is not buying the bottom — it is boarding
+          a rocket that has just cleared the regulatory overhang.
         </BlackpaperPara>
         <BlackpaperQuote color="rgba(255,255,255,0.35)">
           Rotate based on which asset is entering expansion next. Ignore the nominal distance from its cycle low.
@@ -2695,42 +2693,42 @@ function Blackpaper() {
       <BlackpaperSection label="PHASE 2" color={o}>
         <BlackpaperHeading>The Leveraged Institutional Proxy</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: o, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          MicroStrategy (MSTR)
+          Ripple (XRP)
         </div>
         <BlackpaperPara>
-          MicroStrategy is not a software company. It has not been a software company in any meaningful sense since August 2020,
-          when Michael Saylor repurposed its corporate treasury into the most audacious Bitcoin accumulation vehicle in the history
-          of public markets. What MSTR actually is: a leveraged financial instrument with an embedded beta of approximately 1.77
-          relative to Bitcoin, engineered to amplify every move in the benchmark — up and down.
+          Ripple is not a traditional cryptocurrency. It is an institutional settlement infrastructure play disguised as a digital asset.
+          The company's On-Demand Liquidity (ODL) network connects major emerging markets — Mexico, Brazil, Philippines, Indonesia —
+          enabling real-time cross-border value transfer at a fraction of traditional banking costs. What XRP actually is:
+          the settlement rail for the next generation of institutional payments.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The mechanics are elegant and recursive. When the market prices MSTR at a premium to its underlying Bitcoin holdings —
-          the so-called mNAV premium — the company exploits the disparity. They issue new equity at the inflated valuation,
-          use the proceeds to buy more Bitcoin, and in doing so increase the amount of BTC backing each individual share.
-          The process is accretive. It feeds on itself. And it only works when Bitcoin is going up.
+          The historical overhang was regulatory. From 2020 to 2023, the SEC lawsuit created paralyzing uncertainty.
+          But by October 2024, that uncertainty evaporated. The SEC reclassified XRP, regulatory green-lights emerged,
+          and institutional capital began treating it as a legitimate infrastructure play rather than a speculative asset.
+          Ripple began executing major ODL corridor expansions into Asia-Pacific and Latin America.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          This is why MSTR detonates in the post-halving window. When Bitcoin breaks its prior all-time highs — an event that
-          typically materializes 6 to 8 months after the halving — institutional capital, hedge funds, and equity investors
-          scramble for regulated, high-beta exposure. MSTR is the premier vehicle. The result is not a gentle repricing.
-          It is vertical.
+          This is why XRP detonates post-halving. When Bitcoin breaks all-time highs and macroeconomic liquidity expands,
+          institutional capital scrambles for settlement infrastructure. Post-halving, central banks begin cutting rates,
+          M2 expands, and borderless settlement demand explodes. XRP is the premier vehicle for this demand.
+          The result is not a gentle repricing. It is vertical.
         </BlackpaperPara>
         <BlackpaperQuote color={o}>
-          In the 2020–2021 cycle, MSTR peaked 9 months post-halving. In the 2024–2025 cycle, the blow-off top
-          came at Month +7. The window is narrow and violent.
+          Regulatory clarity + CBDC integration talk + institutional ODL adoption = institutional supercycle
+          in settlement infrastructure assets.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          Following the April 2024 halving, MicroStrategy climbed 550% through the year. The spot Bitcoin ETF approvals
-          added institutional legitimacy to the underlying thesis. The mNAV premium expanded as fast money piled in.
-          On November 13, 2024, MSTR printed a vertical daily candle to{" "}
-          <BlackpaperDatum value="$421.88" color={o} /> — exactly seven months post-halving.
+          Following the August 2024 SEC clarity, XRP began its institutional ascent. By October 2024, the entry point arrived at{" "}
+          <BlackpaperDatum value="$0.5241" color={o} />. Over the next three months, as institutional adoption accelerated,
+          XRP rallied vertically to{" "}
+          <BlackpaperDatum value="$3.14" color={o} /> on January 8, 2025.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The rolled $1.966 million enters at $120. It exits at $421.88. A{" "}
-          <span style={{ color: o, fontWeight: 700 }}>3.51x</span> multiple. The portfolio now stands at{" "}
-          <BlackpaperDatum value="$6,900,660" color={o} />. The exit signal: mNAV premium pushing past 2.0–3.0x,
-          Bitcoin's advance stalling, and the 1.77 beta threatening magnified collapse. The institutional wave has crested.
-          What comes next is the most dangerous phase of all.
+          The rolled $1.5 million enters at $0.5241. It exits at $3.14. A{" "}
+          <span style={{ color: o, fontWeight: 700 }}>6x</span> multiple. The portfolio now stands at{" "}
+          <BlackpaperDatum value="$9,000,000" color={o} />. The exit signal: institutional premium exhaustion,
+          BTC momentum stalling, and the shift from expansion to consolidation. The institutional settlement wave has crested.
+          What comes next is the terminal phase.
         </BlackpaperPara>
       </BlackpaperSection>
 
@@ -3368,7 +3366,7 @@ export default function LiquidityCascade() {
           Supercycle
         </h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", margin: "0 0 24px", maxWidth: 620, lineHeight: 1.55 }}>
-          A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
+          A chronological matrix for capital rotation across Bittensor (TAO), Ripple (XRP), and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum. Historical data: Oct 2023 → May 2026 realized 6,608x return.
         </p>
 
         <nav aria-label="Dashboard sections">
