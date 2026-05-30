@@ -26,7 +26,13 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Build
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/claude/liquidity-cascade-fork-planning-zQgav" ]; then
+            VITE_BASE=/liquidity-cascade/supercycle/ npm run build
+          else
+            npm run build
+          fi
       - name: Prepare deployment directory
         run: |
           if [ "${{ github.ref }}" = "refs/heads/claude/liquidity-cascade-fork-planning-zQgav" ]; then
