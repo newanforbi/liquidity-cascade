@@ -1,6 +1,7 @@
 {
-  "name": "liquidity-cascade",
+  "name": "supercycle",
   "version": "1.0.0",
+  "description": "AI Compute + Payments + Privacy supercycle capital rotation model, anchored to Bitcoin 2028 halving",
   "private": true,
   "type": "module",
   "scripts": {
