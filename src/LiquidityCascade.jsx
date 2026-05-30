@@ -521,13 +521,13 @@ const PHASES = [
     role: "Terminal Liquidity Overflow",
     color: "#F4B728",
     colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Apr 2025",
+    entryDate: "Early 2025",
     exitDate: "Nov 2025",
-    entryPrice: "$31.17",
+    entryPrice: "$20.00",
     exitPrice: "$674.00",
-    multiple: "21.6x",
+    multiple: "33.7x",
     capitalIn: 6900660,
-    capitalOut: 149094256,
+    capitalOut: 232552242,
     halvingDistance: "+19 Months",
     monthsFromHalving: 19,
     entryMonths: "+9 to +12",
@@ -544,7 +544,7 @@ const PHASES = [
     entrySignal:
       "Rotate from MSTR into ZEC when mNAV premium exceeds 2.5x or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative assets.",
     keyInsight:
-      "ZEC peaked at $674 on Nov 12, 2025 (19 months post-April 2024 halving), retracing 71% by Mar 2026—the blow-off exhaustion. Discipline-based re-entry on the retracement yields a 3.4x second leg.",
+      "ZEC peaked at $674 in Nov 2025, retracing 71% by Mar 2026—the blow-off exhaustion. Discipline-based re-entry on the retracement yields a 3.4x second leg, turning terminal overflow into compounding profit.",
   },
   {
     id: 4,
@@ -629,7 +629,7 @@ const SIGNAL_GRID = [
     asset: "ZEC (W1)",
     color: "#F4B728",
     entryWindow: "Nov 2028 – Nov 2029",
-    historicalPrecedent: "Apr 9, 2025: ZEC entered at $31.17. Nov 12, 2025: peaked at $674 (21.6x). Pattern repeats — vertical blow-off = terminal peak.",
+    historicalPrecedent: "Early 2025: ZEC entered at $20. Nov 12, 2025: peaked at $674 (33.7x). Pattern repeats — vertical blow-off = terminal peak.",
     signals: [
       { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
       { id: "S3-2", threshold: "Mainstream media coverage", action: "EXIT REMAINING ZEC", status: "ARMED" },
@@ -1209,7 +1209,7 @@ function CalculatorSection() {
   const phase2Out = phase2In * 3.51;
   const phase3In = phase2Out * (riskSplit / 100);
   const phase3Reserve = phase2Out - phase3In + phase2Reserve;
-  const phase3Out = phase3In * 21.6;
+  const phase3Out = phase3In * 33.7;
   const phase4In = phase3Out * (riskSplit / 100);
   const phase4Reserve = phase3Out - phase4In + phase3Reserve;
   const phase4Out = phase4In * 3.4;
