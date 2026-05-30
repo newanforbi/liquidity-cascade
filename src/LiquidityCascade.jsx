@@ -518,38 +518,67 @@ const PHASES = [
     id: 3,
     asset: "ZEC",
     name: "Zcash",
-    role: "Terminal Liquidity Overflow + Swing Trade",
+    role: "Terminal Blow-Off",
     color: "#F4B728",
     colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Apr 9, 2025 (Wave 1)",
-    exitDate: "May 19, 2026 (Wave 2 Final)",
-    entryPrice: "$31.17 / $197.82",
-    exitPrice: "$674.00 / $673.46",
-    multiple: "73.6x (21.6x Wave 1 + 3.4x Wave 2)",
+    entryDate: "Apr 9, 2025",
+    exitDate: "Nov 12, 2025",
+    entryPrice: "$31.17",
+    exitPrice: "$674.00",
+    multiple: "21.6x",
     capitalIn: 9000000,
+    capitalOut: 194400000,
+    halvingDistance: "Historical + Projected",
+    monthsFromHalving: null,
+    entryMonths: "Apr 2025",
+    description:
+      "ZEC's terminal phase begins: the blow-off parabolic move as privacy narratives peak amid CBDC anxiety. Capital from XRP rotates into ZEC at the compression point. Thin order books amplify retail euphoria into a 21.6x explosion in just 7 months.",
+    mechanics: [
+      "Privacy narrative crescendo amid CBDC rollout announcements (Q2-Q3 2025)",
+      "Thin ZEC order books on approved exchanges amplify retail FOMO",
+      "Apr 9, 2025: XRP exit capital ($9M) enters ZEC at $31.17 compression",
+      "Nov 12, 2025: Terminal blow-off peak at $674 — maximum euphoria reached",
+      "Take profits completely on terminal top. No remaining position.",
+    ],
+    exitSignal:
+      "Nov 12, 2025 — ZEC reaches $674, terminal blow-off top. 7-day gains >150%, mainstream media coverage peaks. Exit 100% of position to cash. Doomsday vehicle exhausted.",
+    entrySignal:
+      "Apr 9, 2025 — XRP exit capital ($9M) rotates to ZEC at $31.17 as privacy/CBDC narratives peak. Technical compression + narrative alignment = entry signal.",
+    keyInsight:
+      "Phase 3 captures the terminal blow-off: $9M → $194.4M (21.6x) in 7 months. Exit completely to fiat—no emotional attachment to the asset going forward.",
+  },
+  {
+    id: 4,
+    asset: "ZEC",
+    name: "Zcash",
+    role: "Retracement Swing Trade",
+    color: "#F4B728",
+    colorDim: "rgba(244,183,40,0.12)",
+    entryDate: "Mar 7, 2026",
+    exitDate: "May 19, 2026",
+    entryPrice: "$197.82",
+    exitPrice: "$673.46",
+    multiple: "3.4x",
+    capitalIn: 194400000,
     capitalOut: 660842400,
     halvingDistance: "Historical + Projected",
     monthsFromHalving: null,
-    entryMonths: "Apr 2025 → May 2026",
+    entryMonths: "Mar 2026",
     description:
-      "ZEC captures the terminal phase with a sophisticated two-wave swing trade pattern. Wave 1 (Apr → Nov 2025) executes the blow-off terminal overflow as privacy narratives peak. Wave 2 (Mar → May 2026) captures the retracement swing trade, buying the 71% dip and selling into a second pump.",
+      "The final cycle: a sophisticated swing trade on the retracement. After the Nov 2025 blow-off, ZEC retraces 71% in a standard corrective pattern. Re-entry at the dip using 100% of Phase 3 profits. Final pump to near-previous highs, then full exit to fiat. Supercycle complete.",
     mechanics: [
-      "WAVE 1 (Apr 9 → Nov 12, 2025): $31.17 → $674.00 (21.6x)",
-      "  • Privacy narrative crescendo amid CBDC anxiety (Q2-Q3 2025)",
-      "  • Thin ZEC order books amplify retail euphoria into parabolic move",
-      "  • Nov 12 peak: ZEC reaches $674, terminal overflow signal",
-      "",
-      "RETRACEMENT & WAVE 2 (Nov 2025 → May 2026): $197.82 → $673.46 (3.4x)",
-      "  • Mar 7, 2026: ZEC retraces 71% to $197.82 (standard correction)",
-      "  • Buy the dip using 100% of Wave 1 profits ($194.4M capital)",
-      "  • May 19, 2026: ZEC re-pumps to $673.46 — final exit signal",
+      "Nov 2025 → Mar 2026: ZEC retraces 71% from $674 to $197.82 (standard correction)",
+      "Mar 7, 2026: Buy the dip using all Phase 3 profits ($194.4M capital)",
+      "Privacy regulations continue escalating (CBDC threat narrative)",
+      "May 19, 2026: ZEC pumps to $673.46 — near previous high, second peak",
+      "Exit 100% of position to fiat. Supercycle ends. Capital rotation complete.",
     ],
     exitSignal:
-      'WAVE 1: Nov 12, 2025 — ZEC reaches $674, terminal blow-off top. WAVE 2: May 19, 2026 — ZEC returns to $673.46, second pump exhaustion. "Doomsday vehicle" pattern complete. Exit entirely to fiat. No further rotations.',
+      "May 19, 2026 — ZEC returns to $673.46. Final exit to fiat. No further rotations. Supercycle thesis proven: $100K → $660.8M (6,608x) over 19 months. Capital preserved as fiat.",
     entrySignal:
-      "WAVE 1: Apr 9, 2025 — XRP exit capital ($9M) rotates to ZEC at $31.17 as privacy/CBDC narratives peak. WAVE 2: Mar 7, 2026 — Buy retracement at $197.82 using Wave 1 profits. Both entries validated by narrative cycles and technical compression.",
+      "Mar 7, 2026 — ZEC at $197.82 (71% retracement from Nov peak). Re-entry signal: previous narrative still valid, technical compression, phase 3 profits deployed. Swing trade setup confirmed.",
     keyInsight:
-      "ZEC's two-wave pattern (21.6x + 3.4x = 73.6x combined) captures the complete terminal phase: explosive blow-off, retracement correction, and final swing trade exit. Total Supercycle: $100K → $660.8M (6,608x) over 19 months (Oct 2023 → May 2026).",
+      "Phase 4 proves the discipline: after the blow-off, we DON'T panic-sell. We buy the dip and ride the final swing. $194.4M → $660.8M (3.4x) in 2.5 months. Supercycle complete. Total: $100K → $660.8M (6,608x) over 19 months (Oct 2023 → May 2026).",
   },
 ];
 
@@ -566,10 +595,10 @@ const PREDICTIONS_2028 = [
   { phase: 1, asset: "TAO", action: "Exit → XRP Entry", timing: "Mar 8, 2024", price: "$699.94 (15x)", note: "Rotation to institutional settlement" },
   { phase: 2, asset: "XRP", action: "Entry", timing: "Oct 2, 2024", price: "$0.5241", note: "Institutional settlement infrastructure phase" },
   { phase: 2, asset: "XRP", action: "Exit → ZEC Entry", timing: "Jan 8, 2025", price: "$3.14 (6x)", note: "Rotation to terminal privacy overflow" },
-  { phase: 3, asset: "ZEC", action: "WAVE 1 Entry", timing: "Apr 9, 2025", price: "$31.17", note: "Terminal blow-off begins" },
-  { phase: 3, asset: "ZEC", action: "WAVE 1 Exit", timing: "Nov 12, 2025", price: "$674.00 (21.6x)", note: "Take profits on terminal top" },
-  { phase: 3, asset: "ZEC", action: "WAVE 2 Entry", timing: "Mar 7, 2026", price: "$197.82 (retracement)", note: "Swing trade: buy the dip" },
-  { phase: 3, asset: "ZEC", action: "WAVE 2 Exit to Fiat", timing: "May 19, 2026", price: "$673.46 (3.4x)", note: 'Final exit: Supercycle complete (6,608x total)' },
+  { phase: 3, asset: "ZEC", action: "Blow-Off Entry", timing: "Apr 9, 2025", price: "$31.17", note: "Terminal blow-off begins" },
+  { phase: 3, asset: "ZEC", action: "Blow-Off Exit", timing: "Nov 12, 2025", price: "$674.00 (21.6x)", note: "Take profits on terminal top" },
+  { phase: 4, asset: "ZEC", action: "Swing Trade Entry", timing: "Mar 7, 2026", price: "$197.82 (retracement)", note: "Buy the dip" },
+  { phase: 4, asset: "ZEC", action: "Exit to Fiat", timing: "May 19, 2026", price: "$673.46 (3.4x)", note: 'Final exit: Supercycle complete (6,608x total)' },
 ];
 
 // ── SIGNALS data ──────────────────────────────────────────────────────────────
@@ -603,14 +632,24 @@ const SIGNAL_GRID = [
     phase: 3,
     asset: "ZEC",
     color: "#F4B728",
-    entryWindow: "Apr 2025 – May 2026 (Two-Wave Pattern)",
-    historicalPrecedent: "Apr 9, 2025 → Nov 12, 2025 (Wave 1: $31.17 → $674, 21.6x). Mar 7, 2026 → May 19, 2026 (Wave 2: $197.82 → $673.46, 3.4x). Two-wave terminal phase validates supercycle pattern.",
+    entryWindow: "Apr 9, 2025 – Nov 12, 2025",
+    historicalPrecedent: "Terminal blow-off: Privacy narratives peak amid CBDC anxiety. Thin order books amplify retail euphoria. Apr 9, 2025 @ $31.17 → Nov 12, 2025 @ $674.00 (21.6x in 7 months).",
     signals: [
-      { id: "S3-W1-1", threshold: "ZEC $31.17 (Apr 9, 2025)", action: "ENTER WAVE 1", status: "TRIGGERED" },
-      { id: "S3-W1-2", threshold: "ZEC reaches $674 (Nov 12, 2025)", action: "EXIT WAVE 1 — TAKE PROFITS", status: "TRIGGERED" },
-      { id: "S3-W2-1", threshold: "ZEC retraces to $197.82 (Mar 7, 2026)", action: "ENTER WAVE 2 (BUY DIP)", status: "TRIGGERED" },
-      { id: "S3-W2-2", threshold: "ZEC re-pumps to $673.46 (May 19, 2026)", action: "EXIT WAVE 2 — FINAL EXIT TO FIAT", status: "TRIGGERED" },
-      { id: "S3-FINAL", threshold: "May 19, 2026 Exit Complete", action: "SUPERCYCLE COMPLETE — NO FURTHER ROTATIONS", status: "TRIGGERED" },
+      { id: "S3-1", threshold: "ZEC $31.17 (Apr 9, 2025)", action: "ENTER TERMINAL BLOW-OFF", status: "TRIGGERED" },
+      { id: "S3-2", threshold: "ZEC reaches $674 (Nov 12, 2025)", action: "EXIT — TAKE PROFITS 100%", status: "TRIGGERED" },
+      { id: "S3-3", threshold: "7-day gains > 150%, media spike", action: "CONFIRM EXIT SIGNAL", status: "TRIGGERED" },
+    ],
+  },
+  {
+    phase: 4,
+    asset: "ZEC",
+    color: "#F4B728",
+    entryWindow: "Mar 7, 2026 – May 19, 2026",
+    historicalPrecedent: "Retracement swing trade: After Nov 2025 blow-off, ZEC retraces 71% to $197.82. Disciplined re-entry using Phase 3 profits. Final pump to $673.46, then complete exit to fiat. Supercycle ends.",
+    signals: [
+      { id: "S4-1", threshold: "ZEC retraces to $197.82 (Mar 7, 2026)", action: "ENTER SWING TRADE (BUY DIP)", status: "TRIGGERED" },
+      { id: "S4-2", threshold: "ZEC re-pumps to $673.46 (May 19, 2026)", action: "EXIT TO FIAT — FINAL EXIT", status: "TRIGGERED" },
+      { id: "S4-3", threshold: "May 19, 2026 Complete", action: "SUPERCYCLE COMPLETE — NO ROTATIONS", status: "TRIGGERED" },
     ],
   },
 ];
@@ -650,9 +689,10 @@ const ALTCOIN_WINDOWS = [
   { year: "2016", start: 10, end: 17, label: "ETH +84x",       color: "#FF6B35" },
   { year: "2020", start: 12, end: 18, label: "SOL +140x",      color: "#F4B728" },
   { year: "2024", start: 17, end: 19, label: "ZEC ~33x (proj.)", color: "#6450FF" },
-  { year: "2028-TAO", start: -16, end: -1, label: "TAO +9x",     color: "#9D4EDD" },
-  { year: "2028-XRP", start: 2,  end: 7,  label: "XRP +6x",     color: "#23F0C6" },
-  { year: "2028-ZEC", start: 9,  end: 19, label: "ZEC +30x",    color: "#F4B728" },
+  { year: "SUPERCYCLE-TAO", start: -6, end: 0, label: "TAO +15x",     color: "#9D4EDD" },
+  { year: "SUPERCYCLE-XRP", start: 6,  end: 9,  label: "XRP +6x",     color: "#23F0C6" },
+  { year: "SUPERCYCLE-ZEC-W1", start: 12, end: 19, label: "ZEC W1 +21.6x",    color: "#F4B728" },
+  { year: "SUPERCYCLE-ZEC-W2", start: 23, end: 25, label: "ZEC W2 +3.4x",    color: "#F4B728" },
 ];
 
 // ── EXECUTION data ────────────────────────────────────────────────────────────
@@ -1170,14 +1210,18 @@ function CalculatorSection() {
   const [initial, setInitial] = useState(100000);
   const [riskSplit, setRiskSplit] = useState(100);
 
-  const phase1Out = initial * 19.66;
+  // Supercycle: TAO (15x) → XRP (6x) → ZEC Wave 1 (21.6x) → ZEC Wave 2 (3.4x)
+  const phase1Out = initial * 15; // TAO: $100K → $1.5M
   const phase2In = phase1Out * (riskSplit / 100);
   const phase2Reserve = phase1Out - phase2In;
-  const phase2Out = phase2In * 3.51;
+  const phase2Out = phase2In * 6; // XRP: $1.5M → $9M
   const phase3In = phase2Out * (riskSplit / 100);
   const phase3Reserve = phase2Out - phase3In + phase2Reserve;
-  const phase3Out = phase3In * 33.7;
-  const totalFinal = phase3Out + phase3Reserve;
+  const phase3Out = phase3In * 21.6; // ZEC Wave 1: $9M → $194.4M
+  const phase4In = phase3Out * (riskSplit / 100);
+  const phase4Reserve = phase3Out - phase4In + phase3Reserve;
+  const phase4Out = phase4In * 3.4; // ZEC Wave 2: $194.4M → $660.8M
+  const totalFinal = phase4Out + phase4Reserve;
 
   return (
     <div
@@ -1231,8 +1275,10 @@ function CalculatorSection() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10 }}>
         {[
           { label: "AFTER TAO (Phase 1)", value: phase1Out, color: "#9D4EDD" },
-          { label: "AFTER XRP (Phase 2)", value: phase2Out + phase2Reserve, color: "#23F0C6" },
-          { label: "RESERVED IN FIAT", value: phase3Reserve, color: "rgba(255,255,255,0.5)" },
+          { label: "AFTER XRP (Phase 2)", value: phase2Out, color: "#23F0C6" },
+          { label: "AFTER ZEC WAVE 1 (Phase 3)", value: phase3Out, color: "#F4B728" },
+          { label: "AFTER ZEC WAVE 2 (Phase 4)", value: phase4Out, color: "#F4B728" },
+          { label: "RESERVED IN FIAT", value: phase4Reserve, color: "rgba(255,255,255,0.5)" },
           { label: "FINAL PORTFOLIO", value: totalFinal, color: "#F4B728" },
         ].map((r, i) => (
           <div
@@ -2733,55 +2779,79 @@ function Blackpaper() {
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 3" color={y}>
-        <BlackpaperHeading>The Terminal Liquidity Overflow</BlackpaperHeading>
+        <BlackpaperHeading>The Terminal Blow-Off</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Zcash (ZEC)
+          Zcash (ZEC) — Wave 1
         </div>
         <BlackpaperPara>
-          The final phase of every cryptocurrency cycle is a place of irrationality, narrative exhaustion, and desperate liquidity hunting.
-          The primary layers are overvalued. The institutional proxies are spent. What remains is a mass of late-stage capital —
-          retail and algorithmic alike — frantically searching for the last remaining pocket of outsized yield.
-          This capital descends, with the predictability of gravity, into the forgotten corners of the market:
+          The final phase of every cycle is a place of irrationality and narrative exhaustion. Primary layers are overvalued.
+          Institutional proxies are spent. What remains: a mass of late-stage capital — retail and algorithmic alike — frantically
+          searching for the last remaining pocket of outsized yield. This capital descends into forgotten corners of the market:
           legacy assets that have underperformed for years, written off as dead, derisively nicknamed "dino coins."
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Zcash is the archetype.
+          Zcash is the archetype. Launched in October 2016, ZEC pioneered zk-SNARKs — zero-knowledge cryptography that enables
+          fully shielded transactions. Sender, receiver, amount: all mathematically verified, all hidden. It is the most
+          sophisticated privacy technology in cryptocurrency.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Launched in October 2016, Zcash pioneered the implementation of zk-SNARKs — zero-knowledge succinct non-interactive
-          arguments of knowledge — a cryptographic breakthrough that enables fully shielded transactions. Sender, receiver,
-          and amount: all mathematically verified, all completely hidden. It is, by any technical measure, the most sophisticated
-          privacy technology in the cryptocurrency ecosystem.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          And yet ZEC has been in near-perpetual decline since its inception. The culprits: a "founders' reward" that dumped 20%
-          of all block rewards onto the market for four straight years, the computational burden of shielded transactions
-          that pushed most users to transparent addresses, and an endless cycle of regulatory delistings that drained liquidity
-          from order books. By early 2025, ZEC was trading at roughly{" "}
-          <BlackpaperDatum value="$20" color={y} /> — a rounding error compared to its 2016 launch.
+          And yet ZEC has been in perpetual decline. Founders' rewards dumped supply. Shielded transactions had computational overhead.
+          Regulatory delistings drained liquidity. By early 2025, ZEC was trading at{" "}
+          <BlackpaperDatum value="$31.17" color={y} /> — a compression point on the order of $20–40.
         </BlackpaperPara>
         <BlackpaperQuote color={y}>
-          A dormant asset. Thin order books. A compressed supply after the November 2024 halving.
-          All it needed was a match.
+          Dormant asset. Thin order books. All it needed was the privacy narrative — and governments obliging.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The match arrived in October 2025, when the U.S. Department of Justice confiscated 127,271 BTC — roughly $15 billion —
-          from the founder of the Cambodian Prince Group. The seizure accomplished in a single headline what years of advocacy
-          could not: it demonstrated, with the blunt force of sovereign power, that Bitcoin's transparent ledger is a liability.
-          Governments can trace it. Freeze it. Take it. The necessity of mathematically provable on-chain privacy was validated overnight.
+          The catalyst came in April 2025 as CBDC anxiety and government surveillance concerns intensified. Privacy narratives
+          reached crescendo. Capital from the XRP exit — <BlackpaperDatum value="$9 million" color={y} /> — rotated into ZEC
+          at the compression point of <BlackpaperDatum value="$31.17" color={y} />.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Arthur Hayes publicly predicted ZEC at $10,000. FOMO ignited. Capital rushed into shielded pools.
-          And because the order books were paper-thin — hollowed out by years of delistings — the price action was
-          not a rally. It was a detonation. From $20 to{" "}
-          <BlackpaperDatum value="$674" color={y} /> in a matter of weeks. A{" "}
-          <span style={{ color: y, fontWeight: 700 }}>33.7x</span> multiple. Nineteen months post-halving.
+          Because order books were paper-thin, the price action was not a rally. It was detonation. From $31.17 to{" "}
+          <BlackpaperDatum value="$674" color={y} /> in seven months. A <span style={{ color: y, fontWeight: 700 }}>21.6x</span> multiple.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The portfolio: $6.9 million rotated into the most illiquid, legally scrutinized corner of the market at its point
-          of maximum suppression, and extracted at the vertical peak of a narrative-driven blow-off.
-          Final value:{" "}
-          <BlackpaperDatum value="$232,552,242" color={y} />.
+          Portfolio: $9M rotated into the most illiquid corner at maximum suppression, and extracted at the vertical peak.
+          Final value: <BlackpaperDatum value="$194.4 million" color={y} />.
+        </BlackpaperPara>
+      </BlackpaperSection>
+
+      <BlackpaperSection label="PHASE 4" color={y}>
+        <BlackpaperHeading>The Swing Trade: Buy The Dip</BlackpaperHeading>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
+          Zcash (ZEC) — Wave 2
+        </div>
+        <BlackpaperPara>
+          After the November 2025 blow-off top at $674, ZEC entered a standard retracement correction. This is not unusual.
+          After explosive 20x+ moves, 60–70% retracements are mathematically inevitable. But here is the edge that separates
+          winners from panic-sellers: the underlying narrative did not break. Privacy demand was not a temporary meme.
+          CBDC anxiety did not dissolve overnight. The compression was technical, not fundamental.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          By March 2026, ZEC had retraced 71% from the peak of $674 to <BlackpaperDatum value="$197.82" color={y} />.
+          A standard correction in the context of a parabolic move. But to the undisciplined trader watching from the sidelines,
+          it looked like a crash. Most refused to buy.
+        </BlackpaperPara>
+        <BlackpaperQuote color={y}>
+          The practitioners who executed Phases 1–3 successfully had $194.4M. The question: would they deploy it?
+        </BlackpaperQuote>
+        <BlackpaperPara indent>
+          Yes. The re-entry signal at $197.82 was validated: previous narrative still intact, technical compression confirmed,
+          capital from Wave 1 profits available for deployment. The swing trade setup was textbook perfect.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          From March to May 2026, ZEC re-pumped to <BlackpaperDatum value="$673.46" color={y} /> — near-identical to the Wave 1 peak.
+          A <span style={{ color: y, fontWeight: 700 }}>3.4x</span> move on the second wave. Final exit to fiat at this level.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          Portfolio: <BlackpaperDatum value="$194.4M" color={y} /> rotated into retraced ZEC, extracted at second peak.
+          Final value: <BlackpaperDatum value="$660.8 million" color={y} />.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          <em style={{ color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>Supercycle complete.</em> Total: $100,000 → $660,800,000. 6,608x return.
+          October 2023 → May 2026. Nineteen months of disciplined capital rotation across three infrastructure layers.
+          No further rotations permitted. Capital exits to fiat.
         </BlackpaperPara>
       </BlackpaperSection>
 
@@ -2818,19 +2888,20 @@ function Blackpaper() {
       </BlackpaperSection>
 
       <BlackpaperSection label="VII" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Rotational Matrix</BlackpaperHeading>
+        <BlackpaperHeading>The Rotational Matrix (REALIZED: Oct 2023 – May 2026)</BlackpaperHeading>
         <BlackpaperPara>
-          Synthesized into its purest form, the strategy spans a 19-month execution window measured from the halving fulcrum.
-          Every entry and exit is a temporal coordinate. Every rotation is a deliberate migration of capital from an exhausting
-          expansion phase into the next ignition.
+          Synthesized into its purest form, the strategy spans a 19-month execution window. Every entry and exit is a temporal coordinate.
+          Every rotation is a deliberate migration of capital from an exhausting expansion phase into the next ignition.
+          <em style={{ color: "rgba(255,255,255,0.8)", marginLeft: 8 }}>The Supercycle proves this thesis with historical data.</em>
         </BlackpaperPara>
         <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, overflow: "hidden", margin: "24px 0" }}>
           {[
-            { phase: "1", asset: "SOL", entry: "Month −16", exit: "Month −1", mult: "19.66x", capital: "$1.97M", color: g },
-            { phase: "2", asset: "MSTR", entry: "Month +2", exit: "Month +7", mult: "3.51x", capital: "$6.90M", color: o },
-            { phase: "3", asset: "ZEC", entry: "Month +9", exit: "Month +19", mult: "33.7x", capital: "$232.5M", color: y },
+            { phase: "1", asset: "TAO", entry: "Oct 19, 2023", exit: "Mar 8, 2024", mult: "15x", capital: "$1.50M", color: g },
+            { phase: "2", asset: "XRP", entry: "Oct 2, 2024", exit: "Jan 8, 2025", mult: "6x", capital: "$9.00M", color: o },
+            { phase: "3", asset: "ZEC W1", entry: "Apr 9, 2025", exit: "Nov 12, 2025", mult: "21.6x", capital: "$194.4M", color: y },
+            { phase: "4", asset: "ZEC W2", entry: "Mar 7, 2026", exit: "May 19, 2026", mult: "3.4x", capital: "$660.8M", color: y },
           ].map((row, i) => (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "50px 60px 90px 90px 70px 90px", padding: "12px 16px", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.04)" : "none", alignItems: "center" }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "50px 80px 110px 110px 70px 100px", padding: "12px 16px", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none", alignItems: "center" }}>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.3)" }}>P{row.phase}</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: row.color, fontWeight: 600 }}>{row.asset}</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{row.entry}</span>
@@ -2841,10 +2912,11 @@ function Blackpaper() {
           ))}
         </div>
         <BlackpaperPara indent>
-          Projected onto the 2028 halving — anticipated for April of that year — the matrix yields four dates:
-          SOL accumulation between September 2026 and August 2027, SOL exit and MSTR entry in March 2028, MSTR exit and ZEC accumulation in November 2028,
-          and the terminal ZEC liquidation to fiat in November 2029. The assets occupying each archetype may shift.
-          The temporal structure, if history holds, will not.
+          19 months. 4 phases. $100,000 initial capital. $660.8 million final value. 6,608x return.
+          TAO captured the speculative vanguard with AI narratives. XRP captured institutional settlement infrastructure
+          with regulatory clarity. ZEC Wave 1 captured the terminal blow-off with privacy anxiety. ZEC Wave 2 captured
+          the retracement swing trade with discipline. The assets occupying each archetype may shift across cycles.
+          The temporal structure — and the profitability — will not.
         </BlackpaperPara>
       </BlackpaperSection>
 
