@@ -1,8 +1,12 @@
 # The Liquidity Cascade
 
-## The Original Framework
-
 **Live site: [newanforbi.github.io/liquidity-cascade](https://newanforbi.github.io/liquidity-cascade/)**
+
+**Supercycle fork: [newanforbi.github.io/liquidity-cascade/supercycle](https://newanforbi.github.io/liquidity-cascade/supercycle/)**
+
+---
+
+## The Original Framework
 
 A chronological matrix for capital rotation across **Solana, MicroStrategy, and Zcash** — anchored to the Bitcoin halving as the definitive temporal fulcrum.
 
@@ -26,8 +30,6 @@ This framework maps the three-phase liquidity cascade observed in the 2022–202
 ---
 
 ## Supercycle: Historical Proof of Concept
-
-**Live site: [newanforbi.github.io/liquidity-cascade/supercycle](https://newanforbi.github.io/liquidity-cascade/supercycle/)**
 
 The **Supercycle** is a fork that validates the rotating capital rotation thesis using **historical cryptocurrency data** (October 2023 – May 2026). Instead of equity proxies, it models the same three-layer infrastructure thesis using pure crypto assets:
 
