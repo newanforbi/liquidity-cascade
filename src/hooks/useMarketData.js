@@ -41,22 +41,23 @@ async function fetchBtcDominance() {
 
 async function fetchPrices() {
   const res = await fetch(
-    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,solana,zcash&vs_currencies=usd"
+    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,tao,ripple,zcash&vs_currencies=usd"
   );
   if (!res.ok) throw new Error(`CoinGecko prices: ${res.status}`);
   const json = await res.json();
   return {
     btcPrice: json.bitcoin?.usd ?? null,
-    solPrice: json.solana?.usd ?? null,
+    taoPrice: json.tao?.usd ?? null,
+    xrpPrice: json.ripple?.usd ?? null,
     zecPrice: json.zcash?.usd ?? null,
   };
 }
 
-async function fetchSolRsi() {
+async function fetchTaoRsi() {
   // 15 weekly klines → 14 changes → one RSI value
   // The last kline is the current in-progress week (live close = current price)
   const res = await fetch(
-    "https://api.binance.com/api/v3/klines?symbol=SOLUSDT&interval=1W&limit=15"
+    "https://api.binance.com/api/v3/klines?symbol=TAOUSDT&interval=1W&limit=15"
   );
   if (!res.ok) throw new Error(`Binance klines: ${res.status}`);
   const json = await res.json();
@@ -74,9 +75,10 @@ export function useMarketData() {
   const [state, setState] = useState({
     btcDominance: null,
     btcPrice: null,
-    solPrice: null,
+    taoPrice: null,
+    xrpPrice: null,
     zecPrice: null,
-    solRsiWeekly: null,
+    taoRsiWeekly: null,
     loading: true,
     error: null,
     lastUpdated: null,
@@ -90,7 +92,7 @@ export function useMarketData() {
     const [domResult, pricesResult, rsiResult] = await Promise.allSettled([
       fetchBtcDominance(),
       fetchPrices(),
-      fetchSolRsi(),
+      fetchTaoRsi(),
     ]);
 
     const next = {
@@ -102,24 +104,26 @@ export function useMarketData() {
         ? pricesResult.value
         : {
             btcPrice: prevValid.current.btcPrice ?? null,
-            solPrice: prevValid.current.solPrice ?? null,
+            taoPrice: prevValid.current.taoPrice ?? null,
+            xrpPrice: prevValid.current.xrpPrice ?? null,
             zecPrice: prevValid.current.zecPrice ?? null,
           }),
-      solRsiWeekly:
+      taoRsiWeekly:
         rsiResult.status === "fulfilled"
           ? rsiResult.value
-          : prevValid.current.solRsiWeekly ?? null,
+          : prevValid.current.taoRsiWeekly ?? null,
     };
 
     if (domResult.status === "fulfilled")
       prevValid.current.btcDominance = next.btcDominance;
     if (pricesResult.status === "fulfilled") {
       prevValid.current.btcPrice = next.btcPrice;
-      prevValid.current.solPrice = next.solPrice;
+      prevValid.current.taoPrice = next.taoPrice;
+      prevValid.current.xrpPrice = next.xrpPrice;
       prevValid.current.zecPrice = next.zecPrice;
     }
     if (rsiResult.status === "fulfilled")
-      prevValid.current.solRsiWeekly = next.solRsiWeekly;
+      prevValid.current.taoRsiWeekly = next.taoRsiWeekly;
 
     const anyFailed = [domResult, pricesResult, rsiResult].some(
       (r) => r.status === "rejected"

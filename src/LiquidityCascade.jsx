@@ -452,67 +452,67 @@ function AlienSaucer() {
 const PHASES = [
   {
     id: 1,
-    asset: "SOL",
-    name: "Solana",
-    role: "Speculative Vanguard",
-    color: "#00FFA3",
-    colorDim: "rgba(0,255,163,0.12)",
-    entryDate: "Dec 2022",
-    exitDate: "Mar 2024",
-    entryPrice: "$9.76",
-    exitPrice: "$191.90",
-    multiple: "19.66x",
+    asset: "TAO",
+    name: "Bittensor",
+    role: "AI Compute Vanguard",
+    color: "#9D4EDD",
+    colorDim: "rgba(157,78,221,0.12)",
+    entryDate: "Sep 2026",
+    exitDate: "Mar 2028",
+    entryPrice: "$50",
+    exitPrice: "$450",
+    multiple: "9x",
     capitalIn: 100000,
-    capitalOut: 1966000,
+    capitalOut: 900000,
     halvingDistance: "-1 Month (Front-run)",
     monthsFromHalving: -1,
     entryMonths: "-16",
     description:
-      "Solana structurally front-runs the halving. Retail-driven speculation, memecoin liquidity, and DeFi velocity propel SOL into a parabolic expansion before Bitcoin's supply shock even occurs.",
+      "Bittensor structurally front-runs the halving. Retail-driven speculation on decentralized AI infrastructure, validator participation incentives, and AGI narrative crescendo propel TAO into a parabolic expansion before Bitcoin's supply shock even occurs.",
     mechanics: [
-      "Hybrid PoH consensus enables sub-second finality and negligible fees",
-      "Retail capital deploys early, anticipating post-halving altcoin season",
-      "Memecoin and DeFi volume create self-reinforcing network effects",
-      "97% drawdown from 2021 highs created extreme compression entry",
+      "TAO holder incentives drive validator and subnet participation",
+      "AI model training demand crescendo as AGI fears mount (2027–2028)",
+      "Thin order books on centralized exchanges amplify retail FOMO",
+      "Market cap compression vs SOL enables conservative 8–15x multiples",
     ],
     exitSignal:
-      "Pre-halving narrative reaches maximum saturation. Network congestion spikes and retail euphoria dominates social sentiment — risk/reward deteriorates rapidly.",
+      "Pre-halving AI narrative reaches maximum saturation. OpenAI/AGI hype exhaustion combines with retail euphoria — risk/reward deteriorates rapidly.",
     entrySignal:
-      "Accumulate during bear market trough when SOL RSI falls below 40 on the weekly chart. Scale in via DCA over 4–8 weeks between Sep 2026 and Aug 2027. Confirmed by elevated BTC dominance (> 58%) and absence of altcoin euphoria.",
+      "Accumulate during bear market trough when TAO RSI falls below 40 on the weekly chart. Scale in via DCA over 4–8 weeks between Sep 2026 and Aug 2027. Confirmed by elevated BTC dominance (> 58%) and absence of altcoin euphoria.",
     keyInsight:
-      "SOL achieved a near 20x multiple exactly one month before the April 2024 Bitcoin halving, decisively invalidating the assumption that all altcoins lag Bitcoin.",
+      "TAO front-runs the April 2028 Bitcoin halving exactly one month prior, capturing the AI compute infrastructure thesis as the vanguard of the supercycle.",
   },
   {
     id: 2,
-    asset: "MSTR",
-    name: "MicroStrategy",
-    role: "Leveraged Institutional Proxy",
-    color: "#FF6B35",
-    colorDim: "rgba(255,107,53,0.12)",
-    entryDate: "Mid 2024",
-    exitDate: "Nov 2024",
-    entryPrice: "$120.00",
-    exitPrice: "$421.88",
-    multiple: "3.51x",
-    capitalIn: 1966000,
-    capitalOut: 6900660,
+    asset: "XRP",
+    name: "Ripple",
+    role: "Institutional Settlement Proxy",
+    color: "#23F0C6",
+    colorDim: "rgba(35,240,198,0.12)",
+    entryDate: "Jun 2028",
+    exitDate: "Nov 2028",
+    entryPrice: "$0.60",
+    exitPrice: "$3.60",
+    multiple: "6x",
+    capitalIn: 900000,
+    capitalOut: 5400000,
     halvingDistance: "+7 Months",
     monthsFromHalving: 7,
-    entryMonths: "+2 to +4",
+    entryMonths: "+2 to +7",
     description:
-      "MicroStrategy operates as a leveraged financial instrument amplifying Bitcoin's post-halving price discovery. Institutional capital floods in as BTC breaks prior all-time highs.",
+      "XRP operates as an institutional infrastructure play amplifying post-halving liquidity expansion. Ripple's ODL corridors expand globally; SEC regulatory clarity removes overhang; CBDC adjacency attracts institutional settlement demand.",
     mechanics: [
-      "Convertible notes and equity issuance fund continuous BTC acquisition",
-      "Embedded beta of ~1.77x relative to Bitcoin price movements",
-      "mNAV premium creates accretive feedback loop per share",
-      "TradFi institutions use MSTR as regulated high-beta BTC exposure",
+      "Ripple's ODL (On-Demand Liquidity) expands into emerging markets post-2027",
+      "SEC classification clarity (expected 2027–2028) removes historical regulatory risk",
+      "CBDC adjacency: XRP as institutional settlement layer for cross-border value transfer",
+      "Post-halving M2 expansion drives demand for fast, borderless settlement infrastructure",
     ],
     exitSignal:
-      "mNAV premium reaches historical extremes (2.0–3.0x). Bitcoin's parabolic advance stalls — magnified downside via 1.77 beta becomes existential portfolio risk.",
+      "XRP premium reaches institutional extremes. Bitcoin's parabolic advance stalls — sentiment shifts from expansion to consolidation, triggering rotation into ZEC.",
     entrySignal:
-      "Rotate capital from SOL into MSTR when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry front-runs the ~Apr 2028 halving by roughly one month, as institutional BTC leverage begins to multiply against rising spot price.",
+      "Rotate capital from TAO into XRP when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry front-runs post-halving institutional adoption as settlement infrastructure demand accelerates.",
     keyInsight:
-      "Rotating into MSTR at $120 is not 'buying the top' — it is purchasing the confirmed breakout of an asset entering its most violent acceleration phase.",
+      "XRP's institutional adoption pathway, coupled with SEC regulatory clarity and CBDC integration, positions it as the payments pillar of the supercycle infrastructure convergence.",
   },
   {
     id: 3,
@@ -521,30 +521,30 @@ const PHASES = [
     role: "Terminal Liquidity Overflow",
     color: "#F4B728",
     colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Early 2025",
-    exitDate: "Nov 2025",
-    entryPrice: "$20.00",
-    exitPrice: "$674.00",
-    multiple: "33.7x",
-    capitalIn: 6900660,
-    capitalOut: 232552242,
+    entryDate: "Jan 2029",
+    exitDate: "Nov 2029",
+    entryPrice: "$80",
+    exitPrice: "$2400",
+    multiple: "30x",
+    capitalIn: 5400000,
+    capitalOut: 162000000,
     halvingDistance: "+19 Months",
     monthsFromHalving: 19,
     entryMonths: "+9 to +12",
     description:
-      "The terminal phase — irrational, narrative-driven, and devoid of long-term fundamental support. Legacy privacy assets capture the final overflow of exhausted market liquidity.",
+      "The terminal phase — irrational, narrative-driven, and amplified by CBDC rollout anxiety. Privacy-centric assets capture the final overflow of exhausted market liquidity as demand for non-custodial wealth preservation peaks.",
     mechanics: [
-      "zk-SNARKs enable fully shielded, mathematically provable privacy",
-      "Nov 2024 halving cut block reward to 1.5625 ZEC, curbing inflation",
-      "Thin order books from exchange delistings amplify price movements",
-      "DOJ seizure of 127,271 BTC validated on-chain privacy necessity",
+      "zk-SNARKs enable fully shielded, mathematically provable privacy transactions",
+      "CBDC rollout narratives intensify demand for non-custodial, untrackable alternatives",
+      "Regulatory pressure on unshielded chains validates privacy necessity thesis",
+      "Thin order books on approved exchanges amplify price movements during euphoria",
     ],
     exitSignal:
       'ZEC blow-off top historically signals immediate onset of multi-year bear market — the "doomsday vehicle" pattern. No further rotations permitted.',
     entrySignal:
-      "Rotate from MSTR into ZEC when mNAV premium exceeds 2.5x or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative assets.",
+      "Rotate from XRP into ZEC when institutional premium exhaustion triggers or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative privacy-enhancing assets.",
     keyInsight:
-      "Explosive vertical rallies in legacy privacy coins are almost always the final act of a macro bull market. Jan 2018, May 2021, Nov 2025 — the pattern repeats.",
+      "Explosive vertical rallies in legacy privacy coins coincide with CBDC anxiety peaks — Jan 2018, May 2021, and projected Nov 2029 follow the pattern of irrational fear-driven terminal phases.",
   },
 ];
 
@@ -557,9 +557,9 @@ const HALVINGS = [
 ];
 
 const PREDICTIONS_2028 = [
-  { phase: 1, asset: "SOL", action: "Entry", timing: "Sep 2026 – Aug 2027", note: "Bear market trough accumulation" },
-  { phase: 1, asset: "SOL", action: "Exit → MSTR Entry", timing: "Mar 2028", note: "Front-run halving, rotate to institutional proxy" },
-  { phase: 2, asset: "MSTR", action: "Exit → ZEC Entry", timing: "Nov 2028", note: "Month +7, institutional premium exhaustion" },
+  { phase: 1, asset: "TAO", action: "Entry", timing: "Sep 2026 – Aug 2027", note: "Bear market trough accumulation" },
+  { phase: 1, asset: "TAO", action: "Exit → XRP Entry", timing: "Mar 2028", note: "Front-run halving, rotate to institutional settlement proxy" },
+  { phase: 2, asset: "XRP", action: "Exit → ZEC Entry", timing: "Nov 2028", note: "Month +7, institutional premium exhaustion" },
   { phase: 3, asset: "ZEC", action: "Exit to Fiat", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — exit crypto entirely' },
 ];
 
@@ -568,24 +568,24 @@ const PREDICTIONS_2028 = [
 const SIGNAL_GRID = [
   {
     phase: 1,
-    asset: "SOL",
-    color: "#00FFA3",
+    asset: "TAO",
+    color: "#9D4EDD",
     entryWindow: "Sep 2026 – Aug 2027",
-    historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Entry window: Sep 2026 – Aug 2027.",
+    historicalPrecedent: "AI compute infrastructure thesis: TAO front-runs the April 2028 halving, peaking one month prior (Mar 2028) as AGI narratives reach crescendo. Entry window: Sep 2026 – Aug 2027.",
     signals: [
-      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "ARMED" },
-      { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
-      { id: "S1-3", threshold: "Pre-halving narrative peak", action: "EXIT REMAINING SOL", status: "ARMED" },
+      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM XRP ENTRY", status: "ARMED" },
+      { id: "S1-2", threshold: "TAO RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
+      { id: "S1-3", threshold: "Pre-halving AI narrative peak", action: "EXIT REMAINING TAO", status: "ARMED" },
     ],
   },
   {
     phase: 2,
-    asset: "MSTR",
-    color: "#FF6B35",
-    entryWindow: "Mar 2028",
-    historicalPrecedent: "In 2021 MSTR's mNAV exceeded 3x concurrent with BTC's November ATH — position held too long lost 77% in 90 days.",
+    asset: "XRP",
+    color: "#23F0C6",
+    entryWindow: "Jun 2028",
+    historicalPrecedent: "Institutional settlement infrastructure: XRP captures post-halving institutional demand as SEC clarity and ODL expansion accelerate. Entry window: Jun 2028 – Nov 2028.",
     signals: [
-      { id: "S2-1", threshold: "mNAV premium > 2.5x", action: "BEGIN MSTR EXIT", status: "ARMED" },
+      { id: "S2-1", threshold: "XRP premium > 2.5x entry", action: "BEGIN XRP EXIT", status: "ARMED" },
       { id: "S2-2", threshold: "BTC 30-day momentum stalls", action: "ACCELERATE EXIT", status: "ARMED" },
       { id: "S2-3", threshold: "ZEC/BTC ratio breaks up", action: "CONFIRM ZEC ENTRY", status: "ARMED" },
     ],
@@ -605,10 +605,10 @@ const SIGNAL_GRID = [
 ];
 
 const KEY_THRESHOLDS = [
-  { signal: "BTC Dominance Break", asset: "SOL → MSTR", threshold: "BTC.D < 57.5%", action: "Rotate to MSTR", window: "Month −2 to +3" },
-  { signal: "Pre-Halving Saturation", asset: "SOL", threshold: "RSI > 78 weekly + retail euphoria", action: "Exit SOL entirely", window: "Month −1 to 0" },
-  { signal: "mNAV Premium Extreme", asset: "MSTR", threshold: "mNAV > 2.5–3.0x", action: "Begin MSTR exit", window: "Month +6 to +9" },
-  { signal: "BTC Momentum Stall", asset: "MSTR", threshold: "30-day price momentum < 0", action: "Accelerate MSTR exit", window: "Month +7 to +10" },
+  { signal: "BTC Dominance Break", asset: "TAO → XRP", threshold: "BTC.D < 57.5%", action: "Rotate to XRP", window: "Month −2 to +3" },
+  { signal: "Pre-Halving Saturation", asset: "TAO", threshold: "RSI > 78 weekly + AI narrative peak", action: "Exit TAO entirely", window: "Month −1 to 0" },
+  { signal: "XRP Premium Extreme", asset: "XRP", threshold: "Premium > 2.5–3.0x entry", action: "Begin XRP exit", window: "Month +6 to +9" },
+  { signal: "BTC Momentum Stall", asset: "XRP", threshold: "30-day price momentum < 0", action: "Accelerate XRP exit", window: "Month +7 to +10" },
   { signal: "ZEC Blow-Off Top", asset: "ZEC → Fiat", threshold: "7-day gain > 150%", action: "Exit 50% immediately", window: "Month +17 to +19" },
   { signal: "Terminal Media Spike", asset: "ZEC", threshold: "Mainstream coverage + euphoria", action: "Exit remaining ZEC", window: "Month +19 to +21" },
 ];
@@ -616,11 +616,11 @@ const KEY_THRESHOLDS = [
 const PSY_RISKS = [
   {
     title: "FOMO Risk",
-    description: "Watching ZEC reach 50x while still holding SOL induces premature rotation. The signal grid exists precisely to counter this. Each phase has an irreversible exit trigger — honor it regardless of apparent upside remaining.",
+    description: "Watching ZEC reach 50x while still holding TAO induces premature rotation. The signal grid exists precisely to counter this. Each phase has an irreversible exit trigger — honor it regardless of apparent upside remaining.",
   },
   {
     title: "Premature Rotation Risk",
-    description: "Rotating from SOL to MSTR before BTC.D crosses 57.5% means abandoning a live expansion for an unconfirmed one. Confirmation criteria are not suggestions — they are the mechanism separating disciplined execution from speculative guessing.",
+    description: "Rotating from TAO to XRP before BTC.D crosses 57.5% means abandoning a live expansion for an unconfirmed one. Confirmation criteria are not suggestions — they are the mechanism separating disciplined execution from speculative guessing.",
   },
 ];
 
@@ -630,7 +630,8 @@ const CYCLE_DATA = [
   { year: "2012", halvingPrice: "$12", peakPrice: "$1,160", multiple: "96x", multipleNum: 96, monthsToPeak: 12, leadAltcoin: "LTC", altcoinMultiple: "54x", m2Event: "Post-QE3 liquidity expansion" },
   { year: "2016", halvingPrice: "$650", peakPrice: "$19,800", multiple: "30x", multipleNum: 30, monthsToPeak: 17, leadAltcoin: "ETH", altcoinMultiple: "84x", m2Event: "Global M2 +5.4% YoY" },
   { year: "2020", halvingPrice: "$8,600", peakPrice: "$67,500", multiple: "7.85x", multipleNum: 7.85, monthsToPeak: 18, leadAltcoin: "SOL", altcoinMultiple: "140x", m2Event: "COVID fiscal stimulus, M2 +26%" },
-  { year: "2024", halvingPrice: "$63,800", peakPrice: "~$120,000", multiple: "~5x", multipleNum: 5, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~33x", m2Event: "Post-rate-cut M2 expansion" },
+  { year: "2024 (LC)", halvingPrice: "$63,800", peakPrice: "~$120,000", multiple: "~5x", multipleNum: 5, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~33x", m2Event: "Post-rate-cut M2 expansion" },
+  { year: "2028 (SC)", halvingPrice: "$~250K", peakPrice: "~$500K–700K", multiple: "~2–2.8x", multipleNum: 2.4, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~30x (TAO 9x → XRP 6x → ZEC 30x = 1,620x total rotation)", m2Event: "CBDC anxiety + AI compute + institutional settlement" },
 ];
 
 const ALTCOIN_WINDOWS = [
@@ -638,6 +639,9 @@ const ALTCOIN_WINDOWS = [
   { year: "2016", start: 10, end: 17, label: "ETH +84x",       color: "#FF6B35" },
   { year: "2020", start: 12, end: 18, label: "SOL +140x",      color: "#F4B728" },
   { year: "2024", start: 17, end: 19, label: "ZEC ~33x (proj.)", color: "#6450FF" },
+  { year: "2028-TAO", start: -16, end: -1, label: "TAO +9x",     color: "#9D4EDD" },
+  { year: "2028-XRP", start: 2,  end: 7,  label: "XRP +6x",     color: "#23F0C6" },
+  { year: "2028-ZEC", start: 9,  end: 19, label: "ZEC +30x",    color: "#F4B728" },
 ];
 
 // ── EXECUTION data ────────────────────────────────────────────────────────────
@@ -1420,7 +1424,7 @@ function BtcDominanceNote() {
 // ── SIGNALS component ─────────────────────────────────────────────────────────
 
 function SignalsTab() {
-  const { btcDominance, solRsiWeekly, loading, error, lastUpdated } = useMarketData();
+  const { btcDominance, taoRsiWeekly, loading, error, lastUpdated } = useMarketData();
 
   const statusColor = (s) =>
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
@@ -1490,13 +1494,13 @@ function SignalsTab() {
             color: "#00FFA3",
           },
           {
-            label: "SOL RSI (WEEKLY)",
-            value: loading && solRsiWeekly == null ? "…" : solRsiWeekly != null ? String(solRsiWeekly) : "—",
+            label: "TAO RSI (WEEKLY)",
+            value: loading && taoRsiWeekly == null ? "…" : taoRsiWeekly != null ? String(taoRsiWeekly) : "—",
             desc: "Entry window below 40 — accumulation phase",
-            color: "#FF6B35",
+            color: "#9D4EDD",
           },
           {
-            label: "MSTR mNAV",
+            label: "XRP Premium",
             value: "—",
             desc: "Live data unavailable — verify manually",
             color: "#F4B728",
@@ -3326,7 +3330,7 @@ function ConversionTab() {
 export default function LiquidityCascade() {
   const [activePhase, setActivePhase] = useState(0);
   const [activeNav, setActiveNav] = useState("overview");
-  const { solPrice, zecPrice } = useMarketData();
+  const { taoPrice, xrpPrice, zecPrice } = useMarketData();
 
   return (
     <>
@@ -3336,7 +3340,7 @@ export default function LiquidityCascade() {
     <div style={{ minHeight: "100vh", background: "transparent", color: "#fff", fontFamily: "'DM Sans', sans-serif", position: "relative", zIndex: 2 }}>
       <div style={{ padding: "32px 28px 0", maxWidth: 960, margin: "0 auto" }}>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: 2, marginBottom: 8 }}>
-          CAPITAL ROTATION MATRIX — 2024 HALVING CYCLE
+          SUPERCYCLE CAPITAL ROTATION — 2028 HALVING
         </div>
         <h1
           style={{
@@ -3345,12 +3349,12 @@ export default function LiquidityCascade() {
             fontWeight: 700,
             margin: "0 0 6px",
             lineHeight: 1.15,
-            background: "linear-gradient(135deg, #00FFA3, #FF6B35, #F4B728)",
+            background: "linear-gradient(135deg, #9D4EDD, #23F0C6, #F4B728)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
-          The Liquidity Cascade
+          Supercycle
         </h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", margin: "0 0 24px", maxWidth: 620, lineHeight: 1.55 }}>
           A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
@@ -3397,7 +3401,8 @@ export default function LiquidityCascade() {
                   isActive={activePhase === i}
                   onClick={() => setActivePhase(i)}
                   currentPrice={
-                    p.asset === "SOL" ? solPrice :
+                    p.asset === "TAO" ? taoPrice :
+                    p.asset === "XRP" ? xrpPrice :
                     p.asset === "ZEC" ? zecPrice :
                     undefined
                   }
