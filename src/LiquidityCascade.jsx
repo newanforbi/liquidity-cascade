@@ -2565,9 +2565,9 @@ function BlackpaperDatum({ label, value, color }) {
 }
 
 function Blackpaper() {
-  const g = "#00FFA3";
-  const o = "#FF6B35";
-  const y = "#F4B728";
+  const p = "#9D4EDD"; // TAO purple
+  const t = "#23F0C6"; // XRP teal
+  const y = "#F4B728"; // ZEC gold
 
   return (
     <div style={{ maxWidth: 680, margin: "0 auto", padding: "10px 0 40px" }}>
@@ -2583,290 +2583,278 @@ function Blackpaper() {
           maxWidth: 480,
           lineHeight: 1.6,
         }}>
-          A Chronological Matrix for Capital Rotation Across Bittensor (TAO), Ripple (XRP), and Zcash
+          How $100,000 became $660,800,000 in nineteen months — a chronicle of three infrastructure layers, one halving, and the discipline to see it through.
         </p>
         <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)", margin: "24px auto 0" }} />
       </div>
 
       <BlackpaperSection label="I" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Architecture of a Rotation</BlackpaperHeading>
+        <BlackpaperHeading>Three Layers</BlackpaperHeading>
         <BlackpaperPara>
-          There is a persistent myth that the cryptocurrency market moves as one — that when Bitcoin rises, everything rises with it,
-          and when Bitcoin falls, everything falls together. It's a comforting story. It is also wrong.
+          Every technology revolution organizes itself in layers. The internet had infrastructure (fiber, routers), then platforms (AWS, Google),
+          then applications (everything you actually use). The financial revolution built on blockchain is no different.
+          There is a compute layer. A settlement layer. And a privacy layer.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The truth is more interesting and more useful. Liquidity does not flood the market like a tide lifting all boats.
-          It <em style={{ color: "rgba(255,255,255,0.8)" }}>cascades</em> — moving through the ecosystem in a specific, repeatable sequence,
-          governed by shifting psychology, structural supply dynamics, and macroeconomic triggers that can be mapped with startling precision
-          against one fixed point in time: the Bitcoin halving.
+          What makes cryptocurrency unique — and uniquely dangerous — is that each layer does not merely appreciate during bull markets.
+          It <em style={{ color: "rgba(255,255,255,0.8)" }}>explodes</em>. And the explosions do not happen simultaneously.
+          They happen in sequence, separated by months, each one triggered by its own distinct catalyst, each one attracting a different
+          type of capital. If you understand the sequence, you can ride all three.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          This paper maps that cascade across three distinct archetypes. First, a high-throughput retail layer that ignites
-          <em style={{ color: g }}> before</em> the halving. Then, a leveraged institutional proxy that detonates in its
-          <em style={{ color: o }}> immediate aftermath</em>. And finally, a dormant privacy ledger that absorbs the
-          <em style={{ color: y }}> terminal overflow</em> of exhausted market liquidity — right before the lights go out.
+          This document is not a prediction. It is a chronicle. Between October 2023 and May 2026, three assets occupied the compute,
+          settlement, and privacy layers of a cryptocurrency supercycle — and executed exactly as their structural positions predicted.
+          Bittensor (TAO) led. Ripple (XRP) followed. Zcash (ZEC) closed.
         </BlackpaperPara>
-        <BlackpaperQuote color={g}>
-          The rotation does not follow Bitcoin. Certain assets structurally front-run the halving, others serve as delayed proxies,
-          and a final cohort acts as the liquidity sink at the end of the world.
+        <BlackpaperQuote color={p}>
+          The question is never "which asset?" The question is "which layer is next, and is it compressed enough to explode?"
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          Conventional wisdom prescribes a linear procession: Bitcoin leads, large-cap altcoins follow, micro-caps clean up.
-          Empirical data from the 2022–2026 market sequence reveals something far more choreographed. The flow has a shape. It has a tempo.
-          And if you know where to stand, you can ride each wave as it breaks — stepping off one crest and onto the next before
-          the first has finished curling.
+          The entry into each layer was not a guess. It was a read: on supply dynamics, on regulatory timelines, on narrative maturity.
+          The exit from each layer was equally deliberate: a recognition that the expansion had run its course and that the next layer
+          was ready to ignite. Capital does not rest between rotations. It moves. Immediately. Without sentiment.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="II" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Fuel and the Spark</BlackpaperHeading>
-        <BlackpaperHeading sub>Global M2: The Invisible Engine</BlackpaperHeading>
+        <BlackpaperHeading>The Clock</BlackpaperHeading>
         <BlackpaperPara>
-          No cryptocurrency bull market has ever materialized in a vacuum. Every parabolic expansion in the history of digital assets
-          has been preceded by the same invisible precondition: the expansion of the global money supply. When central banks print,
-          crypto absorbs. The correlation between global M2 and cryptocurrency price appreciation exceeds{" "}
-          <BlackpaperDatum value="84%" color={g} /> — a figure so high it borders on deterministic.
+          On April 19, 2024, at block height 840,000, the Bitcoin network executed something it had done three times before
+          and will do again in 2028: it cut its per-block mining reward in half. Six point two five BTC became three point one two five.
+          The fourth halving. The most anticipated supply shock in the history of financial markets.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          But the relationship is not instantaneous. There is an incubation period — a gap of roughly{" "}
-          <BlackpaperDatum value="56 to 60 days" color={o} /> between when the liquidity enters the system and when
-          it manifests as upward price action. During the 2020 pandemic response, a staggering 21% expansion in global M2
-          detonated one of the most explosive bull runs in the asset class's short history. By October 2025, the pattern had
-          repeated: global M2 breached{" "}
-          <BlackpaperDatum value="$137 trillion" color={y} />, expanding 6.2% year-to-date, driven by coordinated
-          rate cuts and the quiet, relentless engine of sovereign debt monetization.
+          The halving matters not because of what it does to miners. It matters because of what it does to psychology.
+          In the months before a halving, retail capital floods into the ecosystem, front-running the narrative.
+          In the months after, institutional capital — slower, more methodical, waiting for confirmation — begins to deploy.
+          And in the late cycle, exhausted by Bitcoin's parabolic run, speculative capital hunts for the final trade:
+          the illiquid, forgotten asset that nobody is watching.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Recognizing the trajectory of M2 is not optional. It is the prerequisite. Without expanding liquidity, the rotational gears seize.
-          Every entry, every exit, every phase described in this paper is downstream of a single question:
-          are central banks expanding or contracting?
+          The Supercycle used April 19, 2024 as its temporal anchor — not its starting point.
+          The first phase was already over before the halving arrived. The clock had been running for six months.
         </BlackpaperPara>
-
-        <BlackpaperHeading sub>The Halving: Month Zero</BlackpaperHeading>
-        <BlackpaperPara>
-          If M2 is the fuel, the Bitcoin halving is the spark. Every four years, the Bitcoin protocol executes a deterministic,
-          unalterable reduction in its supply issuance — cutting the per-block mining reward by exactly 50%. When this programmatic supply shock
-          collides with the persistent demand generated by an expanding money supply, the resulting imbalance forces price discovery upward
-          with a violence that traditional markets rarely witness.
-        </BlackpaperPara>
+        <BlackpaperQuote color="rgba(255,255,255,0.4)">
+          The halving does not start the cycle. It divides it. Everything before is anticipation. Everything after is confirmation.
+        </BlackpaperQuote>
         <BlackpaperPara indent>
-          The cadence is metronomic. November 2012. July 2016. May 2020. April 2024. And the next:
-          sometime in the spring of 2028. Each halving has served as the temporal anchor for the cycle that followed — the fulcrum
-          around which every major expansion phase can be measured in months. For the purposes of this matrix, the{" "}
-          <BlackpaperDatum label="HALVING" value="April 19, 2024" color="rgba(255,255,255,0.6)" /> is designated as{" "}
-          <span style={{ color: "#fff", fontWeight: 600 }}>Month 0</span>. Every entry and exit in the rotation
-          is calculated as a temporal distance from this single point.
-        </BlackpaperPara>
-
-        <BlackpaperHeading sub>Bitcoin Dominance: The Silent Signal</BlackpaperHeading>
-        <BlackpaperPara>
-          There is one more instrument a rotational trader must learn to read before touching a single position: Bitcoin Dominance.
-          BTC.D — the ratio of Bitcoin's market capitalization to the total crypto market — traces the psychological arc of every cycle.
-          When fear reigns, dominance rises: capital retreats to the benchmark. When euphoria takes over and Bitcoin establishes new highs,
-          dominance hits a ceiling and fractures. Capital spills outward in search of higher-percentage returns.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          The threshold is surgical. When BTC.D breaks below the{" "}
-          <BlackpaperDatum value="57%–58.8%" color={o} /> zone after a sustained climb, the altcoin expansion has been
-          formally triggered. In 2021, this breakdown arrived roughly 35 days after Bitcoin's initial momentum peak. Watching this single
-          metric prevents the most expensive mistake in rotation trading: moving too early.
+          Understanding this distinction is the difference between 15x returns and watching from the sidelines.
+          By the time Bitcoin's supply shock makes the front page of the Wall Street Journal, the vanguard phase is already complete.
+          The newspaper is not an entry signal. It is an exit signal.
         </BlackpaperPara>
       </BlackpaperSection>
 
-      <BlackpaperSection label="PHASE 1" color={g}>
-        <BlackpaperHeading>The AI Compute Vanguard</BlackpaperHeading>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: g, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
+      <BlackpaperSection label="PHASE 1" color={p}>
+        <BlackpaperHeading>AI Discovers Money</BlackpaperHeading>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: p, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
           Bittensor (TAO)
         </div>
         <BlackpaperPara>
-          Here is the first heresy of this framework: Bittensor does not wait for Bitcoin. It moves first.
+          October 2023. The crypto market is quiet in the way only a market that has recently suffered catastrophically can be quiet.
+          FTX collapsed eleven months prior. Three Arrows Capital: gone. Luna: ash. Celsius: in bankruptcy.
+          Bitcoin is grinding sideways between $26,000 and $35,000, slowly healing, not yet exciting.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Traditional cycle theory insists that all altcoins lag the benchmark — that they sit patiently until Bitcoin has completed
-          its post-halving ascent and only then begin their secondary expansion. The data from 2023–2024 annihilates this assumption.
-          Bittensor's primary parabolic move completed{" "}
-          <em style={{ color: g }}>one month before the halving even occurred</em>.
+          Into this depleted landscape: Bittensor, trading at{" "}
+          <BlackpaperDatum value="$46.44" color={p} /> on a handful of small exchanges. Most people have never heard of it.
+          It is a protocol that rewards validators for producing machine learning model outputs — a decentralized marketplace
+          where nodes compete to train and serve AI inference, earning TAO tokens in proportion to the quality of their outputs.
+          The token economics are ruthless: outperform your peers or earn nothing. The network self-selects for capability.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Why? Because TAO's price engine runs on fundamentally different fuel than Bitcoin's. Its decentralized AI compute infrastructure
-          and validator incentive model make it the venue for retail-driven AI narrative speculation. As AGI fears mount and GitHub Copilot
-          dominance spreads, retail traders operating with smaller capital bases don't wait for the halving. They{" "}
-          <em style={{ color: "rgba(255,255,255,0.8)" }}>anticipate</em> the post-halving expansion and deploy capital months early,
-          effectively front-running the macro narrative. By the time Bitcoin's supply shock arrives, TAO's move is already over.
+          Nobody cares. Until the AI narrative ignites everything around it.
         </BlackpaperPara>
-        <BlackpaperQuote color={g}>
-          From the depths of a crypto bear market — from the rubble of the 2022 collapse —
-          Bittensor executed one of the most ferocious AI infrastructure rallies in crypto history.
+        <BlackpaperQuote color={p}>
+          ChatGPT crosses 100 million users. The GPU shortage becomes national news. Congress holds hearings on artificial intelligence.
+          Microsoft announces Copilot at $30 per month for every Office 365 user on the planet.
+          And retail crypto traders, hunting for "the Bitcoin of AI," discover Bittensor.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The entry was October 19, 2023. The price:{" "}
-          <BlackpaperDatum value="$46.44" color={g} />. Over the next five months, TAO steadily climbed as AI excitement crescendoed.
-          The terminal momentum peak arrived on March 8, 2024 — one month before the halving — at{" "}
-          <BlackpaperDatum value="$699.94" color={g} />. A{" "}
-          <span style={{ color: g, fontWeight: 700 }}>15x</span> multiple.
+          The TAO move is not slow. October to March: five months of violent price discovery as the AI narrative crescendoes
+          and retail capital pours into the only decentralized AI infrastructure protocol with real validator economics.
+          The terminal peak arrives on March 8, 2024 — exactly one month before the halving — at{" "}
+          <BlackpaperDatum value="$699.94" color={p} />.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The{" "}
-          <em style={{ color: "rgba(255,255,255,0.8)" }}>velocity</em> and <em style={{ color: "rgba(255,255,255,0.8)" }}>efficiency</em>{" "}
-          of the $46.44 → $699.94 move is what matters. Capital efficiency, not nominal highs, is the metric that compounds.
-          An initial $100,000 deployed into TAO at the cycle bottom exits as{" "}
-          <BlackpaperDatum value="$1,500,000" color={g} />. The AI compute vanguard phase is complete.
-          The signal to exit: maximum AI narrative saturation, retail euphoria reaching fever pitch, BTC Dominance falling below 57.5%.
+          This timing is not accidental. Retail traders operate on anticipation. They don't wait for the halving to confirm —
+          they front-run it. By the time the block reward actually halves, the vanguard move is complete.
+          The smart capital is already out. The newspapers are writing about TAO when the exit is already done.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          $100,000 deployed on October 19, 2023. Liquidated on March 8, 2024. Portfolio:{" "}
+          <BlackpaperDatum value="$1,500,000" color={p} />. A{" "}
+          <span style={{ color: p, fontWeight: 700 }}>15x</span> return in 140 days.
+          The compute layer has spoken. The capital rotates.
         </BlackpaperPara>
       </BlackpaperSection>
 
-      <BlackpaperSection label="INTERLUDE" color="rgba(255,255,255,0.25)">
-        <BlackpaperHeading sub>The Mid-Cycle Rotation</BlackpaperHeading>
+      <BlackpaperSection label="INTERLUDE" color="rgba(255,255,255,0.2)">
+        <BlackpaperHeading sub>The Waiting Room</BlackpaperHeading>
         <BlackpaperPara>
-          It is mid-2024. The TAO position has been liquidated at $699.94, and the portfolio sits at $1.5 million.
-          The next target — Ripple — is already at $0.50, having recovered from its 2022 collapse during the SEC lawsuit.
-          By October 2024, XRP begins its institutional ascent as SEC regulatory clarity emerges.
+          March 8, 2024. The TAO position is liquidated. The portfolio sits at $1.5 million in cash.
+          The Bitcoin halving is six weeks away. The market is noisy with anticipation.
+          And the next position — XRP — is not ready.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          This is the moment the strategy either survives or dies. The objective of macro capital rotation is not
-          to catch the absolute bottom of every single asset simultaneously. That would require a time machine.
-          The true edge lies in <span style={{ color: o, fontWeight: 600 }}>chaining expansion phases</span>.
-          XRP spent 2.5 years in the doldrums as regulatory uncertainty persisted. During that time,
-          capital was in TAO, earning 15x. Rotating into XRP at $0.5241 is not buying the bottom — it is boarding
-          a rocket that has just cleared the regulatory overhang.
+          This is the moment that separates practitioners from tourists. The tourist sees $1.5 million sitting idle
+          and feels compelled to deploy it. Into Bitcoin. Into Ethereum. Into whatever is trending.
+          The practitioner understands that idle capital between phases is not a problem to solve — it is a feature.
+          It means you are between waves, dry, patient, waiting for the next compression to reveal itself.
         </BlackpaperPara>
-        <BlackpaperQuote color="rgba(255,255,255,0.35)">
-          Rotate based on which asset is entering expansion next. Ignore the nominal distance from its cycle low.
-          The only distance that matters is the one between here and where it's going.
+        <BlackpaperPara indent>
+          XRP in the spring of 2024 is not yet ready. The SEC lawsuit — filed December 2020 — has dragged into its fourth year.
+          Institutional capital cannot touch an asset under active securities litigation. The regulatory overhang is total.
+          But the overhang is also finite. Court calendars have a logic of their own. And by mid-2024, the logic is resolving.
+        </BlackpaperPara>
+        <BlackpaperQuote color="rgba(255,255,255,0.3)">
+          The edge in rotation trading is not cleverness. It is patience.
+          Most traders cannot hold cash for six months. That inability is your alpha.
         </BlackpaperQuote>
       </BlackpaperSection>
 
-      <BlackpaperSection label="PHASE 2" color={o}>
-        <BlackpaperHeading>The Leveraged Institutional Proxy</BlackpaperHeading>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: o, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
+      <BlackpaperSection label="PHASE 2" color={t}>
+        <BlackpaperHeading>The Institution Arrives</BlackpaperHeading>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: t, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
           Ripple (XRP)
         </div>
         <BlackpaperPara>
-          Ripple is not a traditional cryptocurrency. It is an institutional settlement infrastructure play disguised as a digital asset.
-          The company's On-Demand Liquidity (ODL) network connects major emerging markets — Mexico, Brazil, Philippines, Indonesia —
-          enabling real-time cross-border value transfer at a fraction of traditional banking costs. What XRP actually is:
-          the settlement rail for the next generation of institutional payments.
+          Ripple is not a cryptocurrency company in the way most crypto companies are cryptocurrency companies.
+          It is, at its core, a payments infrastructure business that issued a token. The Ripple network —
+          specifically its On-Demand Liquidity corridors — had been quietly processing billions in cross-border remittances
+          for years: Mexico to the Philippines, the UK to South Africa, the UAE to India.
+          Banks were using it. Settlement desks were using it. The rails existed and were functioning.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The historical overhang was regulatory. From 2020 to 2023, the SEC lawsuit created paralyzing uncertainty.
-          But by October 2024, that uncertainty evaporated. The SEC reclassified XRP, regulatory green-lights emerged,
-          and institutional capital began treating it as a legitimate infrastructure play rather than a speculative asset.
-          Ripple began executing major ODL corridor expansions into Asia-Pacific and Latin America.
+          The problem was not the product. The problem was the lawsuit. In December 2020, the SEC filed a complaint
+          alleging that XRP was an unregistered security. Every major US exchange delisted it within weeks.
+          Institutional capital, which had been quietly accumulating, evaporated. XRP spent four years in regulatory purgatory,
+          trading on rumor, surviving on the conviction of its holder base, waiting for a court to say what it was.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          This is why XRP detonates post-halving. When Bitcoin breaks all-time highs and macroeconomic liquidity expands,
-          institutional capital scrambles for settlement infrastructure. Post-halving, central banks begin cutting rates,
-          M2 expands, and borderless settlement demand explodes. XRP is the premier vehicle for this demand.
-          The result is not a gentle repricing. It is vertical.
+          On August 7, 2024, the SEC filed a notice of intent to settle. The market read between the lines immediately.
+          The war was ending. And when the war ends, four years of suppressed institutional demand — pension allocators,
+          sovereign wealth funds, settlement desks that had watched from the sidelines — begins to price in simultaneously.
         </BlackpaperPara>
-        <BlackpaperQuote color={o}>
-          Regulatory clarity + CBDC integration talk + institutional ODL adoption = institutional supercycle
-          in settlement infrastructure assets.
+        <BlackpaperQuote color={t}>
+          Regulatory clarity is not a tailwind. It is a dam breaking. Four years of institutional demand
+          compressed into a single unlocking event — and every dollar arrives at once.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          Following the August 2024 SEC clarity, XRP began its institutional ascent. By October 2024, the entry point arrived at{" "}
-          <BlackpaperDatum value="$0.5241" color={o} />. Over the next three months, as institutional adoption accelerated,
-          XRP rallied vertically to{" "}
-          <BlackpaperDatum value="$3.14" color={o} /> on January 8, 2025.
+          October 2, 2024: XRP at{" "}
+          <BlackpaperDatum value="$0.5241" color={t} />. The $1.5 million enters.
+          Over the next 98 days, as regulatory clarity crystallized and institutional adoption accelerated
+          across Ripple's Asia-Pacific and Latin American corridors, XRP repriced.
+          January 8, 2025: <BlackpaperDatum value="$3.14" color={t} />.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The rolled $1.5 million enters at $0.5241. It exits at $3.14. A{" "}
-          <span style={{ color: o, fontWeight: 700 }}>6x</span> multiple. The portfolio now stands at{" "}
-          <BlackpaperDatum value="$9,000,000" color={o} />. The exit signal: institutional premium exhaustion,
-          BTC momentum stalling, and the shift from expansion to consolidation. The institutional settlement wave has crested.
-          What comes next is the terminal phase.
+          Six times the entry. Three months. The settlement layer's moment has arrived and passed.
+          The portfolio now stands at <BlackpaperDatum value="$9,000,000" color={t} />.
+          The signal to exit is institutional premium exhaustion — XRP has repriced to fair value
+          and the marginal buyer is now retail, not institutional. That is the top.
+          The capital rotates again. This time into the final layer.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 3" color={y}>
-        <BlackpaperHeading>The Terminal Blow-Off</BlackpaperHeading>
+        <BlackpaperHeading>The Privacy Detonation</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Zcash (ZEC) — Wave 1
+          Zcash (ZEC) — The Blow-Off
         </div>
         <BlackpaperPara>
-          The final phase of every cycle is a place of irrationality and narrative exhaustion. Primary layers are overvalued.
-          Institutional proxies are spent. What remains: a mass of late-stage capital — retail and algorithmic alike — frantically
-          searching for the last remaining pocket of outsized yield. This capital descends into forgotten corners of the market:
-          legacy assets that have underperformed for years, written off as dead, derisively nicknamed "dino coins."
+          By spring 2025, the world has changed in ways that make Zcash suddenly, urgently relevant.
+          The Federal Reserve's Project Cedar — the US digital dollar pilot — has entered its third phase.
+          The EU's digital euro has rolled out across Germany, Austria, and France. China's e-CNY is being considered
+          for BRICS cross-border trade settlement. Every major central bank on earth is building a surveillance currency.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Zcash is the archetype. Launched in October 2016, ZEC pioneered zk-SNARKs — zero-knowledge cryptography that enables
-          fully shielded transactions. Sender, receiver, amount: all mathematically verified, all hidden. It is the most
-          sophisticated privacy technology in cryptocurrency.
+          A CBDC is not a digital payment system. It is a financial identity system.
+          Every transaction recorded. Every merchant registered. Every wallet KYC'd.
+          The programmable money that governments are building can expire, can be restricted by category,
+          can be frozen without a court order, can be surveilled without a warrant.
+          The era of private, permissionless value transfer — the original premise of cryptocurrency — is being dismantled.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          And yet ZEC has been in perpetual decline. Founders' rewards dumped supply. Shielded transactions had computational overhead.
-          Regulatory delistings drained liquidity. By early 2025, ZEC was trading at{" "}
-          <BlackpaperDatum value="$31.17" color={y} /> — a compression point on the order of $20–40.
+          Into this moment: Zcash, at{" "}
+          <BlackpaperDatum value="$31.17" color={y} /> on April 9, 2025.
+          Launched in October 2016, Zcash implemented zk-SNARKs — zero-knowledge proofs that verify transactions
+          without revealing sender, receiver, or amount. Not private in the "we promise we won't look" sense.
+          Private in the "it is mathematically impossible to determine" sense. The only cryptocurrency
+          that offers genuine, cryptographically enforced financial anonymity at the base protocol layer.
         </BlackpaperPara>
         <BlackpaperQuote color={y}>
-          Dormant asset. Thin order books. All it needed was the privacy narrative — and governments obliging.
+          The founders' reward — four years of forced selling — has ended. The November 2024 ZEC halving
+          cut supply issuance by 50%. Order books, hollowed by years of regulatory delistings, are paper-thin.
+          The asset is maximally compressed. The narrative is maximally relevant. The match is struck.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The catalyst came in April 2025 as CBDC anxiety and government surveillance concerns intensified. Privacy narratives
-          reached crescendo. Capital from the XRP exit — <BlackpaperDatum value="$9 million" color={y} /> — rotated into ZEC
-          at the compression point of <BlackpaperDatum value="$31.17" color={y} />.
+          The $9 million enters at $31.17. What follows is not a rally — it is a detonation.
+          Seven months of sustained vertical price discovery as privacy becomes the defining political narrative of 2025.
+          Every CBDC announcement is ZEC rocket fuel. Every surveillance hearing in Congress amplifies the bid.
+          On November 12, 2025, ZEC reaches <BlackpaperDatum value="$674.00" color={y} />.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Because order books were paper-thin, the price action was not a rally. It was detonation. From $31.17 to{" "}
-          <BlackpaperDatum value="$674" color={y} /> in seven months. A <span style={{ color: y, fontWeight: 700 }}>21.6x</span> multiple.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          Portfolio: $9M rotated into the most illiquid corner at maximum suppression, and extracted at the vertical peak.
-          Final value: <BlackpaperDatum value="$194.4 million" color={y} />.
+          <span style={{ color: y, fontWeight: 700 }}>21.6x</span>. Seven months. $9 million becomes{" "}
+          <BlackpaperDatum value="$194,400,000" color={y} />. Take every dollar off the table.
+          The blow-off is complete. The privacy narrative has reached maximum mainstream saturation.
+          The next move for ZEC is not up. It is down — significantly, temporarily, and with mathematical precision.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 4" color={y}>
-        <BlackpaperHeading>The Swing Trade: Buy The Dip</BlackpaperHeading>
+        <BlackpaperHeading>The Discipline Trade</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Zcash (ZEC) — Wave 2
+          Zcash (ZEC) — The Swing Trade
         </div>
         <BlackpaperPara>
-          After the November 2025 blow-off top at $674, ZEC entered a standard retracement correction. This is not unusual.
-          After explosive 20x+ moves, 60–70% retracements are mathematically inevitable. But here is the edge that separates
-          winners from panic-sellers: the underlying narrative did not break. Privacy demand was not a temporary meme.
-          CBDC anxiety did not dissolve overnight. The compression was technical, not fundamental.
+          $674 to $197.82. November 2025 to March 2026. A 71% drawdown over three and a half months.
+          For the ninety-five percent of participants who experience this as spectators — watching from the sidelines
+          or holding through the decline — it is a catastrophe. A collapse. Evidence that the trade is over.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          By March 2026, ZEC had retraced 71% from the peak of $674 to <BlackpaperDatum value="$197.82" color={y} />.
-          A standard correction in the context of a parabolic move. But to the undisciplined trader watching from the sidelines,
-          it looked like a crash. Most refused to buy.
+          It is none of those things. It is a retracement. And it is an opportunity.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          The error that costs most people Phase 4 is the conflation of "price went down" with "thesis is broken."
+          The thesis was: CBDCs are real, privacy is politically urgent, ZEC supply is compressed, order books are thin.
+          On March 7, 2026, every one of these conditions remains true. The CBDCs are still deploying.
+          The privacy legislation is still failing. The order books are still thin.
+          What happened between November and March was profit-taking. Deleveraging. A market digesting a 21.6x move
+          in the only way it knows how: by correcting exactly as far as the technical structure demands.
         </BlackpaperPara>
         <BlackpaperQuote color={y}>
-          The practitioners who executed Phases 1–3 successfully had $194.4M. The question: would they deploy it?
+          The retracement does not invalidate the narrative. It resets the entry.
+          $197.82 is not ZEC failing. It is ZEC offering a second chance to those disciplined enough to take it.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          Yes. The re-entry signal at $197.82 was validated: previous narrative still intact, technical compression confirmed,
-          capital from Wave 1 profits available for deployment. The swing trade setup was textbook perfect.
+          March 7, 2026: <BlackpaperDatum value="$197.82" color={y} />. The full $194.4 million re-enters.
+          Every dollar from the Phase 3 exit goes back in at the retracement low. The swing trade is textbook:
+          narrative intact, supply compressed, technical structure setting up a second push, institutional holders
+          who exited at the top beginning to rebuild positions.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          From March to May 2026, ZEC re-pumped to <BlackpaperDatum value="$673.46" color={y} /> — near-identical to the Wave 1 peak.
-          A <span style={{ color: y, fontWeight: 700 }}>3.4x</span> move on the second wave. Final exit to fiat at this level.
+          May 19, 2026: ZEC reaches <BlackpaperDatum value="$673.46" color={y} /> — within a dollar of the Wave 1 peak.
+          The second pump nearly matches the first. The privacy narrative sustains. The order books amplify.
+          The exit is total and immediate: everything to fiat, no residual position, no "let it ride."
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Portfolio: <BlackpaperDatum value="$194.4M" color={y} /> rotated into retraced ZEC, extracted at second peak.
-          Final value: <BlackpaperDatum value="$660.8 million" color={y} />.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          <em style={{ color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>Supercycle complete.</em> Total: $100,000 → $660,800,000. 6,608x return.
-          October 2023 → May 2026. Nineteen months of disciplined capital rotation across three infrastructure layers.
-          No further rotations permitted. Capital exits to fiat.
+          <span style={{ color: y, fontWeight: 700 }}>3.4x</span> on the swing. $194.4 million becomes{" "}
+          <BlackpaperDatum value="$660,800,000" color={y} />.
+          The Supercycle is complete.
         </BlackpaperPara>
       </BlackpaperSection>
 
-      <BlackpaperSection label="VI" color="rgba(255,60,60,0.6)">
-        <BlackpaperHeading>The Doomsday Vehicle</BlackpaperHeading>
+      <BlackpaperSection label="V" color="rgba(255,60,60,0.6)">
+        <BlackpaperHeading>The Exit Is Not Optional</BlackpaperHeading>
         <BlackpaperPara>
-          Here is the part nobody wants to hear. The ZEC blow-off top is not a beginning. It is an ending.
-          Professional analysts have a name for explosive, vertical rallies in legacy privacy coins: the "doomsday vehicle."
-          The pattern is unyielding:
+          ZEC's vertical rallies have a history. Each one has ended the same way — not with a slow decline,
+          but with the kind of precipitous collapse that erases gains in days rather than months.
+          The pattern across three cycles is merciless:
         </BlackpaperPara>
         <div style={{ margin: "20px 0 20px 20px", display: "flex", flexDirection: "column", gap: 12 }}>
           {[
-            { date: "January 2018", detail: "ZEC surged 14x to $700+", after: "Preceded the 2018 crypto winter. Bitcoin collapsed 85%." },
-            { date: "May 2021", detail: "ZEC spiked 7x to $386", after: "Preceded a catastrophic market-wide liquidation cascade." },
-            { date: "November 2025", detail: "ZEC exploded 33.7x to $674", after: "The post-cycle contraction is now underway — consistent with the 2018 and 2021 precedents." },
+            { date: "January 2018", detail: "ZEC surged to $700+ on privacy narrative", after: "Collapsed 93% over the following year. The 2018 crypto winter began within weeks." },
+            { date: "May 2021", detail: "ZEC spiked to $386 as DeFi privacy demand peaked", after: "Fell 85% in six months as the broader market liquidated." },
+            { date: "November 2025", detail: "ZEC reached $674 on CBDC surveillance narrative", after: "Retraced 71% to $197.82 before the Phase 4 swing trade entry." },
           ].map((item, i) => (
             <div key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,60,60,0.5)", minWidth: 110, flexShrink: 0 }}>
@@ -2880,24 +2868,24 @@ function Blackpaper() {
           ))}
         </div>
         <BlackpaperPara indent>
-          The strategy ends at the ZEC exit. No further rotations into digital assets are permitted. The capital must be shielded
-          in traditional, risk-free instruments while the ecosystem undergoes its inevitable 70%–90% cyclical drawdown.
-          The practitioner who fails to exit here does not lose their gains from Phase 3. They lose everything —
-          all three phases of compounded yield, vaporized in a bear market that has never failed to arrive.
+          The Phase 4 exit on May 19, 2026 is not a suggestion. It is the terminus. The Supercycle framework permits
+          no further rotations into digital assets after the ZEC Wave 2 exit. The capital moves to fiat, to treasuries,
+          to risk-free instruments — and it stays there while the inevitable 70–90% cyclical drawdown runs its course.
+          The practitioner who holds past the exit point does not merely fail to compound their gains. They risk returning
+          all of them. The bear market does not negotiate with those who overstay.
         </BlackpaperPara>
       </BlackpaperSection>
 
-      <BlackpaperSection label="VII" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Rotational Matrix (REALIZED: Oct 2023 – May 2026)</BlackpaperHeading>
+      <BlackpaperSection label="VI" color="rgba(255,255,255,0.4)">
+        <BlackpaperHeading>The Rotational Matrix</BlackpaperHeading>
         <BlackpaperPara>
-          Synthesized into its purest form, the strategy spans a 19-month execution window. Every entry and exit is a temporal coordinate.
-          Every rotation is a deliberate migration of capital from an exhausting expansion phase into the next ignition.
-          <em style={{ color: "rgba(255,255,255,0.8)", marginLeft: 8 }}>The Supercycle proves this thesis with historical data.</em>
+          Reduced to its essential form: four entries, four exits, nineteen months, and a single rule
+          governing each transition — move when the expansion is ending, not after it ends.
         </BlackpaperPara>
         <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, overflow: "hidden", margin: "24px 0" }}>
           {[
-            { phase: "1", asset: "TAO", entry: "Oct 19, 2023", exit: "Mar 8, 2024", mult: "15x", capital: "$1.50M", color: g },
-            { phase: "2", asset: "XRP", entry: "Oct 2, 2024", exit: "Jan 8, 2025", mult: "6x", capital: "$9.00M", color: o },
+            { phase: "1", asset: "TAO", entry: "Oct 19, 2023", exit: "Mar 8, 2024", mult: "15x", capital: "$1.50M", color: p },
+            { phase: "2", asset: "XRP", entry: "Oct 2, 2024", exit: "Jan 8, 2025", mult: "6x", capital: "$9.00M", color: t },
             { phase: "3", asset: "ZEC W1", entry: "Apr 9, 2025", exit: "Nov 12, 2025", mult: "21.6x", capital: "$194.4M", color: y },
             { phase: "4", asset: "ZEC W2", entry: "Mar 7, 2026", exit: "May 19, 2026", mult: "3.4x", capital: "$660.8M", color: y },
           ].map((row, i) => (
@@ -2912,50 +2900,72 @@ function Blackpaper() {
           ))}
         </div>
         <BlackpaperPara indent>
-          19 months. 4 phases. $100,000 initial capital. $660.8 million final value. 6,608x return.
-          TAO captured the speculative vanguard with AI narratives. XRP captured institutional settlement infrastructure
-          with regulatory clarity. ZEC Wave 1 captured the terminal blow-off with privacy anxiety. ZEC Wave 2 captured
-          the retracement swing trade with discipline. The assets occupying each archetype may shift across cycles.
-          The temporal structure — and the profitability — will not.
+          The specific assets in this matrix — TAO, XRP, ZEC — are not the point. They were the right instruments
+          for this particular cycle because they occupied the right structural positions at the right moments.
+          The next cycle will have different assets in these roles. The archetypes will not change.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          Before every halving, ask: which asset is front-running it on retail narrative?
+          Post-halving, ask: which asset has institutional demand that regulatory or macro clarity will unlock?
+          Late cycle, ask: which asset sits at maximum supply compression with a narrative that has not yet reached mainstream consciousness?
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          Find those three. Execute the rotation. Do not deviate. The clock is already ticking toward 2028.
         </BlackpaperPara>
       </BlackpaperSection>
 
-      <BlackpaperSection label="VIII" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Psychology of Execution</BlackpaperHeading>
+      <BlackpaperSection label="VII" color="rgba(255,255,255,0.4)">
+        <BlackpaperHeading>The Psychology of $194 Million Going to $197</BlackpaperHeading>
         <BlackpaperPara>
-          The mathematics of this strategy are clean. The execution is anything but. The transition from Phase 2 to Phase 3
-          is where portfolios go to die — not from market risk, but from psychological failure. It demands liquidating nearly
-          $7 million of a celebrated, institutionally validated stock and deploying every dollar into a volatile, legally scrutinized
-          privacy coin that appears, at the moment of purchase, to be clinically dead.
+          The hardest moment in the Supercycle is not the TAO entry at $46. It is not the XRP entry at $0.5241.
+          It is not even the ZEC entry at $31.17. The hardest moment is March 7, 2026 — the day you take
+          $194.4 million and deploy it back into an asset that just lost 71% of its value.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          For those who cannot stomach the full rotation, the paper prescribes a 70/30 split: seventy percent forward into the
-          next phase, thirty percent into stable, yield-bearing fiat instruments. This compresses the terminal number significantly
-          but guarantees generational capital creation even if the final phase is interrupted by regulatory embargoes or a mistimed exit.
+          Every instinct rebels. The asset "crashed." The narrative "failed." Everyone who held through the decline
+          is exhausted and underwater relative to the peak. The financial media has moved on to the next story.
+          ZEC is no longer on anyone's radar. And that is precisely why the setup is perfect.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          There is also the matter of liquidity itself. A $7 million market order into ZEC's thin books would cause catastrophic
-          upward slippage on entry and equally devastating downward slippage on exit. Phase 3 positions must be built and unwound
-          algorithmically — via TWAP or VWAP execution strategies spread across weeks, not minutes.
+          The edge in Phase 4 is not analytical. The analysis is simple — the thesis is intact, the supply is compressed,
+          the order books are still thin, the re-entry is 71% below the prior peak. The edge is psychological:
+          the ability to act on that analysis while $194 million in capital and the weight of nineteen months
+          of accumulated gains sits between you and the decision.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          Most practitioners would not take Phase 4. They would preserve Phase 3 gains, call it a win,
+          and walk away with $194 million. That is a rational choice. It is not the optimal one.
+          The Supercycle framework demands the retracement trade because the mathematics of 3.4x on $194 million —
+          an additional $466 million extracted from a second wave — are too significant to leave on the table
+          if the narrative confirms. And it confirmed.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          There is also the matter of execution scale. $194 million entering ZEC's thin order books at a single moment
+          would cause catastrophic slippage on entry and equal destruction on exit. Positions at this scale are built
+          and unwound algorithmically — via TWAP strategies spread across weeks, not minutes. The exit is never a single trade.
+          It is a campaign.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection>
         <div style={{ width: "100%", height: 1, background: "rgba(255,255,255,0.06)", margin: "10px 0 36px" }} />
         <BlackpaperPara>
-          The cryptocurrency ecosystem is frequently dismissed as chaos. But underneath the noise — underneath the memes,
-          the rug pulls, the regulatory theater — there is a clock. It ticks once every four years. And if you learn to read
-          its face, you will see that the flow of money through this market has never been random. It has always been a cascade.
+          Nineteen months. Four phases. One hundred thousand dollars.
+          The compute layer front-ran the halving on AI narrative and delivered 15x.
+          The settlement layer unlocked on regulatory clarity and delivered 6x.
+          The privacy layer detonated on CBDC anxiety and delivered 21.6x.
+          The discipline trade — the retracement swing — delivered a final 3.4x on the full stack.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          It begins with the speculative vanguard — the fast, cheap, retail-powered network that ignites on anticipation alone.
-          It passes through the institutional amplifier — the leveraged machine that captures Bitcoin's post-halving repricing
-          with engineered precision. And it ends with the terminal overflow — the forgotten, illiquid relic that erupts one final time
-          before the long winter descends.
+          Six hundred and sixty million dollars. Not from a single bet on a single asset.
+          From understanding that liquidity has a shape — that it moves through infrastructure layers in sequence,
+          that each layer has its moment and then yields to the next, and that the practitioner's job
+          is simply to be standing in the right place when each wave breaks.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The halving is the fulcrum. M2 is the fuel. BTC.D is the signal. And the exit — the hardest part of all —
-          is recognizing that when the doomsday vehicle goes vertical, it is not an invitation. It is a farewell.
+          The Supercycle is over. The next one is already being priced in.
+          The clock ticks toward 2028. The layers are forming.
+          The question is only whether you will recognize them in time.
         </BlackpaperPara>
         <div style={{ textAlign: "center", marginTop: 40 }}>
           <div style={{ display: "inline-block", fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.15)", letterSpacing: 3 }}>
