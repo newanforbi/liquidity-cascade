@@ -452,133 +452,99 @@ function AlienSaucer() {
 const PHASES = [
   {
     id: 1,
-    asset: "TAO",
-    name: "Bittensor",
-    role: "AI Compute Vanguard",
-    color: "#9D4EDD",
-    colorDim: "rgba(157,78,221,0.12)",
-    entryDate: "Oct 19, 2023",
-    exitDate: "Mar 8, 2024",
-    entryPrice: "$46.44",
-    exitPrice: "$699.94",
-    multiple: "15x",
+    asset: "SOL",
+    name: "Solana",
+    role: "Speculative Vanguard",
+    color: "#00FFA3",
+    colorDim: "rgba(0,255,163,0.12)",
+    entryDate: "Dec 2022",
+    exitDate: "Mar 2024",
+    entryPrice: "$9.76",
+    exitPrice: "$191.90",
+    multiple: "19.66x",
     capitalIn: 100000,
-    capitalOut: 1500000,
-    halvingDistance: "Historical Precedent",
-    monthsFromHalving: null,
-    entryMonths: "Oct 2023",
+    capitalOut: 1966000,
+    halvingDistance: "-1 Month (Front-run)",
+    monthsFromHalving: -1,
+    entryMonths: "-16",
     description:
-      "Bittensor's AI compute narrative captured the vanguard rotation. TAO exploded 15x in 5 months as retail capital flooded into decentralized AI infrastructure, validator participation incentives, and AGI enthusiasm peaked in late 2023–early 2024.",
+      "Solana structurally front-runs the halving. Retail-driven speculation, memecoin liquidity, and DeFi velocity propel SOL into a parabolic expansion before Bitcoin's supply shock even occurs.",
     mechanics: [
-      "TAO holder incentives drove validator and subnet participation surge",
-      "AI hype crescendo from OpenAI o1 progress narratives (late 2023)",
-      "Thin order books on centralized exchanges amplified retail FOMO",
-      "Entry at $46.44 (deep compression) captured full 15x wave to $699.94",
+      "Hybrid PoH consensus enables sub-second finality and negligible fees",
+      "Retail capital deploys early, anticipating post-halving altcoin season",
+      "Memecoin and DeFi volume create self-reinforcing network effects",
+      "97% drawdown from 2021 highs created extreme compression entry",
     ],
     exitSignal:
-      "March 2024: AI narrative saturation, retail euphoria peak, pre-Bitcoin halving narrative shift. RSI >78 on weekly. Risk/reward deteriorated as capital rotated to XRP.",
+      "Pre-halving narrative reaches maximum saturation. Network congestion spikes and retail euphoria dominates social sentiment — risk/reward deteriorates rapidly.",
     entrySignal:
-      "October 2023: TAO hit $46.44 as crypto bear market bottomed. Validators incentivized, AI demand crescendo began. Capital entered for 5-month vanguard phase.",
+      "Accumulate during bear market trough when SOL RSI falls below 40 on the weekly chart. Scale in via DCA over 4–8 weeks between Sep 2026 and Aug 2027. Confirmed by elevated BTC dominance (> 58%) and absence of altcoin euphoria.",
     keyInsight:
-      "TAO's 15x cycle (Oct 2023 → Mar 2024) proved the Supercycle vanguard thesis. Capital rotated from TAO to XRP exactly as predicted, validating the rotating infrastructure model.",
+      "SOL achieved a near 20x multiple exactly one month before the April 2024 Bitcoin halving, decisively invalidating the assumption that all altcoins lag Bitcoin.",
   },
   {
     id: 2,
-    asset: "XRP",
-    name: "Ripple",
-    role: "Institutional Settlement Proxy",
-    color: "#23F0C6",
-    colorDim: "rgba(35,240,198,0.12)",
-    entryDate: "Oct 2, 2024",
-    exitDate: "Jan 8, 2025",
-    entryPrice: "$0.5241",
-    exitPrice: "$3.14",
-    multiple: "6x",
-    capitalIn: 1500000,
-    capitalOut: 9000000,
-    halvingDistance: "Historical Precedent",
-    monthsFromHalving: null,
-    entryMonths: "Oct 2024",
+    asset: "MSTR",
+    name: "MicroStrategy",
+    role: "Leveraged Institutional Proxy",
+    color: "#FF6B35",
+    colorDim: "rgba(255,107,53,0.12)",
+    entryDate: "Mid 2024",
+    exitDate: "Nov 2024",
+    entryPrice: "$120.00",
+    exitPrice: "$421.88",
+    multiple: "3.51x",
+    capitalIn: 1966000,
+    capitalOut: 6900660,
+    halvingDistance: "+7 Months",
+    monthsFromHalving: 7,
+    entryMonths: "+2 to +4",
     description:
-      "XRP captured the institutional settlement phase of the Supercycle. After TAO peaked, capital rotated to XRP for the infrastructure play. Ripple's ODL expansion, SEC regulatory clarity, and CBDC adjacency drove a 6x rally in just 3 months.",
+      "MicroStrategy operates as a leveraged financial instrument amplifying Bitcoin's post-halving price discovery. Institutional capital floods in as BTC breaks prior all-time highs.",
     mechanics: [
-      "Ripple's ODL (On-Demand Liquidity) corridor expansion accelerated in Q4 2024",
-      "SEC vs. Ripple lawsuit resolved favorably (Aug 2024), removing regulatory overhang",
-      "CBDC narratives intensified: XRP positioned as institutional settlement layer",
-      "Post-Bitcoin halving (Apr 2024) M2 expansion drove institutional capital into infrastructure plays",
+      "Convertible notes and equity issuance fund continuous BTC acquisition",
+      "Embedded beta of ~1.77x relative to Bitcoin price movements",
+      "mNAV premium creates accretive feedback loop per share",
+      "TradFi institutions use MSTR as regulated high-beta BTC exposure",
     ],
     exitSignal:
-      "January 2025: XRP reached institutional saturation at $3.14 (6x from $0.5241). Retail euphoria peaked. Capital rotation signal: shift to terminal phase (ZEC).",
+      "mNAV premium reaches historical extremes (2.0–3.0x). Bitcoin's parabolic advance stalls — magnified downside via 1.77 beta becomes existential portfolio risk.",
     entrySignal:
-      "October 2024: After TAO peaked Mar 2024, capital rotated to XRP at $0.5241. Institutional adoption narratives aligned with post-halving liquidity expansion. Entry signaled rotation from vanguard to settlement infrastructure.",
+      "Rotate capital from SOL into MSTR when BTC Dominance breaks below 57.5%, confirming the altcoin expansion phase. Entry front-runs the ~Apr 2028 halving by roughly one month, as institutional BTC leverage begins to multiply against rising spot price.",
     keyInsight:
-      "XRP's 6x cycle (Oct 2024 → Jan 2025) validated the Supercycle institutional phase. Capital rotated from AI compute (TAO) to payments/settlement (XRP) exactly as the thesis predicted, now rotating to terminal privacy phase (ZEC).",
+      "Rotating into MSTR at $120 is not 'buying the top' — it is purchasing the confirmed breakout of an asset entering its most violent acceleration phase.",
   },
   {
     id: 3,
     asset: "ZEC",
     name: "Zcash",
-    role: "Terminal Blow-Off",
+    role: "Terminal Liquidity Overflow",
     color: "#F4B728",
     colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Apr 9, 2025",
-    exitDate: "Nov 12, 2025",
-    entryPrice: "$31.17",
+    entryDate: "Early 2025",
+    exitDate: "Nov 2025",
+    entryPrice: "$20.00",
     exitPrice: "$674.00",
-    multiple: "21.6x",
-    capitalIn: 9000000,
-    capitalOut: 194400000,
-    halvingDistance: "Historical + Projected",
-    monthsFromHalving: null,
-    entryMonths: "Apr 2025",
+    multiple: "33.7x",
+    capitalIn: 6900660,
+    capitalOut: 232552242,
+    halvingDistance: "+19 Months",
+    monthsFromHalving: 19,
+    entryMonths: "+9 to +12",
     description:
-      "ZEC's terminal phase begins: the blow-off parabolic move as privacy narratives peak amid CBDC anxiety. Capital from XRP rotates into ZEC at the compression point. Thin order books amplify retail euphoria into a 21.6x explosion in just 7 months.",
+      "The terminal phase — irrational, narrative-driven, and devoid of long-term fundamental support. Legacy privacy assets capture the final overflow of exhausted market liquidity.",
     mechanics: [
-      "Privacy narrative crescendo amid CBDC rollout announcements (Q2-Q3 2025)",
-      "Thin ZEC order books on approved exchanges amplify retail FOMO",
-      "Apr 9, 2025: XRP exit capital ($9M) enters ZEC at $31.17 compression",
-      "Nov 12, 2025: Terminal blow-off peak at $674 — maximum euphoria reached",
-      "Take profits completely on terminal top. No remaining position.",
+      "zk-SNARKs enable fully shielded, mathematically provable privacy",
+      "Nov 2024 halving cut block reward to 1.5625 ZEC, curbing inflation",
+      "Thin order books from exchange delistings amplify price movements",
+      "DOJ seizure of 127,271 BTC validated on-chain privacy necessity",
     ],
     exitSignal:
-      "Nov 12, 2025 — ZEC reaches $674, terminal blow-off top. 7-day gains >150%, mainstream media coverage peaks. Exit 100% of position to cash. Doomsday vehicle exhausted.",
+      'ZEC blow-off top historically signals immediate onset of multi-year bear market — the "doomsday vehicle" pattern. No further rotations permitted.',
     entrySignal:
-      "Apr 9, 2025 — XRP exit capital ($9M) rotates to ZEC at $31.17 as privacy/CBDC narratives peak. Technical compression + narrative alignment = entry signal.",
+      "Rotate from MSTR into ZEC when mNAV premium exceeds 2.5x or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative assets.",
     keyInsight:
-      "Phase 3 captures the terminal blow-off: $9M → $194.4M (21.6x) in 7 months. Exit completely to fiat—no emotional attachment to the asset going forward.",
-  },
-  {
-    id: 4,
-    asset: "ZEC",
-    name: "Zcash",
-    role: "Retracement Swing Trade",
-    color: "#F4B728",
-    colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Mar 7, 2026",
-    exitDate: "May 19, 2026",
-    entryPrice: "$197.82",
-    exitPrice: "$673.46",
-    multiple: "3.4x",
-    capitalIn: 194400000,
-    capitalOut: 660842400,
-    halvingDistance: "Historical + Projected",
-    monthsFromHalving: null,
-    entryMonths: "Mar 2026",
-    description:
-      "The final cycle: a sophisticated swing trade on the retracement. After the Nov 2025 blow-off, ZEC retraces 71% in a standard corrective pattern. Re-entry at the dip using 100% of Phase 3 profits. Final pump to near-previous highs, then full exit to fiat. Supercycle complete.",
-    mechanics: [
-      "Nov 2025 → Mar 2026: ZEC retraces 71% from $674 to $197.82 (standard correction)",
-      "Mar 7, 2026: Buy the dip using all Phase 3 profits ($194.4M capital)",
-      "Privacy regulations continue escalating (CBDC threat narrative)",
-      "May 19, 2026: ZEC pumps to $673.46 — near previous high, second peak",
-      "Exit 100% of position to fiat. Supercycle ends. Capital rotation complete.",
-    ],
-    exitSignal:
-      "May 19, 2026 — ZEC returns to $673.46. Final exit to fiat. No further rotations. Supercycle thesis proven: $100K → $660.8M (6,608x) over 19 months. Capital preserved as fiat.",
-    entrySignal:
-      "Mar 7, 2026 — ZEC at $197.82 (71% retracement from Nov peak). Re-entry signal: previous narrative still valid, technical compression, phase 3 profits deployed. Swing trade setup confirmed.",
-    keyInsight:
-      "Phase 4 proves the discipline: after the blow-off, we DON'T panic-sell. We buy the dip and ride the final swing. $194.4M → $660.8M (3.4x) in 2.5 months. Supercycle complete. Total: $100K → $660.8M (6,608x) over 19 months (Oct 2023 → May 2026).",
+      "Explosive vertical rallies in legacy privacy coins are almost always the final act of a macro bull market. Jan 2018, May 2021, Nov 2025 — the pattern repeats.",
   },
 ];
 
@@ -591,14 +557,10 @@ const HALVINGS = [
 ];
 
 const PREDICTIONS_2028 = [
-  { phase: 1, asset: "TAO", action: "Entry", timing: "Oct 19, 2023", price: "$46.44", note: "AI compute vanguard begins" },
-  { phase: 1, asset: "TAO", action: "Exit → XRP Entry", timing: "Mar 8, 2024", price: "$699.94 (15x)", note: "Rotation to institutional settlement" },
-  { phase: 2, asset: "XRP", action: "Entry", timing: "Oct 2, 2024", price: "$0.5241", note: "Institutional settlement infrastructure phase" },
-  { phase: 2, asset: "XRP", action: "Exit → ZEC Entry", timing: "Jan 8, 2025", price: "$3.14 (6x)", note: "Rotation to terminal privacy overflow" },
-  { phase: 3, asset: "ZEC", action: "Blow-Off Entry", timing: "Apr 9, 2025", price: "$31.17", note: "Terminal blow-off begins" },
-  { phase: 3, asset: "ZEC", action: "Blow-Off Exit", timing: "Nov 12, 2025", price: "$674.00 (21.6x)", note: "Take profits on terminal top" },
-  { phase: 4, asset: "ZEC", action: "Swing Trade Entry", timing: "Mar 7, 2026", price: "$197.82 (retracement)", note: "Buy the dip" },
-  { phase: 4, asset: "ZEC", action: "Exit to Fiat", timing: "May 19, 2026", price: "$673.46 (3.4x)", note: 'Final exit: Supercycle complete (6,608x total)' },
+  { phase: 1, asset: "SOL", action: "Entry", timing: "Sep 2026 – Aug 2027", note: "Bear market trough accumulation" },
+  { phase: 1, asset: "SOL", action: "Exit → MSTR Entry", timing: "Mar 2028", note: "Front-run halving, rotate to institutional proxy" },
+  { phase: 2, asset: "MSTR", action: "Exit → ZEC Entry", timing: "Nov 2028", note: "Month +7, institutional premium exhaustion" },
+  { phase: 3, asset: "ZEC", action: "Exit to Fiat", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — exit crypto entirely' },
 ];
 
 // ── SIGNALS data ──────────────────────────────────────────────────────────────
@@ -606,24 +568,24 @@ const PREDICTIONS_2028 = [
 const SIGNAL_GRID = [
   {
     phase: 1,
-    asset: "TAO",
-    color: "#9D4EDD",
+    asset: "SOL",
+    color: "#00FFA3",
     entryWindow: "Sep 2026 – Aug 2027",
-    historicalPrecedent: "AI compute infrastructure thesis: TAO front-runs the April 2028 halving, peaking one month prior (Mar 2028) as AGI narratives reach crescendo. Entry window: Sep 2026 – Aug 2027.",
+    historicalPrecedent: "2024 precedent: SOL peaked at $191.90 one month pre-halving (Mar 2024), confirming the front-run thesis. Entry window: Sep 2026 – Aug 2027.",
     signals: [
-      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM XRP ENTRY", status: "ARMED" },
-      { id: "S1-2", threshold: "TAO RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
-      { id: "S1-3", threshold: "Pre-halving AI narrative peak", action: "EXIT REMAINING TAO", status: "ARMED" },
+      { id: "S1-1", threshold: "BTC.D < 57.5%", action: "CONFIRM MSTR ENTRY", status: "ARMED" },
+      { id: "S1-2", threshold: "SOL RSI > 78 weekly", action: "REDUCE 50% POSITION", status: "ARMED" },
+      { id: "S1-3", threshold: "Pre-halving narrative peak", action: "EXIT REMAINING SOL", status: "ARMED" },
     ],
   },
   {
     phase: 2,
-    asset: "XRP",
-    color: "#23F0C6",
-    entryWindow: "Jun 2028",
-    historicalPrecedent: "Institutional settlement infrastructure: XRP captures post-halving institutional demand as SEC clarity and ODL expansion accelerate. Entry window: Jun 2028 – Nov 2028.",
+    asset: "MSTR",
+    color: "#FF6B35",
+    entryWindow: "Mar 2028",
+    historicalPrecedent: "In 2021 MSTR's mNAV exceeded 3x concurrent with BTC's November ATH — position held too long lost 77% in 90 days.",
     signals: [
-      { id: "S2-1", threshold: "XRP premium > 2.5x entry", action: "BEGIN XRP EXIT", status: "ARMED" },
+      { id: "S2-1", threshold: "mNAV premium > 2.5x", action: "BEGIN MSTR EXIT", status: "ARMED" },
       { id: "S2-2", threshold: "BTC 30-day momentum stalls", action: "ACCELERATE EXIT", status: "ARMED" },
       { id: "S2-3", threshold: "ZEC/BTC ratio breaks up", action: "CONFIRM ZEC ENTRY", status: "ARMED" },
     ],
@@ -632,33 +594,21 @@ const SIGNAL_GRID = [
     phase: 3,
     asset: "ZEC",
     color: "#F4B728",
-    entryWindow: "Apr 9, 2025 – Nov 12, 2025",
-    historicalPrecedent: "Terminal blow-off: Privacy narratives peak amid CBDC anxiety. Thin order books amplify retail euphoria. Apr 9, 2025 @ $31.17 → Nov 12, 2025 @ $674.00 (21.6x in 7 months).",
+    entryWindow: "Nov 2028 – Nov 2029",
+    historicalPrecedent: "Jan 2018 and May 2021: ZEC's vertical blow-off topped within days of cycle peak. No second chance — exit is final.",
     signals: [
-      { id: "S3-1", threshold: "ZEC $31.17 (Apr 9, 2025)", action: "ENTER TERMINAL BLOW-OFF", status: "TRIGGERED" },
-      { id: "S3-2", threshold: "ZEC reaches $674 (Nov 12, 2025)", action: "EXIT — TAKE PROFITS 100%", status: "TRIGGERED" },
-      { id: "S3-3", threshold: "7-day gains > 150%, media spike", action: "CONFIRM EXIT SIGNAL", status: "TRIGGERED" },
-    ],
-  },
-  {
-    phase: 4,
-    asset: "ZEC",
-    color: "#F4B728",
-    entryWindow: "Mar 7, 2026 – May 19, 2026",
-    historicalPrecedent: "Retracement swing trade: After Nov 2025 blow-off, ZEC retraces 71% to $197.82. Disciplined re-entry using Phase 3 profits. Final pump to $673.46, then complete exit to fiat. Supercycle ends.",
-    signals: [
-      { id: "S4-1", threshold: "ZEC retraces to $197.82 (Mar 7, 2026)", action: "ENTER SWING TRADE (BUY DIP)", status: "TRIGGERED" },
-      { id: "S4-2", threshold: "ZEC re-pumps to $673.46 (May 19, 2026)", action: "EXIT TO FIAT — FINAL EXIT", status: "TRIGGERED" },
-      { id: "S4-3", threshold: "May 19, 2026 Complete", action: "SUPERCYCLE COMPLETE — NO ROTATIONS", status: "TRIGGERED" },
+      { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
+      { id: "S3-2", threshold: "Mainstream media coverage", action: "EXIT REMAINING ZEC", status: "ARMED" },
+      { id: "S3-3", threshold: "Any position remaining", action: "NO FURTHER ROTATIONS", status: "EXPIRED" },
     ],
   },
 ];
 
 const KEY_THRESHOLDS = [
-  { signal: "BTC Dominance Break", asset: "TAO → XRP", threshold: "BTC.D < 57.5%", action: "Rotate to XRP", window: "Month −2 to +3" },
-  { signal: "Pre-Halving Saturation", asset: "TAO", threshold: "RSI > 78 weekly + AI narrative peak", action: "Exit TAO entirely", window: "Month −1 to 0" },
-  { signal: "XRP Premium Extreme", asset: "XRP", threshold: "Premium > 2.5–3.0x entry", action: "Begin XRP exit", window: "Month +6 to +9" },
-  { signal: "BTC Momentum Stall", asset: "XRP", threshold: "30-day price momentum < 0", action: "Accelerate XRP exit", window: "Month +7 to +10" },
+  { signal: "BTC Dominance Break", asset: "SOL → MSTR", threshold: "BTC.D < 57.5%", action: "Rotate to MSTR", window: "Month −2 to +3" },
+  { signal: "Pre-Halving Saturation", asset: "SOL", threshold: "RSI > 78 weekly + retail euphoria", action: "Exit SOL entirely", window: "Month −1 to 0" },
+  { signal: "mNAV Premium Extreme", asset: "MSTR", threshold: "mNAV > 2.5–3.0x", action: "Begin MSTR exit", window: "Month +6 to +9" },
+  { signal: "BTC Momentum Stall", asset: "MSTR", threshold: "30-day price momentum < 0", action: "Accelerate MSTR exit", window: "Month +7 to +10" },
   { signal: "ZEC Blow-Off Top", asset: "ZEC → Fiat", threshold: "7-day gain > 150%", action: "Exit 50% immediately", window: "Month +17 to +19" },
   { signal: "Terminal Media Spike", asset: "ZEC", threshold: "Mainstream coverage + euphoria", action: "Exit remaining ZEC", window: "Month +19 to +21" },
 ];
@@ -666,11 +616,11 @@ const KEY_THRESHOLDS = [
 const PSY_RISKS = [
   {
     title: "FOMO Risk",
-    description: "Watching ZEC reach 50x while still holding TAO induces premature rotation. The signal grid exists precisely to counter this. Each phase has an irreversible exit trigger — honor it regardless of apparent upside remaining.",
+    description: "Watching ZEC reach 50x while still holding SOL induces premature rotation. The signal grid exists precisely to counter this. Each phase has an irreversible exit trigger — honor it regardless of apparent upside remaining.",
   },
   {
     title: "Premature Rotation Risk",
-    description: "Rotating from TAO to XRP before BTC.D crosses 57.5% means abandoning a live expansion for an unconfirmed one. Confirmation criteria are not suggestions — they are the mechanism separating disciplined execution from speculative guessing.",
+    description: "Rotating from SOL to MSTR before BTC.D crosses 57.5% means abandoning a live expansion for an unconfirmed one. Confirmation criteria are not suggestions — they are the mechanism separating disciplined execution from speculative guessing.",
   },
 ];
 
@@ -680,8 +630,7 @@ const CYCLE_DATA = [
   { year: "2012", halvingPrice: "$12", peakPrice: "$1,160", multiple: "96x", multipleNum: 96, monthsToPeak: 12, leadAltcoin: "LTC", altcoinMultiple: "54x", m2Event: "Post-QE3 liquidity expansion" },
   { year: "2016", halvingPrice: "$650", peakPrice: "$19,800", multiple: "30x", multipleNum: 30, monthsToPeak: 17, leadAltcoin: "ETH", altcoinMultiple: "84x", m2Event: "Global M2 +5.4% YoY" },
   { year: "2020", halvingPrice: "$8,600", peakPrice: "$67,500", multiple: "7.85x", multipleNum: 7.85, monthsToPeak: 18, leadAltcoin: "SOL", altcoinMultiple: "140x", m2Event: "COVID fiscal stimulus, M2 +26%" },
-  { year: "2024", halvingPrice: "$63,800", peakPrice: "~$120,000", multiple: "~5x", multipleNum: 5, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~33x", m2Event: "Post-halving liquidity" },
-  { year: "2025-26 (SUPERCYCLE)", halvingPrice: "$46.44 (TAO entry Oct 2023)", peakPrice: "$673.46 (ZEC exit May 2026)", multiple: "6,608x REALIZED", multipleNum: 6608, monthsToPeak: 19, leadAltcoin: "TAO→XRP→ZEC", altcoinMultiple: "15x + 6x + 73.6x = 6,608x total", m2Event: "PROVEN: Rotating capital thesis across three infrastructure layers" },
+  { year: "2024", halvingPrice: "$63,800", peakPrice: "~$120,000", multiple: "~5x", multipleNum: 5, monthsToPeak: 19, leadAltcoin: "ZEC", altcoinMultiple: "~33x", m2Event: "Post-rate-cut M2 expansion" },
 ];
 
 const ALTCOIN_WINDOWS = [
@@ -689,10 +638,6 @@ const ALTCOIN_WINDOWS = [
   { year: "2016", start: 10, end: 17, label: "ETH +84x",       color: "#FF6B35" },
   { year: "2020", start: 12, end: 18, label: "SOL +140x",      color: "#F4B728" },
   { year: "2024", start: 17, end: 19, label: "ZEC ~33x (proj.)", color: "#6450FF" },
-  { year: "SUPERCYCLE-TAO", start: -6, end: 0, label: "TAO +15x",     color: "#9D4EDD" },
-  { year: "SUPERCYCLE-XRP", start: 6,  end: 9,  label: "XRP +6x",     color: "#23F0C6" },
-  { year: "SUPERCYCLE-ZEC-W1", start: 12, end: 19, label: "ZEC W1 +21.6x",    color: "#F4B728" },
-  { year: "SUPERCYCLE-ZEC-W2", start: 23, end: 25, label: "ZEC W2 +3.4x",    color: "#F4B728" },
 ];
 
 // ── EXECUTION data ────────────────────────────────────────────────────────────
@@ -1210,18 +1155,14 @@ function CalculatorSection() {
   const [initial, setInitial] = useState(100000);
   const [riskSplit, setRiskSplit] = useState(100);
 
-  // Supercycle: TAO (15x) → XRP (6x) → ZEC Wave 1 (21.6x) → ZEC Wave 2 (3.4x)
-  const phase1Out = initial * 15; // TAO: $100K → $1.5M
+  const phase1Out = initial * 19.66;
   const phase2In = phase1Out * (riskSplit / 100);
   const phase2Reserve = phase1Out - phase2In;
-  const phase2Out = phase2In * 6; // XRP: $1.5M → $9M
+  const phase2Out = phase2In * 3.51;
   const phase3In = phase2Out * (riskSplit / 100);
   const phase3Reserve = phase2Out - phase3In + phase2Reserve;
-  const phase3Out = phase3In * 21.6; // ZEC Wave 1: $9M → $194.4M
-  const phase4In = phase3Out * (riskSplit / 100);
-  const phase4Reserve = phase3Out - phase4In + phase3Reserve;
-  const phase4Out = phase4In * 3.4; // ZEC Wave 2: $194.4M → $660.8M
-  const totalFinal = phase4Out + phase4Reserve;
+  const phase3Out = phase3In * 33.7;
+  const totalFinal = phase3Out + phase3Reserve;
 
   return (
     <div
@@ -1274,11 +1215,9 @@ function CalculatorSection() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10 }}>
         {[
-          { label: "AFTER TAO (Phase 1)", value: phase1Out, color: "#9D4EDD" },
-          { label: "AFTER XRP (Phase 2)", value: phase2Out, color: "#23F0C6" },
-          { label: "AFTER ZEC WAVE 1 (Phase 3)", value: phase3Out, color: "#F4B728" },
-          { label: "AFTER ZEC WAVE 2 (Phase 4)", value: phase4Out, color: "#F4B728" },
-          { label: "RESERVED IN FIAT", value: phase4Reserve, color: "rgba(255,255,255,0.5)" },
+          { label: "AFTER SOL (Phase 1)", value: phase1Out, color: "#00FFA3" },
+          { label: "AFTER MSTR (Phase 2)", value: phase2Out + phase2Reserve, color: "#FF6B35" },
+          { label: "RESERVED IN FIAT", value: phase3Reserve, color: "rgba(255,255,255,0.5)" },
           { label: "FINAL PORTFOLIO", value: totalFinal, color: "#F4B728" },
         ].map((r, i) => (
           <div
@@ -1319,10 +1258,10 @@ function Predictions2028() {
       }}
     >
       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: 1.5, marginBottom: 6 }}>
-        SUPERCYCLE EXECUTION (HISTORICAL 2023–2026)
+        2028 CYCLE PROJECTION
       </div>
       <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", marginBottom: 18 }}>
-        Realized capital rotation across TAO, XRP, and ZEC phases: October 2023 → May 2026
+        Projected rotation dates using the ~April 2028 halving as Month 0
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
         {PREDICTIONS_2028.map((p, i) => (
@@ -1481,7 +1420,7 @@ function BtcDominanceNote() {
 // ── SIGNALS component ─────────────────────────────────────────────────────────
 
 function SignalsTab() {
-  const { btcDominance, taoRsiWeekly, loading, error, lastUpdated } = useMarketData();
+  const { btcDominance, solRsiWeekly, loading, error, lastUpdated } = useMarketData();
 
   const statusColor = (s) =>
     s === "TRIGGERED" ? "#00FFA3" : s === "ARMED" ? "#F4B728" : "rgba(255,255,255,0.25)";
@@ -1551,13 +1490,13 @@ function SignalsTab() {
             color: "#00FFA3",
           },
           {
-            label: "TAO RSI (WEEKLY)",
-            value: loading && taoRsiWeekly == null ? "…" : taoRsiWeekly != null ? String(taoRsiWeekly) : "—",
+            label: "SOL RSI (WEEKLY)",
+            value: loading && solRsiWeekly == null ? "…" : solRsiWeekly != null ? String(solRsiWeekly) : "—",
             desc: "Entry window below 40 — accumulation phase",
-            color: "#9D4EDD",
+            color: "#FF6B35",
           },
           {
-            label: "XRP Premium",
+            label: "MSTR mNAV",
             value: "—",
             desc: "Live data unavailable — verify manually",
             color: "#F4B728",
@@ -2583,7 +2522,7 @@ function Blackpaper() {
           maxWidth: 480,
           lineHeight: 1.6,
         }}>
-          A Chronological Matrix for Capital Rotation Across Bittensor (TAO), Ripple (XRP), and Zcash
+          A Chronological Matrix for Capital Rotation Across Solana, MicroStrategy, and Zcash
         </p>
         <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)", margin: "24px auto 0" }} />
       </div>
@@ -2674,61 +2613,63 @@ function Blackpaper() {
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 1" color={g}>
-        <BlackpaperHeading>The AI Compute Vanguard</BlackpaperHeading>
+        <BlackpaperHeading>The Speculative Vanguard</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: g, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Bittensor (TAO)
+          Solana (SOL)
         </div>
         <BlackpaperPara>
-          Here is the first heresy of this framework: Bittensor does not wait for Bitcoin. It moves first.
+          Here is the first heresy of this framework: Solana does not wait for Bitcoin. It moves first.
         </BlackpaperPara>
         <BlackpaperPara indent>
           Traditional cycle theory insists that all altcoins lag the benchmark — that they sit patiently until Bitcoin has completed
-          its post-halving ascent and only then begin their secondary expansion. The data from 2023–2024 annihilates this assumption.
-          Bittensor's primary parabolic move completed{" "}
+          its post-halving ascent and only then begin their secondary expansion. The data from 2022–2024 annihilates this assumption.
+          Solana's primary parabolic move completed{" "}
           <em style={{ color: g }}>one month before the halving even occurred</em>.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Why? Because TAO's price engine runs on fundamentally different fuel than Bitcoin's. Its decentralized AI compute infrastructure
-          and validator incentive model make it the venue for retail-driven AI narrative speculation. As AGI fears mount and GitHub Copilot
-          dominance spreads, retail traders operating with smaller capital bases don't wait for the halving. They{" "}
-          <em style={{ color: "rgba(255,255,255,0.8)" }}>anticipate</em> the post-halving expansion and deploy capital months early,
-          effectively front-running the macro narrative. By the time Bitcoin's supply shock arrives, TAO's move is already over.
+          Why? Because Solana's price engine runs on fundamentally different fuel than Bitcoin's. Its hybrid Proof-of-History consensus
+          model enables sub-second finality and negligible transaction fees, making it the undisputed venue for retail-driven speculation —
+          the memecoin launchpad, the DeFi playground, the NFT bazaar. Retail traders, operating with smaller capital bases and higher risk
+          tolerance, don't wait for the halving. They{" "}
+          <em style={{ color: "rgba(255,255,255,0.8)" }}>anticipate</em> the post-halving altcoin season and deploy capital months early,
+          effectively front-running the macro narrative. By the time Bitcoin's supply shock arrives, Solana's move is already over.
         </BlackpaperPara>
         <BlackpaperQuote color={g}>
-          From the depths of a crypto bear market — from the rubble of the 2022 collapse —
-          Bittensor executed one of the most ferocious AI infrastructure rallies in crypto history.
+          From the ashes of a 97% drawdown — from $260 to $9 in the wreckage of the FTX collapse —
+          Solana executed one of the most ferocious recoveries in crypto history.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The entry was October 19, 2023. The price:{" "}
-          <BlackpaperDatum value="$46.44" color={g} />. Over the next five months, TAO steadily climbed as AI excitement crescendoed.
-          The terminal momentum peak arrived on March 8, 2024 — one month before the halving — at{" "}
-          <BlackpaperDatum value="$699.94" color={g} />. A{" "}
-          <span style={{ color: g, fontWeight: 700 }}>15x</span> multiple.
+          The entry was December 21, 2022. The price:{" "}
+          <BlackpaperDatum value="$9.76" color={g} />. Over the next fifteen months, SOL steadily reclaimed $30,
+          then $100, then went vertical as memecoin liquidity exploded and active developer counts surged.
+          The terminal momentum peak arrived on March 13, 2024 — one month before the halving — at{" "}
+          <BlackpaperDatum value="$191.90" color={g} />. A{" "}
+          <span style={{ color: g, fontWeight: 700 }}>19.66x</span> multiple.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The{" "}
+          Yes, SOL touched $294.85 in early 2025. But the{" "}
           <em style={{ color: "rgba(255,255,255,0.8)" }}>velocity</em> and <em style={{ color: "rgba(255,255,255,0.8)" }}>efficiency</em>{" "}
-          of the $46.44 → $699.94 move is what matters. Capital efficiency, not nominal highs, is the metric that compounds.
-          An initial $100,000 deployed into TAO at the cycle bottom exits as{" "}
-          <BlackpaperDatum value="$1,500,000" color={g} />. The AI compute vanguard phase is complete.
-          The signal to exit: maximum AI narrative saturation, retail euphoria reaching fever pitch, BTC Dominance falling below 57.5%.
+          of the $9 → $191 move is what matters. Capital efficiency, not nominal highs, is the metric that compounds.
+          An initial $100,000 deployed into SOL at the cycle bottom exits as{" "}
+          <BlackpaperDatum value="$1,966,000" color={g} />. The retail vanguard phase is complete.
+          The signal to exit: maximum narrative saturation, network congestion spikes, social euphoria reaching fever pitch.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="INTERLUDE" color="rgba(255,255,255,0.25)">
-        <BlackpaperHeading sub>The Mid-Cycle Rotation</BlackpaperHeading>
+        <BlackpaperHeading sub>The Mid-Cycle Dilemma</BlackpaperHeading>
         <BlackpaperPara>
-          It is mid-2024. The TAO position has been liquidated at $699.94, and the portfolio sits at $1.5 million.
-          The next target — Ripple — is already at $0.50, having recovered from its 2022 collapse during the SEC lawsuit.
-          By October 2024, XRP begins its institutional ascent as SEC regulatory clarity emerges.
+          It is mid-2024. The SOL position has been liquidated at $191.90, and the portfolio sits at nearly $2 million.
+          The next target — MicroStrategy — is already at $120, up from its own December 2022 bottom of $14.50.
+          The amateur investor sees this and feels the sting of a "missed" move.
         </BlackpaperPara>
         <BlackpaperPara indent>
           This is the moment the strategy either survives or dies. The objective of macro capital rotation is not
           to catch the absolute bottom of every single asset simultaneously. That would require a time machine.
           The true edge lies in <span style={{ color: o, fontWeight: 600 }}>chaining expansion phases</span>.
-          XRP spent 2.5 years in the doldrums as regulatory uncertainty persisted. During that time,
-          capital was in TAO, earning 15x. Rotating into XRP at $0.5241 is not buying the bottom — it is boarding
-          a rocket that has just cleared the regulatory overhang.
+          MSTR's crawl from $14 to $120 took eighteen grueling months of sideways grinding. During those same eighteen months,
+          that capital was in SOL, earning 19.6x. Rotating into MSTR at $120 is not buying the top — it is boarding
+          a rocket that has just cleared the launch tower.
         </BlackpaperPara>
         <BlackpaperQuote color="rgba(255,255,255,0.35)">
           Rotate based on which asset is entering expansion next. Ignore the nominal distance from its cycle low.
@@ -2739,119 +2680,95 @@ function Blackpaper() {
       <BlackpaperSection label="PHASE 2" color={o}>
         <BlackpaperHeading>The Leveraged Institutional Proxy</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: o, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Ripple (XRP)
+          MicroStrategy (MSTR)
         </div>
         <BlackpaperPara>
-          Ripple is not a traditional cryptocurrency. It is an institutional settlement infrastructure play disguised as a digital asset.
-          The company's On-Demand Liquidity (ODL) network connects major emerging markets — Mexico, Brazil, Philippines, Indonesia —
-          enabling real-time cross-border value transfer at a fraction of traditional banking costs. What XRP actually is:
-          the settlement rail for the next generation of institutional payments.
+          MicroStrategy is not a software company. It has not been a software company in any meaningful sense since August 2020,
+          when Michael Saylor repurposed its corporate treasury into the most audacious Bitcoin accumulation vehicle in the history
+          of public markets. What MSTR actually is: a leveraged financial instrument with an embedded beta of approximately 1.77
+          relative to Bitcoin, engineered to amplify every move in the benchmark — up and down.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The historical overhang was regulatory. From 2020 to 2023, the SEC lawsuit created paralyzing uncertainty.
-          But by October 2024, that uncertainty evaporated. The SEC reclassified XRP, regulatory green-lights emerged,
-          and institutional capital began treating it as a legitimate infrastructure play rather than a speculative asset.
-          Ripple began executing major ODL corridor expansions into Asia-Pacific and Latin America.
+          The mechanics are elegant and recursive. When the market prices MSTR at a premium to its underlying Bitcoin holdings —
+          the so-called mNAV premium — the company exploits the disparity. They issue new equity at the inflated valuation,
+          use the proceeds to buy more Bitcoin, and in doing so increase the amount of BTC backing each individual share.
+          The process is accretive. It feeds on itself. And it only works when Bitcoin is going up.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          This is why XRP detonates post-halving. When Bitcoin breaks all-time highs and macroeconomic liquidity expands,
-          institutional capital scrambles for settlement infrastructure. Post-halving, central banks begin cutting rates,
-          M2 expands, and borderless settlement demand explodes. XRP is the premier vehicle for this demand.
-          The result is not a gentle repricing. It is vertical.
+          This is why MSTR detonates in the post-halving window. When Bitcoin breaks its prior all-time highs — an event that
+          typically materializes 6 to 8 months after the halving — institutional capital, hedge funds, and equity investors
+          scramble for regulated, high-beta exposure. MSTR is the premier vehicle. The result is not a gentle repricing.
+          It is vertical.
         </BlackpaperPara>
         <BlackpaperQuote color={o}>
-          Regulatory clarity + CBDC integration talk + institutional ODL adoption = institutional supercycle
-          in settlement infrastructure assets.
+          In the 2020–2021 cycle, MSTR peaked 9 months post-halving. In the 2024–2025 cycle, the blow-off top
+          came at Month +7. The window is narrow and violent.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          Following the August 2024 SEC clarity, XRP began its institutional ascent. By October 2024, the entry point arrived at{" "}
-          <BlackpaperDatum value="$0.5241" color={o} />. Over the next three months, as institutional adoption accelerated,
-          XRP rallied vertically to{" "}
-          <BlackpaperDatum value="$3.14" color={o} /> on January 8, 2025.
+          Following the April 2024 halving, MicroStrategy climbed 550% through the year. The spot Bitcoin ETF approvals
+          added institutional legitimacy to the underlying thesis. The mNAV premium expanded as fast money piled in.
+          On November 13, 2024, MSTR printed a vertical daily candle to{" "}
+          <BlackpaperDatum value="$421.88" color={o} /> — exactly seven months post-halving.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          The rolled $1.5 million enters at $0.5241. It exits at $3.14. A{" "}
-          <span style={{ color: o, fontWeight: 700 }}>6x</span> multiple. The portfolio now stands at{" "}
-          <BlackpaperDatum value="$9,000,000" color={o} />. The exit signal: institutional premium exhaustion,
-          BTC momentum stalling, and the shift from expansion to consolidation. The institutional settlement wave has crested.
-          What comes next is the terminal phase.
+          The rolled $1.966 million enters at $120. It exits at $421.88. A{" "}
+          <span style={{ color: o, fontWeight: 700 }}>3.51x</span> multiple. The portfolio now stands at{" "}
+          <BlackpaperDatum value="$6,900,660" color={o} />. The exit signal: mNAV premium pushing past 2.0–3.0x,
+          Bitcoin's advance stalling, and the 1.77 beta threatening magnified collapse. The institutional wave has crested.
+          What comes next is the most dangerous phase of all.
         </BlackpaperPara>
       </BlackpaperSection>
 
       <BlackpaperSection label="PHASE 3" color={y}>
-        <BlackpaperHeading>The Terminal Blow-Off</BlackpaperHeading>
+        <BlackpaperHeading>The Terminal Liquidity Overflow</BlackpaperHeading>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Zcash (ZEC) — Wave 1
+          Zcash (ZEC)
         </div>
         <BlackpaperPara>
-          The final phase of every cycle is a place of irrationality and narrative exhaustion. Primary layers are overvalued.
-          Institutional proxies are spent. What remains: a mass of late-stage capital — retail and algorithmic alike — frantically
-          searching for the last remaining pocket of outsized yield. This capital descends into forgotten corners of the market:
+          The final phase of every cryptocurrency cycle is a place of irrationality, narrative exhaustion, and desperate liquidity hunting.
+          The primary layers are overvalued. The institutional proxies are spent. What remains is a mass of late-stage capital —
+          retail and algorithmic alike — frantically searching for the last remaining pocket of outsized yield.
+          This capital descends, with the predictability of gravity, into the forgotten corners of the market:
           legacy assets that have underperformed for years, written off as dead, derisively nicknamed "dino coins."
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Zcash is the archetype. Launched in October 2016, ZEC pioneered zk-SNARKs — zero-knowledge cryptography that enables
-          fully shielded transactions. Sender, receiver, amount: all mathematically verified, all hidden. It is the most
-          sophisticated privacy technology in cryptocurrency.
+          Zcash is the archetype.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          And yet ZEC has been in perpetual decline. Founders' rewards dumped supply. Shielded transactions had computational overhead.
-          Regulatory delistings drained liquidity. By early 2025, ZEC was trading at{" "}
-          <BlackpaperDatum value="$31.17" color={y} /> — a compression point on the order of $20–40.
+          Launched in October 2016, Zcash pioneered the implementation of zk-SNARKs — zero-knowledge succinct non-interactive
+          arguments of knowledge — a cryptographic breakthrough that enables fully shielded transactions. Sender, receiver,
+          and amount: all mathematically verified, all completely hidden. It is, by any technical measure, the most sophisticated
+          privacy technology in the cryptocurrency ecosystem.
+        </BlackpaperPara>
+        <BlackpaperPara indent>
+          And yet ZEC has been in near-perpetual decline since its inception. The culprits: a "founders' reward" that dumped 20%
+          of all block rewards onto the market for four straight years, the computational burden of shielded transactions
+          that pushed most users to transparent addresses, and an endless cycle of regulatory delistings that drained liquidity
+          from order books. By early 2025, ZEC was trading at roughly{" "}
+          <BlackpaperDatum value="$20" color={y} /> — a rounding error compared to its 2016 launch.
         </BlackpaperPara>
         <BlackpaperQuote color={y}>
-          Dormant asset. Thin order books. All it needed was the privacy narrative — and governments obliging.
+          A dormant asset. Thin order books. A compressed supply after the November 2024 halving.
+          All it needed was a match.
         </BlackpaperQuote>
         <BlackpaperPara indent>
-          The catalyst came in April 2025 as CBDC anxiety and government surveillance concerns intensified. Privacy narratives
-          reached crescendo. Capital from the XRP exit — <BlackpaperDatum value="$9 million" color={y} /> — rotated into ZEC
-          at the compression point of <BlackpaperDatum value="$31.17" color={y} />.
+          The match arrived in October 2025, when the U.S. Department of Justice confiscated 127,271 BTC — roughly $15 billion —
+          from the founder of the Cambodian Prince Group. The seizure accomplished in a single headline what years of advocacy
+          could not: it demonstrated, with the blunt force of sovereign power, that Bitcoin's transparent ledger is a liability.
+          Governments can trace it. Freeze it. Take it. The necessity of mathematically provable on-chain privacy was validated overnight.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Because order books were paper-thin, the price action was not a rally. It was detonation. From $31.17 to{" "}
-          <BlackpaperDatum value="$674" color={y} /> in seven months. A <span style={{ color: y, fontWeight: 700 }}>21.6x</span> multiple.
+          Arthur Hayes publicly predicted ZEC at $10,000. FOMO ignited. Capital rushed into shielded pools.
+          And because the order books were paper-thin — hollowed out by years of delistings — the price action was
+          not a rally. It was a detonation. From $20 to{" "}
+          <BlackpaperDatum value="$674" color={y} /> in a matter of weeks. A{" "}
+          <span style={{ color: y, fontWeight: 700 }}>33.7x</span> multiple. Nineteen months post-halving.
         </BlackpaperPara>
         <BlackpaperPara indent>
-          Portfolio: $9M rotated into the most illiquid corner at maximum suppression, and extracted at the vertical peak.
-          Final value: <BlackpaperDatum value="$194.4 million" color={y} />.
-        </BlackpaperPara>
-      </BlackpaperSection>
-
-      <BlackpaperSection label="PHASE 4" color={y}>
-        <BlackpaperHeading>The Swing Trade: Buy The Dip</BlackpaperHeading>
-        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 22, color: y, fontWeight: 700, marginBottom: 20, letterSpacing: -0.5 }}>
-          Zcash (ZEC) — Wave 2
-        </div>
-        <BlackpaperPara>
-          After the November 2025 blow-off top at $674, ZEC entered a standard retracement correction. This is not unusual.
-          After explosive 20x+ moves, 60–70% retracements are mathematically inevitable. But here is the edge that separates
-          winners from panic-sellers: the underlying narrative did not break. Privacy demand was not a temporary meme.
-          CBDC anxiety did not dissolve overnight. The compression was technical, not fundamental.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          By March 2026, ZEC had retraced 71% from the peak of $674 to <BlackpaperDatum value="$197.82" color={y} />.
-          A standard correction in the context of a parabolic move. But to the undisciplined trader watching from the sidelines,
-          it looked like a crash. Most refused to buy.
-        </BlackpaperPara>
-        <BlackpaperQuote color={y}>
-          The practitioners who executed Phases 1–3 successfully had $194.4M. The question: would they deploy it?
-        </BlackpaperQuote>
-        <BlackpaperPara indent>
-          Yes. The re-entry signal at $197.82 was validated: previous narrative still intact, technical compression confirmed,
-          capital from Wave 1 profits available for deployment. The swing trade setup was textbook perfect.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          From March to May 2026, ZEC re-pumped to <BlackpaperDatum value="$673.46" color={y} /> — near-identical to the Wave 1 peak.
-          A <span style={{ color: y, fontWeight: 700 }}>3.4x</span> move on the second wave. Final exit to fiat at this level.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          Portfolio: <BlackpaperDatum value="$194.4M" color={y} /> rotated into retraced ZEC, extracted at second peak.
-          Final value: <BlackpaperDatum value="$660.8 million" color={y} />.
-        </BlackpaperPara>
-        <BlackpaperPara indent>
-          <em style={{ color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>Supercycle complete.</em> Total: $100,000 → $660,800,000. 6,608x return.
-          October 2023 → May 2026. Nineteen months of disciplined capital rotation across three infrastructure layers.
-          No further rotations permitted. Capital exits to fiat.
+          The portfolio: $6.9 million rotated into the most illiquid, legally scrutinized corner of the market at its point
+          of maximum suppression, and extracted at the vertical peak of a narrative-driven blow-off.
+          Final value:{" "}
+          <BlackpaperDatum value="$232,552,242" color={y} />.
         </BlackpaperPara>
       </BlackpaperSection>
 
@@ -2888,20 +2805,19 @@ function Blackpaper() {
       </BlackpaperSection>
 
       <BlackpaperSection label="VII" color="rgba(255,255,255,0.4)">
-        <BlackpaperHeading>The Rotational Matrix (REALIZED: Oct 2023 – May 2026)</BlackpaperHeading>
+        <BlackpaperHeading>The Rotational Matrix</BlackpaperHeading>
         <BlackpaperPara>
-          Synthesized into its purest form, the strategy spans a 19-month execution window. Every entry and exit is a temporal coordinate.
-          Every rotation is a deliberate migration of capital from an exhausting expansion phase into the next ignition.
-          <em style={{ color: "rgba(255,255,255,0.8)", marginLeft: 8 }}>The Supercycle proves this thesis with historical data.</em>
+          Synthesized into its purest form, the strategy spans a 19-month execution window measured from the halving fulcrum.
+          Every entry and exit is a temporal coordinate. Every rotation is a deliberate migration of capital from an exhausting
+          expansion phase into the next ignition.
         </BlackpaperPara>
         <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, overflow: "hidden", margin: "24px 0" }}>
           {[
-            { phase: "1", asset: "TAO", entry: "Oct 19, 2023", exit: "Mar 8, 2024", mult: "15x", capital: "$1.50M", color: g },
-            { phase: "2", asset: "XRP", entry: "Oct 2, 2024", exit: "Jan 8, 2025", mult: "6x", capital: "$9.00M", color: o },
-            { phase: "3", asset: "ZEC W1", entry: "Apr 9, 2025", exit: "Nov 12, 2025", mult: "21.6x", capital: "$194.4M", color: y },
-            { phase: "4", asset: "ZEC W2", entry: "Mar 7, 2026", exit: "May 19, 2026", mult: "3.4x", capital: "$660.8M", color: y },
+            { phase: "1", asset: "SOL", entry: "Month −16", exit: "Month −1", mult: "19.66x", capital: "$1.97M", color: g },
+            { phase: "2", asset: "MSTR", entry: "Month +2", exit: "Month +7", mult: "3.51x", capital: "$6.90M", color: o },
+            { phase: "3", asset: "ZEC", entry: "Month +9", exit: "Month +19", mult: "33.7x", capital: "$232.5M", color: y },
           ].map((row, i) => (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "50px 80px 110px 110px 70px 100px", padding: "12px 16px", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none", alignItems: "center" }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "50px 60px 90px 90px 70px 90px", padding: "12px 16px", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.04)" : "none", alignItems: "center" }}>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.3)" }}>P{row.phase}</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: row.color, fontWeight: 600 }}>{row.asset}</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{row.entry}</span>
@@ -2912,11 +2828,10 @@ function Blackpaper() {
           ))}
         </div>
         <BlackpaperPara indent>
-          19 months. 4 phases. $100,000 initial capital. $660.8 million final value. 6,608x return.
-          TAO captured the speculative vanguard with AI narratives. XRP captured institutional settlement infrastructure
-          with regulatory clarity. ZEC Wave 1 captured the terminal blow-off with privacy anxiety. ZEC Wave 2 captured
-          the retracement swing trade with discipline. The assets occupying each archetype may shift across cycles.
-          The temporal structure — and the profitability — will not.
+          Projected onto the 2028 halving — anticipated for April of that year — the matrix yields four dates:
+          SOL accumulation between September 2026 and August 2027, SOL exit and MSTR entry in March 2028, MSTR exit and ZEC accumulation in November 2028,
+          and the terminal ZEC liquidation to fiat in November 2029. The assets occupying each archetype may shift.
+          The temporal structure, if history holds, will not.
         </BlackpaperPara>
       </BlackpaperSection>
 
@@ -3411,7 +3326,7 @@ function ConversionTab() {
 export default function LiquidityCascade() {
   const [activePhase, setActivePhase] = useState(0);
   const [activeNav, setActiveNav] = useState("overview");
-  const { taoPrice, xrpPrice, zecPrice } = useMarketData();
+  const { solPrice, zecPrice } = useMarketData();
 
   return (
     <>
@@ -3421,7 +3336,7 @@ export default function LiquidityCascade() {
     <div style={{ minHeight: "100vh", background: "transparent", color: "#fff", fontFamily: "'DM Sans', sans-serif", position: "relative", zIndex: 2 }}>
       <div style={{ padding: "32px 28px 0", maxWidth: 960, margin: "0 auto" }}>
         <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: 2, marginBottom: 8 }}>
-          SUPERCYCLE CAPITAL ROTATION — 2028 HALVING
+          CAPITAL ROTATION MATRIX — 2024 HALVING CYCLE
         </div>
         <h1
           style={{
@@ -3430,15 +3345,15 @@ export default function LiquidityCascade() {
             fontWeight: 700,
             margin: "0 0 6px",
             lineHeight: 1.15,
-            background: "linear-gradient(135deg, #9D4EDD, #23F0C6, #F4B728)",
+            background: "linear-gradient(135deg, #00FFA3, #FF6B35, #F4B728)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
         >
-          Supercycle
+          The Liquidity Cascade
         </h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", margin: "0 0 24px", maxWidth: 620, lineHeight: 1.55 }}>
-          A chronological matrix for capital rotation across Bittensor (TAO), Ripple (XRP), and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum. Historical data: Oct 2023 → May 2026 realized 6,608x return.
+          A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
         </p>
 
         <nav aria-label="Dashboard sections">
@@ -3482,8 +3397,7 @@ export default function LiquidityCascade() {
                   isActive={activePhase === i}
                   onClick={() => setActivePhase(i)}
                   currentPrice={
-                    p.asset === "TAO" ? taoPrice :
-                    p.asset === "XRP" ? xrpPrice :
+                    p.asset === "SOL" ? solPrice :
                     p.asset === "ZEC" ? zecPrice :
                     undefined
                   }
