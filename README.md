@@ -2,7 +2,24 @@
 
 **Live site: [newanforbi.github.io/liquidity-cascade](https://newanforbi.github.io/liquidity-cascade/)**
 
+**Supercycle fork: [newanforbi.github.io/liquidity-cascade/supercycle](https://newanforbi.github.io/liquidity-cascade/supercycle/)**
+
 A chronological matrix for capital rotation across Solana, MicroStrategy, and Zcash — anchored to the Bitcoin halving as the definitive temporal fulcrum.
+
+## Supercycle: Historical Proof of Concept
+
+The **Supercycle** is a fork that models the same capital rotation thesis using **historical cryptocurrency data** (October 2023 – May 2026) instead of equity proxies. It replaces the three original assets with:
+
+| Phase | Asset | Role | Entry | Exit | Multiple |
+|-------|-------|------|-------|------|----------|
+| 1 | TAO | AI Compute Vanguard | Oct 19, 2023 | Mar 8, 2024 | 15x |
+| 2 | XRP | Institutional Settlement | Oct 2, 2024 | Jan 8, 2025 | 6x |
+| 3 | ZEC W1 | Terminal Blow-Off | Apr 9, 2025 | Nov 12, 2025 | 21.6x |
+| 4 | ZEC W2 | Swing Trade | Mar 7, 2026 | May 19, 2026 | 3.4x |
+
+**Result: $100K → $660.8M (6,608x return) over 19 months**
+
+The Supercycle proves the rotating capital thesis works across different market cycles and asset classes. It demonstrates that the halving-relative temporal structure is repeatable and that disciplined capital rotation (including a swing trade on retracements) maximizes extraction at each phase peak.
 
 ## Overview
 
