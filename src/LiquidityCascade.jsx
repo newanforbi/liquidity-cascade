@@ -516,23 +516,23 @@ const PHASES = [
   },
   {
     id: 3,
-    asset: "ZEC",
-    name: "Zcash",
+    asset: "ZEC (W1)",
+    name: "Zcash Wave 1 — Blow-Off",
     role: "Terminal Liquidity Overflow",
     color: "#F4B728",
     colorDim: "rgba(244,183,40,0.12)",
-    entryDate: "Early 2025",
+    entryDate: "Apr 2025",
     exitDate: "Nov 2025",
-    entryPrice: "$20.00",
+    entryPrice: "$31.17",
     exitPrice: "$674.00",
-    multiple: "33.7x",
+    multiple: "21.6x",
     capitalIn: 6900660,
-    capitalOut: 232552242,
+    capitalOut: 149094256,
     halvingDistance: "+19 Months",
     monthsFromHalving: 19,
     entryMonths: "+9 to +12",
     description:
-      "The terminal phase — irrational, narrative-driven, and devoid of long-term fundamental support. Legacy privacy assets capture the final overflow of exhausted market liquidity.",
+      "The terminal phase — irrational, narrative-driven, and devoid of long-term fundamental support. Legacy privacy assets capture the final overflow of exhausted market liquidity in a vertical blow-off.",
     mechanics: [
       "zk-SNARKs enable fully shielded, mathematically provable privacy",
       "Nov 2024 halving cut block reward to 1.5625 ZEC, curbing inflation",
@@ -540,11 +540,43 @@ const PHASES = [
       "DOJ seizure of 127,271 BTC validated on-chain privacy necessity",
     ],
     exitSignal:
-      'ZEC blow-off top historically signals immediate onset of multi-year bear market — the "doomsday vehicle" pattern. No further rotations permitted.',
+      'ZEC blow-off top at Nov 12, 2025 ($674) signals terminal peak — the "doomsday vehicle" pattern. Hold discipline; retracements are entry points, not disasters.',
     entrySignal:
       "Rotate from MSTR into ZEC when mNAV premium exceeds 2.5x or BTC 30-day momentum turns negative. ZEC entry captures terminal liquidity overflow as late-cycle capital seeks the most speculative assets.",
     keyInsight:
-      "Explosive vertical rallies in legacy privacy coins are almost always the final act of a macro bull market. Jan 2018, May 2021, Nov 2025 — the pattern repeats.",
+      "ZEC peaked at $674 on Nov 12, 2025 (19 months post-April 2024 halving), retracing 71% by Mar 2026—the blow-off exhaustion. Discipline-based re-entry on the retracement yields a 3.4x second leg.",
+  },
+  {
+    id: 4,
+    asset: "ZEC (W2)",
+    name: "Zcash Wave 2 — Swing Trade",
+    role: "Retracement Capture",
+    color: "#F4B728",
+    colorDim: "rgba(244,183,40,0.12)",
+    entryDate: "Mar 2026",
+    exitDate: "May 2026",
+    entryPrice: "$197.82",
+    exitPrice: "$673.46",
+    multiple: "3.4x",
+    capitalIn: 149094256,
+    capitalOut: 506920470,
+    halvingDistance: "+25 Months",
+    monthsFromHalving: 25,
+    entryMonths: "+23 to +25",
+    description:
+      "Discipline trade: After the terminal blow-off exhaustion and 71% retracement, a second leg emerges on psychological capitulation. Buy the dip, not the peak — the second wave captures what panic selling created.",
+    mechanics: [
+      "Retracement from $674 to $197.82 (Mar 7, 2026) tests on-chain holders' commitment",
+      "Weak hands capitulate; strong hands reload at 71% below peak",
+      "Privacy demand renewed as CBDC anxiety persists; zk-SNARKs remain critical",
+      "Low volume rallies off support often precede violent reversals to prior highs",
+    ],
+    exitSignal:
+      "Exit this second leg when ZEC reassaults prior highs (approach $673+). This is psychological re-test, not new narrative — allocate profits immediately.",
+    entrySignal:
+      "Retracement entry after blow-off exhaustion. Deploy reserved capital on capitulation candles. Position sizing: smaller than W1 (3.4x vs 21.6x reflects lower volatility and conviction).",
+    keyInsight:
+      "Markets never move in a straight line—they exhaust, retrace, and test prior peaks. Capital discipline separates professionals from retail panic. The 2nd ZEC wave is a reward for holding cash through chaos.",
   },
 ];
 
@@ -560,7 +592,9 @@ const PREDICTIONS_2028 = [
   { phase: 1, asset: "SOL", action: "Entry", timing: "Sep 2026 – Aug 2027", note: "Bear market trough accumulation" },
   { phase: 1, asset: "SOL", action: "Exit → MSTR Entry", timing: "Mar 2028", note: "Front-run halving, rotate to institutional proxy" },
   { phase: 2, asset: "MSTR", action: "Exit → ZEC Entry", timing: "Nov 2028", note: "Month +7, institutional premium exhaustion" },
-  { phase: 3, asset: "ZEC", action: "Exit to Fiat", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — exit crypto entirely' },
+  { phase: 3, asset: "ZEC (W1)", action: "Exit to Fiat (Blow-Off)", timing: "Nov 2029", note: 'Month +19, terminal "doomsday" spike — capture peak' },
+  { phase: 4, asset: "ZEC (W2)", action: "Re-entry on Dip", timing: "Mar 2026", note: "Month +23, retracement to $197.82 — buy panic" },
+  { phase: 4, asset: "ZEC (W2)", action: "Exit to Fiat (Final)", timing: "May 2026", note: "Month +25, second leg peak at $673.46 — final exit" },
 ];
 
 // ── SIGNALS data ──────────────────────────────────────────────────────────────
@@ -592,14 +626,26 @@ const SIGNAL_GRID = [
   },
   {
     phase: 3,
-    asset: "ZEC",
+    asset: "ZEC (W1)",
     color: "#F4B728",
     entryWindow: "Nov 2028 – Nov 2029",
-    historicalPrecedent: "Jan 2018 and May 2021: ZEC's vertical blow-off topped within days of cycle peak. No second chance — exit is final.",
+    historicalPrecedent: "Apr 9, 2025: ZEC entered at $31.17. Nov 12, 2025: peaked at $674 (21.6x). Pattern repeats — vertical blow-off = terminal peak.",
     signals: [
       { id: "S3-1", threshold: "ZEC 7-day gain > 150%", action: "EXIT 50% IMMEDIATELY", status: "ARMED" },
       { id: "S3-2", threshold: "Mainstream media coverage", action: "EXIT REMAINING ZEC", status: "ARMED" },
-      { id: "S3-3", threshold: "Any position remaining", action: "NO FURTHER ROTATIONS", status: "EXPIRED" },
+      { id: "S3-3", threshold: "Reserve capital for W2", action: "HOLD 20–30% CASH", status: "ARMED" },
+    ],
+  },
+  {
+    phase: 4,
+    asset: "ZEC (W2)",
+    color: "#F4B728",
+    entryWindow: "Mar 2026 – May 2026",
+    historicalPrecedent: "Mar 7, 2026: ZEC retraced 71% to $197.82 (from $674 peak). Mar–May 2026 second leg: $197.82 → $673.46 (3.4x). Discipline = profit.",
+    signals: [
+      { id: "S4-1", threshold: "Retracement to 70%+ loss", action: "DEPLOY RESERVED CAPITAL", status: "ARMED" },
+      { id: "S4-2", threshold: "Capitulation sentiment + volume spike", action: "ADD TO POSITION", status: "ARMED" },
+      { id: "S4-3", threshold: "Prior highs approached", action: "EXIT 100% TO FIAT", status: "ARMED" },
     ],
   },
 ];
@@ -609,8 +655,10 @@ const KEY_THRESHOLDS = [
   { signal: "Pre-Halving Saturation", asset: "SOL", threshold: "RSI > 78 weekly + retail euphoria", action: "Exit SOL entirely", window: "Month −1 to 0" },
   { signal: "mNAV Premium Extreme", asset: "MSTR", threshold: "mNAV > 2.5–3.0x", action: "Begin MSTR exit", window: "Month +6 to +9" },
   { signal: "BTC Momentum Stall", asset: "MSTR", threshold: "30-day price momentum < 0", action: "Accelerate MSTR exit", window: "Month +7 to +10" },
-  { signal: "ZEC Blow-Off Top", asset: "ZEC → Fiat", threshold: "7-day gain > 150%", action: "Exit 50% immediately", window: "Month +17 to +19" },
-  { signal: "Terminal Media Spike", asset: "ZEC", threshold: "Mainstream coverage + euphoria", action: "Exit remaining ZEC", window: "Month +19 to +21" },
+  { signal: "ZEC Blow-Off Top (W1)", asset: "ZEC → Fiat", threshold: "7-day gain > 150%", action: "Exit 50% immediately", window: "Month +17 to +19" },
+  { signal: "Terminal Media Spike (W1)", asset: "ZEC (W1)", threshold: "Mainstream coverage + euphoria", action: "Exit remaining ZEC, reserve cash for W2", window: "Month +19 to +21" },
+  { signal: "Capitulation Retracement (W2)", asset: "ZEC (W2)", threshold: "70%+ loss from peak ($674 → $197)", action: "Deploy reserved capital", window: "Month +23 to +24" },
+  { signal: "W2 Peak Approach", asset: "ZEC (W2) → Fiat", threshold: "Price approaches prior highs ($673)", action: "Exit 100% to fiat", window: "Month +25" },
 ];
 
 const PSY_RISKS = [
@@ -1161,8 +1209,11 @@ function CalculatorSection() {
   const phase2Out = phase2In * 3.51;
   const phase3In = phase2Out * (riskSplit / 100);
   const phase3Reserve = phase2Out - phase3In + phase2Reserve;
-  const phase3Out = phase3In * 33.7;
-  const totalFinal = phase3Out + phase3Reserve;
+  const phase3Out = phase3In * 21.6;
+  const phase4In = phase3Out * (riskSplit / 100);
+  const phase4Reserve = phase3Out - phase4In + phase3Reserve;
+  const phase4Out = phase4In * 3.4;
+  const totalFinal = phase4Out + phase4Reserve;
 
   return (
     <div
@@ -1217,7 +1268,9 @@ function CalculatorSection() {
         {[
           { label: "AFTER SOL (Phase 1)", value: phase1Out, color: "#00FFA3" },
           { label: "AFTER MSTR (Phase 2)", value: phase2Out + phase2Reserve, color: "#FF6B35" },
-          { label: "RESERVED IN FIAT", value: phase3Reserve, color: "rgba(255,255,255,0.5)" },
+          { label: "AFTER ZEC W1 (Phase 3)", value: phase3Out + phase3Reserve, color: "#F4B728" },
+          { label: "AFTER ZEC W2 (Phase 4)", value: phase4Out + phase4Reserve, color: "#F4B728" },
+          { label: "RESERVED IN FIAT", value: phase4Reserve, color: "rgba(255,255,255,0.5)" },
           { label: "FINAL PORTFOLIO", value: totalFinal, color: "#F4B728" },
         ].map((r, i) => (
           <div
