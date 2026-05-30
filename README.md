@@ -2,8 +2,6 @@
 
 **Live site: [newanforbi.github.io/liquidity-cascade](https://newanforbi.github.io/liquidity-cascade/)**
 
-**Supercycle fork: [newanforbi.github.io/liquidity-cascade/supercycle](https://newanforbi.github.io/liquidity-cascade/supercycle/)**
-
 ---
 
 ## The Original Framework
@@ -37,27 +35,6 @@ The original framework demonstrates:
 - **Cycles** — Historical cycle comparison (2020, 2024, projected 2028)
 - **Execution** — Pre-entry checklist and psychological discipline framework
 - **Blackpaper** — Long-form written analysis of the full framework
-
----
-
-## Supercycle: Historical Proof of Concept
-
-The **Supercycle** is a fork that validates the rotating capital rotation thesis using **historical cryptocurrency data** (October 2023 – May 2026). Instead of equity proxies, it models the same three-layer infrastructure thesis using pure crypto assets:
-
-| Phase | Asset | Role | Entry | Exit | Multiple |
-|-------|-------|------|-------|------|----------|
-| 1 | TAO | AI Compute Vanguard | Oct 19, 2023 | Mar 8, 2024 | 15x |
-| 2 | XRP | Institutional Settlement | Oct 2, 2024 | Jan 8, 2025 | 6x |
-| 3 | ZEC W1 | Terminal Blow-Off | Apr 9, 2025 | Nov 12, 2025 | 21.6x |
-| 4 | ZEC W2 | Swing Trade (Buy the Dip) | Mar 7, 2026 | May 19, 2026 | 3.4x |
-
-**Realized return: $100K → $660.8M (6,608x) over 19 months**
-
-The Supercycle proves:
-- The rotating capital framework works across different asset classes and market conditions
-- The halving-relative temporal structure is repeatable and predictable
-- Disciplined capital rotation through all four phases maximizes extraction at each peak
-- The swing trade on retracements (Phase 4) demonstrates the importance of psychological discipline after terminal blow-offs
 
 ---
 
