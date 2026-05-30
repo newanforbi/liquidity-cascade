@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "name": "Liquidity Cascade Design System",
+    "description": "Dark cyberpunk aesthetic with neon accent colors and premium typography",
+    "version": "1.0.0"
+  },
+  "colors": {
+    "background": {
+      "base": "#0A0B0F",
+      "surface": "rgba(255,255,255,0.02)",
+      "surfaceHover": "rgba(255,255,255,0.03)",
+      "border": "rgba(255,255,255,0.06)",
+      "borderSubtle": "rgba(255,255,255,0.03)"
+    },
+    "text": {
+      "primary": "#ffffff",
+      "secondary": "rgba(255,255,255,0.7)",
+      "tertiary": "rgba(255,255,255,0.5)",
+      "muted": "rgba(255,255,255,0.35)",
+      "faint": "rgba(255,255,255,0.2)"
+    },
+    "accent": {
+      "sol": "#00FFA3",
+      "mstr": "#FF6B35",
+      "zec": "#F4B728",
+      "alt": "#6450FF"
+    },
+    "accentDim": {
+      "sol": "rgba(0,255,163,0.12)",
+      "mstr": "rgba(255,107,53,0.12)",
+      "zec": "rgba(244,183,40,0.12)",
+      "alt": "rgba(100,80,255,0.032)"
+    },
+    "effects": {
+      "glowGreen": "#00FFA3",
+      "glowOrange": "#FF6B35",
+      "glowGold": "#F4B728",
+      "glowBlue": "#00B4FF",
+      "nebulaMint": "rgba(0,255,163,0.028)",
+      "nebulaPurple": "rgba(100,80,255,0.032)",
+      "nebulaOrange": "rgba(255,107,53,0.022)",
+      "nebulaBlue": "rgba(0,180,255,0.02)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "mono": "'JetBrains Mono', monospace",
+      "sans": "'DM Sans', sans-serif",
+      "display": "'Space Grotesk', sans-serif",
+      "serif": "'Source Serif 4', serif"
+    },
+    "sizes": {
+      "xs": 8,
+      "sm": 9,
+      "base": 11,
+      "md": 12,
+      "lg": 13,
+      "xl": 14,
+      "2xl": 18,
+      "3xl": 20,
+      "4xl": 22,
+      "5xl": 28
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "letterSpacing": {
+      "normal": 0,
+      "wide": 1,
+      "wider": 1.2,
+      "widest": 1.5,
+      "monospace": 2
+    },
+    "lineHeight": {
+      "tight": 1.1,
+      "normal": 1.5,
+      "relaxed": 1.55,
+      "loose": 1.65
+    }
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 6,
+    "md": 8,
+    "lg": 10,
+    "xl": 12,
+    "2xl": 14,
+    "3xl": 18,
+    "4xl": 20,
+    "5xl": 22,
+    "6xl": 24,
+    "7xl": 30
+  },
+  "radius": {
+    "sm": 3,
+    "md": 4,
+    "lg": 6,
+    "xl": 8,
+    "2xl": 10
+  },
+  "shadows": {
+    "glow-sm": "0 0 8px",
+    "glow-md": "0 0 10px",
+    "glow-lg": "0 0 12px",
+    "glow-xl": "0 0 15px"
+  },
+  "opacity": {
+    "subtle": 0.02,
+    "light": 0.05,
+    "medium": 0.12,
+    "semi": 0.35,
+    "strong": 0.5
+  },
+  "transitions": {
+    "fast": "0.2s ease",
+    "normal": "0.3s ease",
+    "slow": "0.5s ease"
+  },
+  "components": {
+    "card": {
+      "padding": "24px 22px",
+      "borderRadius": 10,
+      "background": "rgba(255,255,255,0.02)",
+      "border": "1px solid rgba(255,255,255,0.06)",
+      "transition": "all 0.3s ease"
+    },
+    "button": {
+      "padding": "12px 14px",
+      "borderRadius": 6,
+      "fontSize": 13,
+      "fontWeight": 600
+    },
+    "input": {
+      "accentColor": "#00FFA3"
+    },
+    "badge": {
+      "padding": "2px 6px",
+      "borderRadius": 3,
+      "fontSize": 9,
+      "fontWeight": 600
+    }
+  }
+}

@@ -1,0 +1,301 @@
+/* Liquidity Cascade Design System */
+/* Import fonts in your HTML: */
+/* <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" /> */
+
+:root {
+  /* Colors - Background */
+  --color-bg-base: #0A0B0F;
+  --color-bg-surface: rgba(255,255,255,0.02);
+  --color-bg-surface-hover: rgba(255,255,255,0.03);
+  --color-bg-border: rgba(255,255,255,0.06);
+  --color-bg-border-subtle: rgba(255,255,255,0.03);
+
+  /* Colors - Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255,255,255,0.7);
+  --color-text-tertiary: rgba(255,255,255,0.5);
+  --color-text-muted: rgba(255,255,255,0.35);
+  --color-text-faint: rgba(255,255,255,0.2);
+
+  /* Colors - Accents */
+  --color-accent-sol: #00FFA3;
+  --color-accent-mstr: #FF6B35;
+  --color-accent-zec: #F4B728;
+  --color-accent-alt: #6450FF;
+
+  /* Colors - Accent Dims */
+  --color-accent-sol-dim: rgba(0,255,163,0.12);
+  --color-accent-mstr-dim: rgba(255,107,53,0.12);
+  --color-accent-zec-dim: rgba(244,183,40,0.12);
+  --color-accent-alt-dim: rgba(100,80,255,0.032);
+
+  /* Colors - Effects */
+  --color-glow-green: #00FFA3;
+  --color-glow-orange: #FF6B35;
+  --color-glow-gold: #F4B728;
+  --color-glow-blue: #00B4FF;
+
+  /* Typography - Fonts */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-serif: 'Source Serif 4', serif;
+
+  /* Typography - Sizes */
+  --font-size-xs: 8px;
+  --font-size-sm: 9px;
+  --font-size-base: 11px;
+  --font-size-md: 12px;
+  --font-size-lg: 13px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 22px;
+  --font-size-5xl: 28px;
+
+  /* Typography - Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Typography - Letter Spacing */
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 1px;
+  --letter-spacing-wider: 1.2px;
+  --letter-spacing-widest: 1.5px;
+  --letter-spacing-mono: 2px;
+
+  /* Typography - Line Height */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.55;
+  --line-height-loose: 1.65;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 10px;
+  --spacing-xl: 12px;
+  --spacing-2xl: 14px;
+  --spacing-3xl: 18px;
+  --spacing-4xl: 20px;
+  --spacing-5xl: 22px;
+  --spacing-6xl: 24px;
+  --spacing-7xl: 30px;
+
+  /* Border Radius */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Base Styles */
+html,
+body {
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Typography Utilities */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Card Component */
+.card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-bg-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-6xl) var(--spacing-5xl);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  background: var(--color-bg-surface-hover);
+  border-color: var(--color-bg-border);
+}
+
+/* Badge Component */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-primary);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge.sol {
+  color: var(--color-accent-sol);
+  background: var(--color-accent-sol-dim);
+}
+
+.badge.mstr {
+  color: var(--color-accent-mstr);
+  background: var(--color-accent-mstr-dim);
+}
+
+.badge.zec {
+  color: var(--color-accent-zec);
+  background: var(--color-accent-zec-dim);
+}
+
+/* Glow Dot */
+.glow-dot {
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--color-glow-green);
+  box-shadow: 0 0 8px var(--color-glow-green), 0 0 16px rgba(0, 255, 163, 0.4);
+}
+
+.glow-dot.sol {
+  background: var(--color-accent-sol);
+  box-shadow: 0 0 8px var(--color-accent-sol), 0 0 16px rgba(0, 255, 163, 0.4);
+}
+
+.glow-dot.mstr {
+  background: var(--color-accent-mstr);
+  box-shadow: 0 0 8px var(--color-accent-mstr), 0 0 16px rgba(255, 107, 53, 0.4);
+}
+
+.glow-dot.zec {
+  background: var(--color-accent-zec);
+  box-shadow: 0 0 8px var(--color-accent-zec), 0 0 16px rgba(244, 183, 40, 0.4);
+}
+
+/* Button Component */
+.btn {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-bg-border);
+}
+
+.btn:hover {
+  background: var(--color-bg-surface-hover);
+  border-color: var(--color-glow-green);
+}
+
+.btn-primary {
+  background: var(--color-accent-sol);
+  color: var(--color-bg-base);
+  border: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 12px var(--color-accent-sol), 0 0 24px rgba(0, 255, 163, 0.3);
+}
+
+/* Input Component */
+input[type="range"] {
+  accent-color: var(--color-accent-sol);
+}
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+/* Flex Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.gap-xl {
+  gap: var(--spacing-xl);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
