@@ -1200,22 +1200,15 @@ function PhaseDetail({ phase }) {
 }
 
 function CalculatorSection() {
-  const [initial, setInitial] = useState(100000);
+  const capitalValues = [
+    1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+    20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,
+    200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000
+  ];
+
+  const [capitalIndex, setCapitalIndex] = useState(capitalValues.indexOf(100000));
   const [riskSplit, setRiskSplit] = useState(100);
-
-  const getValidCapitalValues = () => {
-    const values = [];
-    for (let i = 1000; i <= 10000; i += 1000) values.push(i);
-    for (let i = 20000; i <= 1000000; i += 10000) values.push(i);
-    return values;
-  };
-
-  const snapToValidValue = (value) => {
-    const validValues = getValidCapitalValues();
-    return validValues.reduce((prev, curr) =>
-      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
-    );
-  };
+  const initial = capitalValues[capitalIndex];
 
   const phase1Out = initial * 19.66;
   const phase2In = phase1Out * (riskSplit / 100);
@@ -1249,11 +1242,11 @@ function CalculatorSection() {
           </label>
           <input
             type="range"
-            min={1000}
-            max={1000000}
-            step={10000}
-            value={initial}
-            onChange={(e) => setInitial(snapToValidValue(Number(e.target.value)))}
+            min={0}
+            max={capitalValues.length - 1}
+            step={1}
+            value={capitalIndex}
+            onChange={(e) => setCapitalIndex(Number(e.target.value))}
             style={{ width: "100%", accentColor: "#00FFA3" }}
           />
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, color: "#fff", marginTop: 4 }}>
