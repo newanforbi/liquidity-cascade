@@ -1203,6 +1203,20 @@ function CalculatorSection() {
   const [initial, setInitial] = useState(100000);
   const [riskSplit, setRiskSplit] = useState(100);
 
+  const getValidCapitalValues = () => {
+    const values = [];
+    for (let i = 1000; i <= 10000; i += 1000) values.push(i);
+    for (let i = 20000; i <= 1000000; i += 10000) values.push(i);
+    return values;
+  };
+
+  const snapToValidValue = (value) => {
+    const validValues = getValidCapitalValues();
+    return validValues.reduce((prev, curr) =>
+      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+    );
+  };
+
   const phase1Out = initial * 19.66;
   const phase2In = phase1Out * (riskSplit / 100);
   const phase2Reserve = phase1Out - phase2In;
@@ -1235,11 +1249,11 @@ function CalculatorSection() {
           </label>
           <input
             type="range"
-            min={10000}
+            min={1000}
             max={1000000}
             step={10000}
             value={initial}
-            onChange={(e) => setInitial(Number(e.target.value))}
+            onChange={(e) => setInitial(snapToValidValue(Number(e.target.value)))}
             style={{ width: "100%", accentColor: "#00FFA3" }}
           />
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, color: "#fff", marginTop: 4 }}>
